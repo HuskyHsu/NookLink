@@ -1,0 +1,100 @@
+{
+    "type": "bubble",
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "image",
+                        "url": "https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/fish/1.png",
+                        "size": "md",
+                        "flex": 2
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 3,
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "紅目鯽",
+                                "size": "xxl"
+                            },
+                            {
+                                "type": "text",
+                                "text": "タナゴ/Bitterling"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "售價",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "900",
+                                "align": "center",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "棲地",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "河川",
+                                "align": "center",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "出沒時刻",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "全天",
+                                "align": "center",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                ]
+            }
+        ]
+    }
+}
