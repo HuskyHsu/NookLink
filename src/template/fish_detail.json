@@ -26,7 +26,11 @@
                             },
                             {
                                 "type": "text",
-                                "text": "タナゴ/Bitterling"
+                                "text": "タナゴ"
+                            },
+                            {
+                                "type": "text",
+                                "text": "Bitterling"
                             }
                         ]
                     }
@@ -92,7 +96,197 @@
                                 "wrap": true
                             }
                         ]
+                    }
+                ]
+            },
+            {
+                "type": "separator"
+            },
+            {
+                "type": "text",
+                "text": " "
+            },
+            {
+                "type": "text",
+                "text": "北半球"
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "1月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
                     },
+                    {
+                        "type": "text",
+                        "text": "2月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "3月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "4月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "5月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "6月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    }
+                ]
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "7月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "8月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "9月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "10月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "11月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "12月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "text": " "
+            },
+            {
+                "type": "text",
+                "text": "南半球"
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "1月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "2月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "3月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "4月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "5月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "6月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    }
+                ]
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "7月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "8月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "9月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    }
                 ]
             }
         ]
