@@ -21,16 +21,16 @@
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "紅目鯽",
+                                "text": "[[name_c]]",
                                 "size": "xxl"
                             },
                             {
                                 "type": "text",
-                                "text": "タナゴ"
+                                "text": "[[name_j]]"
                             },
                             {
                                 "type": "text",
-                                "text": "Bitterling"
+                                "text": "[[name_e]]"
                             }
                         ]
                     }
@@ -53,7 +53,7 @@
                             },
                             {
                                 "type": "text",
-                                "text": "900",
+                                "text": "[[price]]",
                                 "align": "center",
                                 "wrap": true
                             }
@@ -72,7 +72,7 @@
                             },
                             {
                                 "type": "text",
-                                "text": "河川",
+                                "text": "[[place]]",
                                 "align": "center",
                                 "wrap": true
                             }
@@ -84,14 +84,33 @@
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "出沒時刻",
+                                "text": "出沒",
                                 "align": "center",
                                 "size": "lg",
                                 "wrap": true
                             },
                             {
                                 "type": "text",
-                                "text": "全天",
+                                "text": "[[time]]",
+                                "align": "center",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "魚影",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[size]]",
                                 "align": "center",
                                 "wrap": true
                             }
@@ -286,8 +305,52 @@
                         "size": "md",
                         "align": "center",
                         "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "10月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "11月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "12月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
                     }
                 ]
+            }
+        ]
+    },
+    "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "text",
+                "text": "魚影略分："
+            },
+            {
+                "type": "text",
+                "text": "極小、小、中、大、細長、背鰭"
+            },
+            {
+                "type": "button",
+                "style": "link",
+                "action": {
+                    "type": "message",
+                    "label": "回清單",
+                    "text": "魚"
+                }
             }
         ]
     }

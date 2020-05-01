@@ -1,0 +1,36 @@
+{
+    "type": "bubble",
+    "styles": {
+        "header": {
+            "backgroundColor": "#eeeeee"
+        },
+        "body": {
+            "backgroundColor": "#d5e5ec"
+        }
+    },
+    "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "text",
+                "text": "本月出沒魚訊"
+            }
+        ]
+    },
+    "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": []
+    },
+    "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "text",
+                "text": "標註 \"❗︎\" 者為下月無法釣到"
+            }
+        ]
+    }
+}

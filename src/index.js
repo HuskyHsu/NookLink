@@ -5,11 +5,11 @@ async function SayHi(context) {
   	await context.sendText('Hi!');
 }
 
-
 module.exports = async function App() {
   return router([
     text('hi', SayHi),
 	text('魚', fish.currentFish),
-	text('浪人鰺', fish.detail)
+	// text('浪人鰺', fish.detail),
+	text(new RegExp(`^魚-(${fish.getAllNames()})$`, 'i'), fish.detail),
   ]);
 }
