@@ -1,0 +1,61 @@
+{
+    "type": "bubble",
+    "styles": {
+        "header": {
+            "backgroundColor": "#FFFFDF"
+        },
+        "body": {
+            "backgroundColor": "#ACD6FF"
+        }
+    },
+    "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "text",
+                "text": "本月出沒",
+                "weight": "bold"
+            }
+        ]
+    },
+    "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": []
+    },
+    "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "text",
+                "text": "標註 \"❗︎\" 者為下月([[nextMonth]])無法取得"
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "button",
+                        "style": "link",
+                        "action": {
+                            "type": "message",
+                            "label": "回當月清單",
+                            "text": "魚"
+                        }
+                    },
+                    {
+                        "type": "button",
+                        "style": "link",
+                        "action": {
+                            "type": "message",
+                            "label": "下月([[nextMonth]]月)清單",
+                            "text": "魚-[[nextMonth]]月"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

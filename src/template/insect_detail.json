@@ -10,7 +10,7 @@
                 "contents": [
                     {
                         "type": "image",
-                        "url": "https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/fish/1.png",
+                        "url": "https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/insect/1.png",
                         "size": "md",
                         "flex": 2
                     },
@@ -317,156 +317,12 @@
         "layout": "vertical",
         "contents": [
             {
-                "type": "text",
-                "text": "魚影為："
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/2.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "極小",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/3.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "小",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/4.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "中",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/1.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "背鰭",
-                                "align": "center"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/6.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "大",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/7.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "特大",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/8.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "超特大",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/9.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "細長",
-                                "align": "center"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
                 "type": "button",
                 "style": "link",
                 "action": {
                     "type": "message",
                     "label": "回清單",
-                    "text": "魚"
+                    "text": "蟲"
                 }
             }
         ]
