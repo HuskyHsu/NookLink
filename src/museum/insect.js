@@ -1,12 +1,12 @@
 insects = require('../data/insect.json');
 util = require('./util');
 
-getAllNames = () => {
+const getAllNames = () => {
     return insects.map((insect) => `${insect.index}|${insect.name_c}|${insect.name_j}|${insect.name_e}|${insect.name_e.toLowerCase()}`).join('|')
 }
 
-createInfo = (insect) => {
-    insectDetailTemplate = require('../template/insect_detail.json');
+const createInfo = (insect) => {
+    const insectDetailTemplate = require('../template/insect_detail.json');
     insectDetailTemplate.body.contents[0].contents[0].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/insect/${insect.index}.png`;
     insectDetailTemplate.body.contents[0].contents[1].contents[0].text = insect.name_c;
     insectDetailTemplate.body.contents[0].contents[1].contents[1].text = insect.name_j;
@@ -37,8 +37,8 @@ async function currentInsect(context) {
 }
 
 async function detail(context) {
-    insectName = context.event.text.split('-')[1];
-    insect = insects.find(insect => [insect.index, insect.name_c, insect.name_j, insect.name_e, insect.name_e.toLowerCase()].indexOf(insectName) > -1)
+    const insectName = context.event.text.split('-')[1];
+    const insect = insects.find(insect => [insect.index, insect.name_c, insect.name_j, insect.name_e, insect.name_e.toLowerCase()].indexOf(insectName) > -1);
 
     await context.sendFlex('This is a insect detail flex', createInfo(insect));
 }

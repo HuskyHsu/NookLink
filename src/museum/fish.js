@@ -1,12 +1,12 @@
 fishs = require('../data/fish.json');
 util = require('./util');
 
-getAllNames = () => {
+const getAllNames = () => {
     return fishs.map((fish) => `${fish.index}|${fish.name_c}|${fish.name_j}|${fish.name_e}|${fish.name_e.toLowerCase()}`).join('|')
 }
 
-createInfo = (fish) => {
-    fishDetailTemplate = require('../template/fish_detail.json');
+const createInfo = (fish) => {
+    const fishDetailTemplate = require('../template/fish_detail.json');
     fishDetailTemplate.body.contents[0].contents[0].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/fish/${fish.index}.png`;
     fishDetailTemplate.body.contents[0].contents[1].contents[0].text = fish.name_c;
     fishDetailTemplate.body.contents[0].contents[1].contents[1].text = fish.name_j;
@@ -63,9 +63,8 @@ async function currentFish(context) {
 }
 
 async function detail(context) {
-    fishName = context.event.text.split('-')[1];
-    fish = fishs.find(fish => [fish.index, fish.name_c, fish.name_j, fish.name_e, fish.name_e.toLowerCase()].indexOf(fishName) > -1)
-
+    const fishName = context.event.text.split('-')[1];
+    const fish = fishs.find(fish => [fish.index, fish.name_c, fish.name_j, fish.name_e, fish.name_e.toLowerCase()].indexOf(fishName) > -1);
     await context.sendFlex('This is a fish detail flex', createInfo(fish));
 }
 
