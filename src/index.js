@@ -19,7 +19,7 @@ module.exports = async function App() {
 	text(/^蟲-(\d{1,2})月$/i, insect.currentInsect),
 	text(new RegExp(`^蟲-(${insect.getAllNames()})$`, 'i'), insect.detail),
 
-	text('家具', furniture.detail),
+	// text('家具', furniture.detail),
 	text(new RegExp(`^家具-(${furniture.getAllNames()})$`, 'i'), furniture.detail),
   ]);
 }
