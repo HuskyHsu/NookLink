@@ -1,6 +1,7 @@
 const { router, text } = require('bottender/router');
 const fish = require('./museum/fish');
 const insect = require('./museum/insect');
+const furniture = require('./furniture/index');
 
 async function SayHi(context) {
   	await context.sendText('Hi!');
@@ -17,5 +18,8 @@ module.exports = async function App() {
 	text('蟲', insect.currentInsect),
 	text(/^蟲-(\d{1,2})月$/i, insect.currentInsect),
 	text(new RegExp(`^蟲-(${insect.getAllNames()})$`, 'i'), insect.detail),
+
+	text('家具', furniture.detail),
+	text(new RegExp(`^家具-(${furniture.getAllNames()})$`, 'i'), furniture.detail),
   ]);
 }

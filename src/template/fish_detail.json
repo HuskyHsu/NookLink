@@ -1,8 +1,17 @@
 {
     "type": "bubble",
-    "body": {
+    "styles": {
+        "header": {
+            "backgroundColor": "#FFFFFF"
+        },
+        "body": {
+            "backgroundColor": "#FFFFFF"
+        }
+    },
+    "header": {
         "type": "box",
         "layout": "vertical",
+        "spacing": "md",
         "contents": [
             {
                 "type": "box",
@@ -18,6 +27,7 @@
                         "type": "box",
                         "layout": "vertical",
                         "flex": 3,
+                        "margin": "xxl",
                         "contents": [
                             {
                                 "type": "text",
@@ -35,7 +45,13 @@
                         ]
                     }
                 ]
-            },
+            }
+        ]
+    },
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
             {
                 "type": "box",
                 "layout": "horizontal",

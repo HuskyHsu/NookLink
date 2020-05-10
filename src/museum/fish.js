@@ -1,5 +1,6 @@
-fishs = require('../data/fish.json');
-util = require('./util');
+const fishs = require('../data/fish.json');
+const util = require('./util');
+const style = require('../lib/style');
 
 const getAllNames = () => {
     return fishs.map((fish) => `${fish.index}|${fish.name_c}|${fish.name_j}|${fish.name_e}|${fish.name_e.toLowerCase()}`).join('|')
@@ -7,22 +8,23 @@ const getAllNames = () => {
 
 const createInfo = (fish) => {
     const fishDetailTemplate = require('../template/fish_detail.json');
-    fishDetailTemplate.body.contents[0].contents[0].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/fish/${fish.index}.png`;
-    fishDetailTemplate.body.contents[0].contents[1].contents[0].text = fish.name_c;
-    fishDetailTemplate.body.contents[0].contents[1].contents[1].text = fish.name_j;
-    fishDetailTemplate.body.contents[0].contents[1].contents[2].text = fish.name_e;
+    fishDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
+    fishDetailTemplate.header.contents[0].contents[0].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/fish/${fish.index}.png`;
+    fishDetailTemplate.header.contents[0].contents[1].contents[0].text = fish.name_c;
+    fishDetailTemplate.header.contents[0].contents[1].contents[1].text = fish.name_j;
+    fishDetailTemplate.header.contents[0].contents[1].contents[2].text = fish.name_e;
 
-    fishDetailTemplate.body.contents[1].contents[0].contents[1].text = fish.price.toString();
-    fishDetailTemplate.body.contents[1].contents[1].contents[1].text = fish.place;
-    fishDetailTemplate.body.contents[1].contents[2].contents[1].text = fish.time + (fish.remark ? `(${fish.remark})` : '');
+    fishDetailTemplate.body.contents[0].contents[0].contents[1].text = fish.price.toString();
+    fishDetailTemplate.body.contents[0].contents[1].contents[1].text = fish.place;
+    fishDetailTemplate.body.contents[0].contents[2].contents[1].text = fish.time + (fish.remark ? `(${fish.remark})` : '');
     // fishDetailTemplate.body.contents[1].contents[3].contents[1].text = fish.shadow_size;
 
     for (let i = 0; i < 6; i++) {
-        fishDetailTemplate.body.contents[5].contents[i].color = util.fontColor.select[fish.N_month[i]];
-        fishDetailTemplate.body.contents[9].contents[i].color = util.fontColor.select[fish.S_month[i]];
+        fishDetailTemplate.body.contents[4].contents[i].color = style.color.select[fish.N_month[i]];
+        fishDetailTemplate.body.contents[8].contents[i].color = style.color.select[fish.S_month[i]];
 
-        fishDetailTemplate.body.contents[6].contents[i].color = util.fontColor.select[ fish.N_month[i + 6]];
-        fishDetailTemplate.body.contents[10].contents[i].color = util.fontColor.select[fish.S_month[i + 6]];
+        fishDetailTemplate.body.contents[5].contents[i].color = style.color.select[ fish.N_month[i + 6]];
+        fishDetailTemplate.body.contents[9].contents[i].color = style.color.select[fish.S_month[i + 6]];
     }
 
     fishDetailTemplate.footer.contents[0].text =`魚影級別為： ${fish.shadow_size}`;
@@ -33,21 +35,21 @@ const createInfo = (fish) => {
     }
 
     if (fish.shadow_size === '極小'){
-        fishDetailTemplate.footer.contents[1].contents[0].contents[1].color = util.fontColor.select[true];
+        fishDetailTemplate.footer.contents[1].contents[0].contents[1].color = style.color.select[true];
     } else if (fish.shadow_size === '小'){
-        fishDetailTemplate.footer.contents[1].contents[1].contents[1].color = util.fontColor.select[true];
+        fishDetailTemplate.footer.contents[1].contents[1].contents[1].color = style.color.select[true];
     } else if (fish.shadow_size === '中'){
-        fishDetailTemplate.footer.contents[1].contents[2].contents[1].color = util.fontColor.select[true];
+        fishDetailTemplate.footer.contents[1].contents[2].contents[1].color = style.color.select[true];
     } else if (fish.shadow_size === '背鰭'){
-        fishDetailTemplate.footer.contents[1].contents[3].contents[1].color = util.fontColor.select[true];
+        fishDetailTemplate.footer.contents[1].contents[3].contents[1].color = style.color.select[true];
     } else if (fish.shadow_size === '大'){
-        fishDetailTemplate.footer.contents[2].contents[0].contents[1].color = util.fontColor.select[true];
+        fishDetailTemplate.footer.contents[2].contents[0].contents[1].color = style.color.select[true];
     } else if (fish.shadow_size === '特大'){
-        fishDetailTemplate.footer.contents[2].contents[1].contents[1].color = util.fontColor.select[true];
+        fishDetailTemplate.footer.contents[2].contents[1].contents[1].color = style.color.select[true];
     } else if (fish.shadow_size === '超特大'){
-        fishDetailTemplate.footer.contents[2].contents[2].contents[1].color = util.fontColor.select[true];
+        fishDetailTemplate.footer.contents[2].contents[2].contents[1].color = style.color.select[true];
     } else if (fish.shadow_size === '細長'){
-        fishDetailTemplate.footer.contents[2].contents[3].contents[1].color = util.fontColor.select[true];
+        fishDetailTemplate.footer.contents[2].contents[3].contents[1].color = style.color.select[true];
     }
 
     return fishDetailTemplate

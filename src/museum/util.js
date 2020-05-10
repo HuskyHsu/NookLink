@@ -1,9 +1,4 @@
-const fontColor = {
-    select: {
-        true: "#ff0000",
-        false: '#E0E0E0'
-    }
-}
+const style = require('../lib/style');
 
 function currentList(month, type, list) {
     const nextMonth = month < 12 ? month + 1 : 1;
@@ -16,7 +11,9 @@ function currentList(month, type, list) {
 
     for (let i = 0; i < 4; i++) {
         let listTemplate = require('../template/list.json');
-        listTemplate.body.contents = []
+        listTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
+        listTemplate.styles.body.backgroundColor = style.color.backgroundColor.body;
+        listTemplate.body.contents = [];
         listTemplate.header.contents[0].text = `${month}月出沒${typeName}一覽表(${i+1}/4)`
         for (let j = 0; j < 4; j++) {
             listTemplate.body.contents.push({
@@ -40,7 +37,7 @@ function currentList(month, type, list) {
                             'type': 'span',
                             'text': '北' + ((item.N_month[month - 1] && !item.N_month[nextMonth - 1]) ? '❗︎' : ''),
                             'size': 'sm',
-                            'color': fontColor.select[item.N_month[month - 1]],
+                            'color': style.color.select[item.N_month[month - 1]],
                             'weight': 'bold'
                         }, {
                             'type': 'span',
@@ -50,7 +47,7 @@ function currentList(month, type, list) {
                             'type': 'span',
                             'text': '南' + ((item.S_month[month - 1] && !item.S_month[nextMonth - 1]) ? '❗︎' : ''),
                             'size': 'sm',
-                            'color': fontColor.select[item.S_month[month - 1]],
+                            'color': style.color.select[item.S_month[month - 1]],
                             'weight': 'bold'
                         }
                     ],
@@ -80,4 +77,3 @@ function currentList(month, type, list) {
 }
 
 module.exports.currentList = currentList;
-module.exports.fontColor = fontColor;
