@@ -32,7 +32,8 @@
                             {
                                 "type": "text",
                                 "text": "[[name_c]]",
-                                "size": "xxl"
+                                "size": "xxl",
+                                "wrap": true
                             },
                             {
                                 "type": "text",
@@ -138,6 +139,7 @@
                                 "type": "text",
                                 "text": "[[分類]]",
                                 "align": "center",
+                                "size": "md",
                                 "wrap": true
                             }
                         ]
@@ -157,6 +159,7 @@
                                 "type": "text",
                                 "text": "[[Tag]]",
                                 "align": "center",
+                                "size": "md",
                                 "wrap": true
                             }
                         ]
@@ -173,10 +176,9 @@
                                 "wrap": true
                             },
                             {
-                                "type": "text",
-                                "text": "[[主題]]",
-                                "align": "center",
-                                "wrap": true
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": []
                             }
                         ]
                     }

@@ -6,12 +6,12 @@ const getAllNames = () => {
     return query.getAllNames(furnitures)
 }
 
-const variations = (variation, filename, type) => {
+const variations = (variation, filename, type, customize) => {
     let furniturevariationsTemplate = require('../template/furniture_variations.json');
     furniturevariationsTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
     furniturevariationsTemplate.styles.body.backgroundColor = style.color.base.white;
 
-    furniturevariationsTemplate.header.contents[0].text = `${type}差異`;
+    furniturevariationsTemplate.header.contents[0].text = `${type}差異` + (customize ? '(可改造)' : '');
 
     const separator = {
         type: "separator"
@@ -81,7 +81,23 @@ async function detail(context) {
 
     furnitureDetailTemplate.body.contents[2].contents[0].contents[1].text = furniture.category;
     furnitureDetailTemplate.body.contents[2].contents[1].contents[1].text = furniture.tag;
-    furnitureDetailTemplate.body.contents[2].contents[2].contents[1].text = furniture.themes;
+    let tagAction = { 'type': 'message', 'label': 'Yes', 'text': `Tag-${furniture.tag}` }
+    furnitureDetailTemplate.body.contents[2].contents[1].contents[1].action = tagAction
+    furnitureDetailTemplate.body.contents[2].contents[1].contents[1].color = style.color.base.blue;
+
+    let themes = furniture.themes.split('、');
+    let themesSpan = themes.map((theme) => {
+        return {
+            type: "text",
+            text: theme,
+            color: style.color.base.blue,
+            size: "md",
+            align: "center",
+            wrap: true,
+            action: { 'type': 'message', 'label': 'Yes', 'text': `主題-${theme}` }
+        }
+    })
+    furnitureDetailTemplate.body.contents[2].contents[2].contents[1].contents = themesSpan;
 
     furnitureDetailTemplate.body.contents[4].contents[0].contents[1].text = furniture.interact ? '可' : '不能';
     furnitureDetailTemplate.body.contents[4].contents[1].contents[1].text = furniture.obtainedFrom;
@@ -96,7 +112,7 @@ async function detail(context) {
 
     if (furniture.patternCustomize) {
         furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[2].text = `樣式(${furniture.patternTitle})`
-        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[2].color =style.color.base.black;
+        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[2].color = style.color.base.black;
     } else {
         furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[2].text = `樣式`
         furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[2].color = style.color.select.false;
@@ -111,11 +127,11 @@ async function detail(context) {
     };
 
     if (furniture.bodys) {
-        let furnitureVariationsBodyTemplate = variations(furniture.variations.bodys, furniture.filename, '款式');
+        let furnitureVariationsBodyTemplate = variations(furniture.variations.bodys, furniture.filename, '款式', furniture.bodyCustomize);
         carousel.contents.push(JSON.parse(JSON.stringify(furnitureVariationsBodyTemplate)));
     }
     if (furniture.pattrens) {
-        let furnitureVariationsPattrensTemplate = variations(furniture.variations.pattrens, furniture.filename, '樣式');
+        let furnitureVariationsPattrensTemplate = variations(furniture.variations.pattrens, furniture.filename, '樣式', furniture.patternCustomize);
         carousel.contents.push(JSON.parse(JSON.stringify(furnitureVariationsPattrensTemplate)));
     }
 
