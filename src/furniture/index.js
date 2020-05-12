@@ -135,7 +135,7 @@ async function detail(context) {
         carousel.contents.push(JSON.parse(JSON.stringify(furnitureVariationsPattrensTemplate)));
     }
 
-    await context.sendFlex('This is a furniture detail flex', carousel);
+    await context.sendFlex(`${itemName} 詳細資料`, carousel);
 }
 
 module.exports.detail = detail;
