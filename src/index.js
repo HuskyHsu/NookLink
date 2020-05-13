@@ -11,7 +11,6 @@ async function SayHi(context) {
 }
 
 async function Unknown(context) {
-	// let itemListTemplate = require('./template/item_list.json');
 	let [itemType, itemName] = context.event.text.split('-');
 	let itemList = [];
 	if (itemType === '家具') {
