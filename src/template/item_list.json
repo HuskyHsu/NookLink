@@ -1,0 +1,30 @@
+{
+    "type": "bubble",
+    "styles": {
+        "header": {
+            "backgroundColor": "#F2F5EA"
+        },
+        "body": {
+            "backgroundColor": "#FFFFFF"
+        }
+    },
+    "header": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "text",
+                "text": "物品清單",
+                "weight": "bold",
+                "size": "xl"
+            }
+        ]
+    },
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+        ]
+    }
+}

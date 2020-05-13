@@ -37,11 +37,13 @@
                             },
                             {
                                 "type": "text",
-                                "text": "[[name_j]]"
+                                "text": "[[name_j]]",
+                                "wrap": true
                             },
                             {
                                 "type": "text",
-                                "text": "[[name_e]]"
+                                "text": "[[name_e]]",
+                                "wrap": true
                             }
                         ]
                     }
