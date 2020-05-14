@@ -7,6 +7,8 @@ const filter = (items, attrs, target) => {
         return attrs.some((attr) => {
             if (typeof item[attr] === 'string'){
                 return item[attr].indexOf(target) > -1
+            } else {
+                return item[attr].indexOf(target) > -1
             }
         })
     })

@@ -1,9 +1,17 @@
-const list = (itemList, width, height, typeName) => {
-    let itemListTemplate = require('../template/item_list.json');
-    const separator = {
-        type: "separator"
-    }
+let itemListTemplate = require('../template/item_list.json');
 
+const separator = {
+    type: "separator",
+    margin: "md"
+}
+
+const typeNameMap = {
+    '家具': '家具',
+    '小物件': '家具',
+    '壁掛物': '家具'
+}
+
+const list = (itemList, width, height) => {
     let carousel = {
         type: 'carousel',
         contents: []
@@ -21,7 +29,7 @@ const list = (itemList, width, height, typeName) => {
                     action: {
                         'type': 'message',
                         'label': 'Yes',
-                        'text': `${typeName}-${item.name_c}`
+                        'text': `${typeNameMap[item.category]}-${item.name_c}`
                     }
                 },
                 {
@@ -33,7 +41,7 @@ const list = (itemList, width, height, typeName) => {
                     action: {
                         'type': 'message',
                         'label': 'Yes',
-                        'text': `${typeName}-${item.name_c}`
+                        'text': `${typeNameMap[item.category]}-${item.name_c}`
                     },
                     contents: [
                         {
@@ -92,4 +100,31 @@ const list = (itemList, width, height, typeName) => {
     return carousel
 }
 
+const simpleList = (itemList) => {
+    let itemBoxs = [];
+    itemList.forEach((item) => {
+        itemBoxs.push({
+            type: "text",
+            text: `→ ${item.name_c}`,
+            gravity: "center",
+            margin: 'xl',
+            size: "lg",
+            action: {
+                type: 'message',
+                label: 'Yes',
+                text: `${typeNameMap[item.category]}-${item.name_c}`
+            }
+        })
+    });
+    itemListTemplate.body.contents = [
+        {
+            type: "box",
+            layout: "vertical",
+            contents: itemBoxs
+        }
+    ];
+    return itemListTemplate
+}
+
 module.exports.list = list;
+module.exports.simpleList = simpleList;
