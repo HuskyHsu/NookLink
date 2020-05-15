@@ -1,0 +1,99 @@
+{
+    "type": "bubble",
+    "header": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+            {
+                "type": "text",
+                "text": "DIY資訊",
+                "weight": "bold",
+                "size": "xl"
+            }
+        ]
+    },
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "spacing": "md",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "材料",
+                                "size": "lg",
+                                "align": "center"
+                            },
+                            {
+                                "type": "text",
+                                "text": "金礦石x5",
+                                "size": "sm",
+                                "align": "center",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "spacing": "md",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "獲得管道",
+                                "size": "lg",
+                                "align": "center"
+                            },
+                            {
+                                "type": "text",
+                                "text": "Wildest Dreams DIY",
+                                "size": "sm",
+                                "align": "center",
+                                "wrap": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "separator"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "md",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "說明",
+                        "size": "lg",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "Purchase Wildest Dreams DIY from Nook's Cranny",
+                        "size": "sm",
+                        "align": "center",
+                        "wrap": true
+                    }
+                ]
+            }
+        ]
+    },
+    "styles": {
+        "header": {
+            "backgroundColor": "#F2F5EA"
+        },
+        "body": {
+            "backgroundColor": "#FFFFFF"
+        }
+    }
+}

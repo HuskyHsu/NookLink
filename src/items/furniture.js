@@ -134,6 +134,17 @@ const info = (furniture) => {
         let furnitureVariationsPattrensTemplate = variations(furniture.variations.pattrens, furniture.filename, '樣式', furniture.patternCustomize, furniture.patternTitle);
         carousel.contents.push(JSON.parse(JSON.stringify(furnitureVariationsPattrensTemplate)));
     }
+    
+    if (furniture.obtainedFrom === 'DIY') {
+        let recipesTemplate = require('../template/recipes.json');
+        recipesTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
+        recipesTemplate.styles.body.backgroundColor = style.color.base.white;
+        recipesTemplate.body.contents[0].contents[0].contents[1].text = furniture.diyInfo.materials.map((item) => `${item.itemName}x${item.count}`).join('\n');
+        recipesTemplate.body.contents[0].contents[1].contents[1].text = furniture.diyInfo.obtainedFrom;
+        recipesTemplate.body.contents[2].contents[1].text = furniture.diyInfo.sourceNotes || '無';
+        carousel.contents.push(JSON.parse(JSON.stringify(recipesTemplate)));
+    }
+
     return carousel
 }
 
