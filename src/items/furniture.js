@@ -82,8 +82,7 @@ const info = (furniture) => {
     furnitureDetailTemplate.body.contents[2].contents[1].contents[1].action = tagAction
     furnitureDetailTemplate.body.contents[2].contents[1].contents[1].color = style.color.base.blue;
 
-    let themes = furniture.themes.split('、');
-    let themesSpan = themes.map((theme) => {
+    let themesSpan =  furniture.themes.map((theme) => {
         return {
             type: "text",
             text: theme,
@@ -118,19 +117,21 @@ const info = (furniture) => {
         furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[2].color = style.color.select.false;
     }
 
-    furnitureDetailTemplate.body.contents[8].contents[0].contents[1].text = furniture.bodys ? furniture.bodys : '無';
-    furnitureDetailTemplate.body.contents[10].contents[0].contents[1].text = furniture.pattrens ? furniture.pattrens : '無';
+    bodys = Object.keys(furniture.variations.bodys).join('、')
+    furnitureDetailTemplate.body.contents[8].contents[0].contents[1].text = bodys ? bodys : '無';
+    pattrens = Object.keys(furniture.variations.pattrens).join('、')
+    furnitureDetailTemplate.body.contents[10].contents[0].contents[1].text = pattrens ? pattrens : '無';
 
     let carousel = {
         'type': 'carousel',
         'contents': [furnitureDetailTemplate]
     };
 
-    if (furniture.bodys) {
+    if (bodys) {
         let furnitureVariationsBodyTemplate = variations(furniture.variations.bodys, furniture.filename, '款式', furniture.bodyCustomize, furniture.bodyTitle);
         carousel.contents.push(JSON.parse(JSON.stringify(furnitureVariationsBodyTemplate)));
     }
-    if (furniture.pattrens) {
+    if (pattrens) {
         let furnitureVariationsPattrensTemplate = variations(furniture.variations.pattrens, furniture.filename, '樣式', furniture.patternCustomize, furniture.patternTitle);
         carousel.contents.push(JSON.parse(JSON.stringify(furnitureVariationsPattrensTemplate)));
     }
@@ -140,7 +141,7 @@ const info = (furniture) => {
         recipesTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
         recipesTemplate.styles.body.backgroundColor = style.color.base.white;
         recipesTemplate.body.contents[0].contents[0].contents[1].text = furniture.diyInfo.materials.map((item) => `${item.itemName}x${item.count}`).join('\n');
-        recipesTemplate.body.contents[0].contents[1].contents[1].text = furniture.diyInfo.obtainedFrom;
+        recipesTemplate.body.contents[0].contents[1].contents[1].text = furniture.diyInfo.obtainedFrom.join('、');
         recipesTemplate.body.contents[2].contents[1].text = furniture.diyInfo.sourceNotes || '無';
         carousel.contents.push(JSON.parse(JSON.stringify(recipesTemplate)));
     }

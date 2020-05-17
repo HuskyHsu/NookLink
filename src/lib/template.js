@@ -1,4 +1,5 @@
 let itemListTemplate = require('../template/item_list.json');
+let style = require('../lib/style');
 
 const separator = {
     type: "separator",
@@ -38,6 +39,7 @@ const list = (itemList, width, height) => {
                     align: "center",
                     wrap: true,
                     size: "xs",
+                    color: `${item.DIY ? style.color.base.red : style.color.base.black}`,
                     action: {
                         'type': 'message',
                         'label': 'Yes',
@@ -105,10 +107,11 @@ const simpleList = (itemList) => {
     itemList.forEach((item) => {
         itemBoxs.push({
             type: "text",
-            text: `→ ${item.name_c}`,
+            text: `→ ${item.name_c}${item.DIY ? '(DIY)' : ''}`,
             gravity: "center",
             margin: 'xl',
             size: "lg",
+            color: `${item.DIY ? style.color.base.red : style.color.base.black}`,
             action: {
                 type: 'message',
                 label: 'Yes',
