@@ -30,7 +30,7 @@ module.exports = async function App() {
 
 	text(new RegExp(`^家具-(${furniture.getAllNames()})$`, 'i'), furniture.detail),
 
-	text(new RegExp(`^(家具|tag|主題|取得方式)-.*$`, 'i'), items.filter),
+	text(new RegExp(`^(家具|tag|主題|取得方式|DIY)-.*$`, 'i'), items.filter),
 
 	text('*', Unknown),
   ]);

@@ -96,10 +96,20 @@ const info = (furniture) => {
     furnitureDetailTemplate.body.contents[2].contents[2].contents[1].contents = themesSpan;
 
     furnitureDetailTemplate.body.contents[4].contents[0].contents[1].text = furniture.interact ? '可' : '不能';
-    furnitureDetailTemplate.body.contents[4].contents[1].contents[1].text = furniture.obtainedFrom;
-    let obtainedFromAction = { 'type': 'message', 'label': 'Yes', 'text': `取得方式-${furniture.obtainedFrom}` }
-    furnitureDetailTemplate.body.contents[4].contents[1].contents[1].action = obtainedFromAction;
-    furnitureDetailTemplate.body.contents[4].contents[1].contents[1].color = style.color.base.blue;
+
+    let obtainedFrom = furniture.obtainedFrom == 'DIY' ? furniture.diyInfoObtainedFrom : [furniture.obtainedFrom];
+    let obtainedFromSpan =  obtainedFrom.map((obtained) => {
+        return {
+            type: "text",
+            text: `${furniture.obtainedFrom == 'DIY' ? 'DIY-' : ''}${obtained}`,
+            color: style.color.base.blue,
+            size: "md",
+            align: "center",
+            wrap: true,
+            action: { 'type': 'message', 'label': 'Yes', 'text': `${furniture.obtainedFrom == 'DIY' ? 'DIY-' : '取得方式-'}${obtained}` }
+        }
+    })
+    furnitureDetailTemplate.body.contents[4].contents[1].contents[1].contents = obtainedFromSpan;
 
     if (furniture.bodyCustomize) {
         furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[0].text = `款式(${furniture.bodyTitle})`
@@ -140,9 +150,9 @@ const info = (furniture) => {
         let recipesTemplate = require('../template/recipes.json');
         recipesTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
         recipesTemplate.styles.body.backgroundColor = style.color.base.white;
-        recipesTemplate.body.contents[0].contents[0].contents[1].text = furniture.diyInfo.materials.map((item) => `${item.itemName}x${item.count}`).join('\n');
-        recipesTemplate.body.contents[0].contents[1].contents[1].text = furniture.diyInfo.obtainedFrom.join('、');
-        recipesTemplate.body.contents[2].contents[1].text = furniture.diyInfo.sourceNotes || '無';
+        recipesTemplate.body.contents[0].contents[0].contents[1].text = furniture.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('\n');
+        recipesTemplate.body.contents[0].contents[1].contents[1].text = furniture.diyInfoObtainedFrom.join('、');
+        recipesTemplate.body.contents[2].contents[1].text = furniture.diyInfoSourceNotes || '無';
         carousel.contents.push(JSON.parse(JSON.stringify(recipesTemplate)));
     }
 

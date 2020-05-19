@@ -8,7 +8,8 @@ const queryTypeMap = {
     'tag': ['tag'],
     '主題': ['themes'],
     '取得方式': ['obtainedFrom'],
-    '家具': ['name_c', 'name_e', 'name_j']
+    '家具': ['name_c', 'name_e', 'name_j'],
+    'DIY': ['diyInfoObtainedFrom']
 }
 
 async function page(context, attrs, target) {
