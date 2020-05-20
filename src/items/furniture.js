@@ -99,6 +99,12 @@ const info = (furniture) => {
 
     let obtainedFrom = furniture.obtainedFrom == 'DIY' ? furniture.diyInfoObtainedFrom : [furniture.obtainedFrom];
     let obtainedFromSpan =  obtainedFrom.map((obtained) => {
+        let text = '';
+        if (obtained === '氣球') {
+            text = furniture.diyInfoSourceNotes
+        } else {
+            text = obtained
+        }
         return {
             type: "text",
             text: `${furniture.obtainedFrom == 'DIY' ? 'DIY-' : ''}${obtained}`,
@@ -106,7 +112,7 @@ const info = (furniture) => {
             size: "md",
             align: "center",
             wrap: true,
-            action: { 'type': 'message', 'label': 'Yes', 'text': `${furniture.obtainedFrom == 'DIY' ? 'DIY-' : '取得方式-'}${obtained}` }
+            action: { 'type': 'message', 'label': 'Yes', 'text': `${furniture.obtainedFrom == 'DIY' ? 'DIY-' : '取得方式-'}${text}` }
         }
     })
     furnitureDetailTemplate.body.contents[4].contents[1].contents[1].contents = obtainedFromSpan;
