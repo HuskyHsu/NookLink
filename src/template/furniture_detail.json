@@ -245,33 +245,16 @@
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "改造",
+                                "text": "DIY資訊",
                                 "align": "center",
                                 "size": "lg",
                                 "wrap": true
                             },
                             {
                                 "type": "text",
-                                "text": "款式/樣式",
-                                "contents": [
-                                    {
-                                      "type": "span",
-                                      "text": "[[款式]]",
-                                      "size": "lg",
-                                      "color": "#E0E0E0"
-                                    },
-                                    {
-                                        "type": "span",
-                                        "text": " / "
-                                    },
-                                    {
-                                        "type": "span",
-                                        "text": "[[樣式]]",
-                                        "size": "lg",
-                                        "color": "#E0E0E0"
-                                    }
-                                ],
+                                "text": "[[材料]]",
                                 "align": "center",
+                                "size": "sm",
                                 "wrap": true
                             }
                         ]
@@ -300,6 +283,7 @@
                                 "type": "text",
                                 "text": "[[款式系列]]",
                                 "align": "center",
+                                "size": "sm",
                                 "wrap": true
                             }
                         ]
@@ -328,6 +312,7 @@
                                 "type": "text",
                                 "text": "[[樣式系列]]",
                                 "align": "center",
+                                "size": "sm",
                                 "wrap": true
                             }
                         ]

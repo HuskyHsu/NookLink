@@ -15,7 +15,8 @@
             {
                 "type": "text",
                 "text": "款式差異",
-                "size": "xl"
+                "size": "xl",
+                "wrap": true
             }
         ]
     },

@@ -112,24 +112,21 @@ const info = (furniture) => {
     furnitureDetailTemplate.body.contents[4].contents[1].contents[1].contents = obtainedFromSpan;
 
     if (furniture.bodyCustomize) {
-        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[0].text = `款式(${furniture.bodyTitle})`
-        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[0].color = style.color.base.black;
+        furnitureDetailTemplate.body.contents[8].contents[0].contents[0].text = `款式系列(可改造：${furniture.bodyTitle})`;
     } else {
-        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[0].text = `款式`;
-        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[0].color = style.color.select.false;
+        furnitureDetailTemplate.body.contents[8].contents[0].contents[0].text = `款式系列`;
     }
 
     if (furniture.patternCustomize) {
-        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[2].text = `樣式(${furniture.patternTitle})`
-        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[2].color = style.color.base.black;
+        furnitureDetailTemplate.body.contents[10].contents[0].contents[0].text = `樣式系列(可改造：${furniture.patternTitle})`;
     } else {
-        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[2].text = `樣式`
-        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].contents[2].color = style.color.select.false;
+        furnitureDetailTemplate.body.contents[10].contents[0].contents[0].text = `樣式系列`;
     }
 
     bodys = Object.keys(furniture.variations.bodys).join('、')
     furnitureDetailTemplate.body.contents[8].contents[0].contents[1].text = bodys ? bodys : '無';
     pattrens = Object.keys(furniture.variations.pattrens).join('、')
+
     furnitureDetailTemplate.body.contents[10].contents[0].contents[1].text = pattrens ? pattrens : '無';
 
     let carousel = {
@@ -147,13 +144,12 @@ const info = (furniture) => {
     }
     
     if (furniture.obtainedFrom === 'DIY') {
-        let recipesTemplate = require('../template/recipes.json');
-        recipesTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
-        recipesTemplate.styles.body.backgroundColor = style.color.base.white;
-        recipesTemplate.body.contents[0].contents[0].contents[1].text = furniture.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('\n');
-        recipesTemplate.body.contents[0].contents[1].contents[1].text = furniture.diyInfoObtainedFrom.join('、');
-        recipesTemplate.body.contents[2].contents[1].text = furniture.diyInfoSourceNotes || '無';
-        carousel.contents.push(JSON.parse(JSON.stringify(recipesTemplate)));
+        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].text =  furniture.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ')
+        if (furniture.diyInfoSourceNotes) {
+            furnitureDetailTemplate.body.contents[6].contents[0].contents[1].text += `\n(${furniture.diyInfoSourceNotes})`
+        }
+    } else {
+        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].text = '--'
     }
 
     return carousel
