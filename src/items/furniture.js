@@ -101,7 +101,7 @@ const info = (furniture) => {
     let obtainedFromSpan =  obtainedFrom.map((obtained) => {
         let text = '';
         if (obtained === '氣球') {
-            text = furniture.diyInfoSourceNotes
+            text = furniture.diyInfoSourceNotes.replace('僅在', '').replace('期間獲得', '')
         } else {
             text = obtained
         }
