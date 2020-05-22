@@ -74,6 +74,8 @@ const info = (furniture) => {
     furnitureDetailTemplate.styles.body.backgroundColor = style.color.base.white;
 
     furnitureDetailTemplate.header.contents[0].contents[0].url = `https://acnhcdn.com/latest/FtrIcon/${furniture.filename}.png`;
+    furnitureDetailTemplate.header.contents[0].contents[0].action.text = `圖-${furniture.filename}`;
+    
     furnitureDetailTemplate.header.contents[0].contents[1].contents[0].text = furniture.name_c;
     furnitureDetailTemplate.header.contents[0].contents[1].contents[1].text = furniture.name_j;
     furnitureDetailTemplate.header.contents[0].contents[1].contents[2].text = furniture.name_e;

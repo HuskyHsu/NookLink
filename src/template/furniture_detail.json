@@ -21,7 +21,12 @@
                         "type": "image",
                         "url": "https://acnhcdn.com/latest/FtrIcon/FtrBarbell_Remake_0_0.png",
                         "size": "md",
-                        "flex": 2
+                        "flex": 2,
+                        "action": {
+                            "type": "message",
+                            "label": "Yes",
+                            "text": ""
+                        }
                     },
                     {
                         "type": "box",
