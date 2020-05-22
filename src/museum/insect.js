@@ -35,14 +35,14 @@ async function currentInsect(context) {
         month = context.event.text.split('-')[1].replace('月', '') - 0;
     }
 
-    await context.sendFlex('This is a insect list flex', util.currentList(month, 'insect', insects));
+    await context.sendFlex('蟲類清單一覽', util.currentList(month, 'insect', insects));
 }
 
 async function detail(context) {
     const insectName = context.event.text.split('-')[1];
     const insect = insects.find(insect => [insect.index, insect.name_c, insect.name_j, insect.name_e, insect.name_e.toLowerCase()].indexOf(insectName) > -1);
 
-    await context.sendFlex('This is a insect detail flex', createInfo(insect));
+    await context.sendFlex(`${insectName} 詳細資料`, createInfo(insect));
 }
 
 module.exports.currentInsect = currentInsect;
