@@ -43,7 +43,7 @@ async function page(context, type, target) {
         if (['家具', '小物件', '壁掛物'].indexOf(itemList[0].category) > -1) {
             await context.sendFlex(`${itemList[0].name_c} 詳細資料`, furniture.info(itemList[0]));
         } else {
-            await context.sendFlex('物品清單', template.list(itemList, 3, 3));
+            await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.info(itemList[0]));
         }
 	} else if (itemList.length <= 3*3*3) {
 		await context.sendFlex('物品清單', template.list(itemList, 3, 3));

@@ -10,20 +10,61 @@ const typeNameMap = {
     '家具': '查詢',
     '小物件': '查詢',
     '壁掛物': '查詢',
-    '工具': '圖',
-    '柵欄': '圖',
-    '其他': '圖',
-    '頭飾': '圖',
-    '配飾': '圖',
-    '壁紙': '圖',
-    '地板': '圖',
-    '雨傘': '圖',
-    '地毯': '圖',
-    '洋裝': '圖',
-    '褲/裙': '圖',
-    '上衣': '圖',
-    '包包': '圖',
-    '鞋類': '圖'
+    '工具': 'DIY',
+    '柵欄': 'DIY',
+    '其他': 'DIY',
+    '頭飾': 'DIY',
+    '配飾': 'DIY',
+    '壁紙': 'DIY',
+    '地板': 'DIY',
+    '雨傘': 'DIY',
+    '地毯': 'DIY',
+    '洋裝': 'DIY',
+    '褲/裙': 'DIY',
+    '上衣': 'DIY',
+    '包包': 'DIY',
+    '鞋類': 'DIY'
+}
+
+const info = (item) => {
+    let itemDetailTemplate = require('../template/item_detail.json');
+    itemDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
+    itemDetailTemplate.styles.body.backgroundColor = style.color.base.white;
+
+    itemDetailTemplate.header.contents[0].contents[0].url = `https://acnhcdn.com/latest/FtrIcon/${item.filename}.png`;
+    itemDetailTemplate.header.contents[0].contents[0].action.text = `圖-${item.filename}`;
+    
+    itemDetailTemplate.header.contents[0].contents[1].contents[0].text = item.name_c;
+    itemDetailTemplate.header.contents[0].contents[1].contents[1].text = item.name_j;
+    itemDetailTemplate.header.contents[0].contents[1].contents[2].text = item.name_e;
+
+    itemDetailTemplate.body.contents[0].contents[0].contents[1].text = item.sell.toString();
+
+    let obtainedFromSpan =  item.obtainedFrom.map((obtained) => {
+        let text = '';
+        if (obtained === '氣球') {
+            text = item.sourceNotes.replace('僅在', '').replace('期間獲得', '')
+        } else {
+            text = obtained
+        }
+        return {
+            type: "text",
+            text: `DIY-${obtained}`,
+            color: style.color.base.blue,
+            size: "md",
+            align: "center",
+            wrap: true,
+            action: { 'type': 'message', 'label': 'Yes', 'text': `DIY-${text}` }
+        }
+    })
+    itemDetailTemplate.body.contents[0].contents[1].contents[1].contents = obtainedFromSpan;
+
+    itemDetailTemplate.body.contents[2].contents[0].contents[1].text = item.materials.map((i) => `${i.itemName}x${i.count}`).join('; ')
+    if (item.sourceNotes) {
+        itemDetailTemplate.body.contents[2].contents[0].contents[1].text += `\n(${item.sourceNotes})`
+    }
+
+    return itemDetailTemplate
 }
 
 const list = (itemList, width, height) => {
@@ -42,9 +83,9 @@ const list = (itemList, width, height) => {
                     url: `https://acnhcdn.com/latest/FtrIcon/${item.filename}.png`,
                     size: "md",
                     action: {
-                        'type': 'message',
-                        'label': 'Yes',
-                        'text': `${typeNameMap[item.category] === '圖' ? '圖-' + item.filename : typeNameMap[item.category] + '-' + item.name_c}`
+                        type: 'message',
+                        label: 'Yes',
+                        text: `${typeNameMap[item.category]}-${item.name_c}`
                     }
                 },
                 {
@@ -55,9 +96,9 @@ const list = (itemList, width, height) => {
                     size: "xs",
                     color: `${item.DIY ? style.color.base.red : style.color.base.black}`,
                     action: {
-                        'type': 'message',
-                        'label': 'Yes',
-                        'text': `${typeNameMap[item.category] === '圖' ? '圖-' + item.filename : typeNameMap[item.category] + '-' + item.name_c}`
+                        type: 'message',
+                        label: 'Yes',
+                        text: `${typeNameMap[item.category]}-${item.name_c}`
                     },
                     contents: [
                         {
@@ -129,7 +170,7 @@ const simpleList = (itemList) => {
             action: {
                 type: 'message',
                 label: 'Yes',
-                'text': `${typeNameMap[item.category] === '圖' ? '圖-' + item.filename : typeNameMap[item.category] + '-' + item.name_c}`
+                text: `${typeNameMap[item.category]}-${item.name_c}`
             }
         })
     });
@@ -143,5 +184,6 @@ const simpleList = (itemList) => {
     return itemListTemplate
 }
 
+module.exports.info = info;
 module.exports.list = list;
 module.exports.simpleList = simpleList;
