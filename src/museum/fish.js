@@ -3,7 +3,7 @@ const util = require('./util');
 const style = require('../lib/style');
 
 const getAllNames = () => {
-    return fishs.map((fish) => `${fish.index}|${fish.name_c}|${fish.name_j}|${fish.name_e}|${fish.name_e.toLowerCase()}`).join('|')
+    return fishs.map((fish) => `${fish.index}|${fish.name_c}|${fish.name_j}|${fish.name_e}`).join('|')
 }
 
 const createInfo = (fish) => {

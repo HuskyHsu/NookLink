@@ -6,8 +6,8 @@ const filter = (items, attrs, target) => {
     return items.filter(item => {
         return attrs.some((attr) => {
             if (typeof item[attr] === 'string'){
-                return item[attr].indexOf(target) > -1
-            } else {
+                return item[attr].toLowerCase().indexOf(target) > -1
+            } else if (Array.isArray(item[attr]))  {
                 return item[attr].indexOf(target) > -1
             }
         })
@@ -15,7 +15,7 @@ const filter = (items, attrs, target) => {
 }
 
 const getAllNames = (items) => {
-    return items.map((item) => `${item.name_c}|${item.name_j}|${item.name_e}|${item.name_e.toLowerCase()}`).join('|')
+    return items.map((item) => `${item.name_c}|${item.name_j}|${item.name_e}}`).join('|')
 }
 
 module.exports.findOne = findOne;

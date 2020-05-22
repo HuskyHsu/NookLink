@@ -3,7 +3,7 @@ const util = require('./util');
 const style = require('../lib/style');
 
 const getAllNames = () => {
-    return insects.map((insect) => `${insect.index}|${insect.name_c}|${insect.name_j}|${insect.name_e}|${insect.name_e.toLowerCase()}`).join('|')
+    return insects.map((insect) => `${insect.index}|${insect.name_c}|${insect.name_j}|${insect.name_e}`).join('|')
 }
 
 const createInfo = (insect) => {

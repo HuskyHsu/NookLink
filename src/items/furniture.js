@@ -22,6 +22,7 @@ const variations = (variation, filename, type, customize, title) => {
         contents: []
     }
     let bodyBoxs = Object.entries(variation).map((items) => {
+        let filename_temp = `${filename.replace('0_0', '')}${type !== '款式' ? '0_' : ''}${items[1]}${type !== '樣式' ? '_0' : ''}`;
         return {
             type: "box",
             layout: "vertical",
@@ -35,8 +36,13 @@ const variations = (variation, filename, type, customize, title) => {
                 },
                 {
                     type: "image",
-                    url: `https://acnhcdn.com/latest/FtrIcon/${filename.replace('0_0', '')}${type !== '款式' ? '0_' : ''}${items[1]}${type !== '樣式' ? '_0' : ''}.png`,
-                    size: "md"
+                    url: `https://acnhcdn.com/latest/FtrIcon/${filename_temp}.png`,
+                    size: "md",
+                    action: {
+                        type: 'message',
+                        label: 'Yes',
+                        'text': `圖-${filename_temp}`
+                    }
                 }
             ]
         }

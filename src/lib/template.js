@@ -7,9 +7,23 @@ const separator = {
 }
 
 const typeNameMap = {
-    '家具': '家具',
-    '小物件': '家具',
-    '壁掛物': '家具'
+    '家具': '查詢',
+    '小物件': '查詢',
+    '壁掛物': '查詢',
+    '工具': '圖',
+    '柵欄': '圖',
+    '其他': '圖',
+    '頭飾': '圖',
+    '配飾': '圖',
+    '壁紙': '圖',
+    '地板': '圖',
+    '雨傘': '圖',
+    '地毯': '圖',
+    '洋裝': '圖',
+    '褲/裙': '圖',
+    '上衣': '圖',
+    '包包': '圖',
+    '鞋類': '圖'
 }
 
 const list = (itemList, width, height) => {
@@ -30,7 +44,7 @@ const list = (itemList, width, height) => {
                     action: {
                         'type': 'message',
                         'label': 'Yes',
-                        'text': `${typeNameMap[item.category]}-${item.name_c}`
+                        'text': `${typeNameMap[item.category] === '圖' ? '圖-' + item.filename : typeNameMap[item.category] + '-' + item.name_c}`
                     }
                 },
                 {
@@ -43,7 +57,7 @@ const list = (itemList, width, height) => {
                     action: {
                         'type': 'message',
                         'label': 'Yes',
-                        'text': `${typeNameMap[item.category]}-${item.name_c}`
+                        'text': `${typeNameMap[item.category] === '圖' ? '圖-' + item.filename : typeNameMap[item.category] + '-' + item.name_c}`
                     },
                     contents: [
                         {
@@ -115,7 +129,7 @@ const simpleList = (itemList) => {
             action: {
                 type: 'message',
                 label: 'Yes',
-                text: `${typeNameMap[item.category]}-${item.name_c}`
+                'text': `${typeNameMap[item.category] === '圖' ? '圖-' + item.filename : typeNameMap[item.category] + '-' + item.name_c}`
             }
         })
     });
