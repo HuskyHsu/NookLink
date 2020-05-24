@@ -1,8 +1,9 @@
-### Nook Link Line bot
-
+Nook Link Line bot
+===============================
 ![](https://raw.githubusercontent.com/HuskyHsu/NookLink/master/assets/cover.png)
 
 指令清單
+----
 |指令|效果|實作|
 |--|--|--|
 |魚|當月彙整|Done|
@@ -16,3 +17,4 @@
 |主題-<主題名稱>|查詢含該主題之家具清單|Done|
 |取得方式-<取得方式>|查詢該取得方式之清單(only 家具,diy)|Done|
 |DIY-<DIY關鍵字>|查詢DIY物品、來源、活動|Done|
+
