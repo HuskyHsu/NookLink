@@ -4,7 +4,7 @@ Nook Link Line bot
 
 LINE 好友
 ----
-<img src="https://raw.githubusercontent.com/HuskyHsu/NookLink/master/assets/LINE.png" width="200" />
+<img src="https://raw.githubusercontent.com/HuskyHsu/NookLink/master/assets/LINE link.png" width="200" />
 
 ID：@433owynu
 
@@ -25,12 +25,16 @@ ID：@433owynu
 |DIY-<DIY關鍵字>|查詢DIY物品、來源、活動|Done|
 |居民-<關鍵字>|查詢DIY物品、來源、活動|ToDo|
 
+
 RichMenu
 ----
+
+![](https://raw.githubusercontent.com/HuskyHsu/NookLink/master/assets/richmenu.png)
+
 1. 魚(text)
 2. 蟲(text)
 3. 查詢(postback)
 4. DIY(postback)
 5. 居民(postback: ToDo)
-6. 問題回報(text: https://forms.gle/FuVb42d1XVeLJMHbA)
+6. 意見回報(text: https://forms.gle/FuVb42d1XVeLJMHbA)
 7. 指令集(text)
