@@ -23,4 +23,14 @@ ID：@433owynu
 |主題-<主題名稱>|查詢含該主題之家具清單|Done|
 |取得方式-<取得方式>|查詢該取得方式之清單(only 家具,diy)|Done|
 |DIY-<DIY關鍵字>|查詢DIY物品、來源、活動|Done|
+|居民-<關鍵字>|查詢DIY物品、來源、活動|ToDo|
 
+RichMenu
+----
+1. 魚(text)
+2. 蟲(text)
+3. 查詢(postback)
+4. DIY(postback)
+5. 居民(postback: ToDo)
+6. 問題回報(text: https://forms.gle/FuVb42d1XVeLJMHbA)
+7. 指令集(text)
