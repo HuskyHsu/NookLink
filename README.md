@@ -4,7 +4,7 @@ Nook Link Line bot
 
 LINE 好友
 ----
-<img src="https://qr-official.line.me/sid/L/433owynu.png" width="200" />
+<img src="https://raw.githubusercontent.com/HuskyHsu/NookLink/master/assets/LINE.png" width="200" />
 
 ID：@433owynu
 
