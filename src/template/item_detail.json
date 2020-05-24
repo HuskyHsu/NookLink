@@ -23,9 +23,9 @@
                         "size": "md",
                         "flex": 2,
                         "action": {
-                            "type": "message",
-                            "label": "Yes",
-                            "text": ""
+                            "type": "postback",
+                            "label": "fig",
+                            "data": "type=fig&name=${item.name_c}&fileName=${filename_temp}"
                         }
                     },
                     {

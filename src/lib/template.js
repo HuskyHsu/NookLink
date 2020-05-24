@@ -32,7 +32,7 @@ const info = (item) => {
     itemDetailTemplate.styles.body.backgroundColor = style.color.base.white;
 
     itemDetailTemplate.header.contents[0].contents[0].url = `https://acnhcdn.com/latest/FtrIcon/${item.filename}.png`;
-    itemDetailTemplate.header.contents[0].contents[0].action.text = `圖-${item.filename}`;
+    itemDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${item.name_c}&fileName=${item.filename}`;
     
     itemDetailTemplate.header.contents[0].contents[1].contents[0].text = item.name_c;
     itemDetailTemplate.header.contents[0].contents[1].contents[1].text = item.name_j;

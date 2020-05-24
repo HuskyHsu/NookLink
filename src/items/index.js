@@ -65,13 +65,17 @@ async function filter(context) {
     page(context, type.toLowerCase(), name.toLowerCase());
 }
 
-async function image(context) {
-    const filename = context.event.text.split('-')[1];
-
-	await context.sendImage({
-		originalContentUrl: `https://acnhcdn.com/latest/FtrIcon/${filename}.png`,
-		previewImageUrl: `https://acnhcdn.com/latest/FtrIcon/${filename}.png`
-	});
+async function image(context, name, filename) {
+    await context.send([{
+            type: 'text',
+            text: name,
+        },
+        {
+            type: 'image',
+            originalContentUrl: `https://acnhcdn.com/latest/FtrIcon/${filename}.png`,
+            previewImageUrl: `https://acnhcdn.com/latest/FtrIcon/${filename}.png`
+        },
+    ]);
 }
 
 module.exports.filter = filter;

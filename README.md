@@ -33,8 +33,8 @@ RichMenu
 
 1. 魚(text)
 2. 蟲(text)
-3. 查詢(postback)
-4. DIY(postback)
-5. 居民(postback: ToDo)
+3. 查詢(text)
+4. DIY(text)
+5. 居民(text: ToDo)
 6. 意見回報(text: https://forms.gle/FuVb42d1XVeLJMHbA)
 7. 指令集(text)

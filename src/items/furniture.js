@@ -6,7 +6,7 @@ const getAllNames = () => {
     return query.getAllNames(furnitures)
 }
 
-const variations = (variation, filename, type, customize, title) => {
+const variations = (variation, filename, type, customize, title, name) => {
     let furniturevariationsTemplate = require('../template/furniture_variations.json');
     furniturevariationsTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
     furniturevariationsTemplate.styles.body.backgroundColor = style.color.base.white;
@@ -39,9 +39,9 @@ const variations = (variation, filename, type, customize, title) => {
                     url: `https://acnhcdn.com/latest/FtrIcon/${filename_temp}.png`,
                     size: "md",
                     action: {
-                        type: 'message',
-                        label: 'Yes',
-                        'text': `圖-${filename_temp}`
+                        type: 'postback',
+                        label: 'fig',
+                        data: `type=fig&name=${name}-${type}：${items[0]}&fileName=${filename_temp}`
                     }
                 }
             ]
@@ -74,7 +74,7 @@ const info = (furniture) => {
     furnitureDetailTemplate.styles.body.backgroundColor = style.color.base.white;
 
     furnitureDetailTemplate.header.contents[0].contents[0].url = `https://acnhcdn.com/latest/FtrIcon/${furniture.filename}.png`;
-    furnitureDetailTemplate.header.contents[0].contents[0].action.text = `圖-${furniture.filename}`;
+    furnitureDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${furniture.name_c}&fileName=${furniture.filename}`;
     
     furnitureDetailTemplate.header.contents[0].contents[1].contents[0].text = furniture.name_c;
     furnitureDetailTemplate.header.contents[0].contents[1].contents[1].text = furniture.name_j;
@@ -149,11 +149,11 @@ const info = (furniture) => {
     };
 
     if (bodys) {
-        let furnitureVariationsBodyTemplate = variations(furniture.variations.bodys, furniture.filename, '款式', furniture.bodyCustomize, furniture.bodyTitle);
+        let furnitureVariationsBodyTemplate = variations(furniture.variations.bodys, furniture.filename, '款式', furniture.bodyCustomize, furniture.bodyTitle, furniture.name_c);
         carousel.contents.push(JSON.parse(JSON.stringify(furnitureVariationsBodyTemplate)));
     }
     if (pattrens) {
-        let furnitureVariationsPattrensTemplate = variations(furniture.variations.pattrens, furniture.filename, '樣式', furniture.patternCustomize, furniture.patternTitle);
+        let furnitureVariationsPattrensTemplate = variations(furniture.variations.pattrens, furniture.filename, '樣式', furniture.patternCustomize, furniture.patternTitle, furniture.name_c);
         carousel.contents.push(JSON.parse(JSON.stringify(furnitureVariationsPattrensTemplate)));
     }
     
