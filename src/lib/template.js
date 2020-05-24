@@ -104,16 +104,6 @@ const list = (itemList, width, height) => {
                         {
                             type: "span",
                             text: `${item.name_c}\n`
-                        },
-                        {
-                            type: "span",
-                            text: `${item.name_j}\n`,
-                            size: "xxs"
-                        },
-                        {
-                            type: "span",
-                            text: item.name_e,
-                            size: "xxs"
                         }
                     ]
                 },
