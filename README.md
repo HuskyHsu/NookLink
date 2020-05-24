@@ -2,6 +2,12 @@ Nook Link Line bot
 ===============================
 ![](https://raw.githubusercontent.com/HuskyHsu/NookLink/master/assets/cover.png)
 
+LINE 好友
+----
+<img src="https://qr-official.line.me/sid/L/433owynu.png" width="200" />
+
+ID：@433owynu
+
 指令清單
 ----
 |指令|效果|實作|
