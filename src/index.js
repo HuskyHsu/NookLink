@@ -10,6 +10,7 @@ async function SayHi(context) {
 }
 
 async function command(context) {
+	
 	await context.sendText('痾');
 }
 
