@@ -27,7 +27,7 @@ function currentList(month, type, list) {
                 const action = {
                         'type': 'message',
                         'label': 'Yes',
-                        'text': `${typeName}-${item.name_c}`
+                        'text': `${typeName} ${item.name_c}`
                     };
                 listTemplate.body.contents[j].contents.push({
                     'type': 'text',
@@ -69,7 +69,7 @@ function currentList(month, type, list) {
 
         listTemplate.footer.contents[0].text = `標註 \"❗︎\" 者為下月(${nextMonth}月)無法取得`;
         listTemplate.footer.contents[1].contents[1].action.label = `下月(${nextMonth}月)清單`;
-        listTemplate.footer.contents[1].contents[1].action.text = `${typeName}-${nextMonth}月`;
+        listTemplate.footer.contents[1].contents[1].action.text = `${typeName} ${nextMonth}月`;
         carousel.contents.push(JSON.parse(JSON.stringify(listTemplate)))
     }
 

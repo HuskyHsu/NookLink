@@ -45,6 +45,9 @@ async function problemReport(context) {
 	await context.sendText('https://forms.gle/FuVb42d1XVeLJMHbA');
 }
 
+async function Unknown(context) {
+	await context.sendText(context.event.text);
+}
 
 async function HandlePostback(context) {
 	let postback = querystring.parse(context.event.postback.data);
@@ -58,15 +61,15 @@ module.exports = async function App() {
 	text('hi', SayHi),
 	
 	text('魚', fish.currentFish),
-	text(/^魚-(\d{1,2})月$/i, fish.currentFish),
-	text(new RegExp(`^魚-(${fish.getAllNames()})$`, 'i'), fish.detail),
+	text(/^魚[-\s](\d{1,2})月$/i, fish.currentFish),
+	text(new RegExp(`^魚[-\\s](${fish.getAllNames()})$`, 'i'), fish.detail),
 
 	text('蟲', insect.currentInsect),
-	text(/^蟲-(\d{1,2})月$/i, insect.currentInsect),
-	text(new RegExp(`^蟲-(${insect.getAllNames()})$`, 'i'), insect.detail),
+	text(/^蟲[-\s](\d{1,2})月$/i, insect.currentInsect),
+	text(new RegExp(`^蟲[-\\s](${insect.getAllNames()})$`, 'i'), insect.detail),
 
-	text(new RegExp(`^查詢-(${furniture.getAllNames()})$`, 'i'), furniture.detail),
-	text(new RegExp(`^(查詢|tag|主題|取得方式|DIY)-.*$`, 'i'), items.filter),
+	text(new RegExp(`^查詢[-\\s](${furniture.getAllNames()})$`, 'i'), furniture.detail),
+	text(new RegExp(`^(查詢|tag|主題|取得方式|DIY)[-\\s].*$`, 'i'), items.filter),
 
 	text('指令集', command),
 	text('意見回報', problemReport),

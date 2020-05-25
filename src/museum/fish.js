@@ -57,15 +57,15 @@ const createInfo = (fish) => {
 
 async function currentFish(context) {
     let month = new Date().getMonth() + 1;
-    if (context.event.text.indexOf('-') > -1) {
-        month = context.event.text.split('-')[1].replace('月', '') - 0;
+    if (context.event.text.match(/[-\s]/i)) {
+        month = context.event.text.split(/[-\s]/)[1].replace('月', '') - 0;
     }
 
     await context.sendFlex('魚類清單一覽', util.currentList(month, 'fish', fishs));
 }
 
 async function detail(context) {
-    const fishName = context.event.text.split('-')[1];
+    const fishName = context.event.text.split(/[-\s]/)[1];
     const fish = fishs.find(fish => [fish.index, fish.name_c, fish.name_j, fish.name_e, fish.name_e.toLowerCase()].indexOf(fishName) > -1);
     await context.sendFlex(`${fishName} 詳細資料`, createInfo(fish));
 }

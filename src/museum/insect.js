@@ -31,15 +31,15 @@ const createInfo = (insect) => {
 
 async function currentInsect(context) {
     let month = new Date().getMonth() + 1;
-    if (context.event.text.indexOf('-') > -1) {
-        month = context.event.text.split('-')[1].replace('月', '') - 0;
+    if (context.event.text.match(/[-\s]/i)) {
+        month = context.event.text.split(/[-\s]/)[1].replace('月', '') - 0;
     }
 
     await context.sendFlex('蟲類清單一覽', util.currentList(month, 'insect', insects));
 }
 
 async function detail(context) {
-    const insectName = context.event.text.split('-')[1];
+    const insectName = context.event.text.split(/[-\s]/)[1];
     const insect = insects.find(insect => [insect.index, insect.name_c, insect.name_j, insect.name_e, insect.name_e.toLowerCase()].indexOf(insectName) > -1);
 
     await context.sendFlex(`${insectName} 詳細資料`, createInfo(insect));

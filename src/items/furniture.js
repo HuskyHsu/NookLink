@@ -170,7 +170,7 @@ const info = (furniture) => {
 }
 
 async function detail(context) {
-    const itemName = context.event.text.split('-')[1];
+    const itemName = context.event.text.split(/[-\s]/).splice(1).join(' ');
     furniture = query.findOne(furnitures, itemName);
 
     await context.sendFlex(`${itemName} 詳細資料`, info(furniture));

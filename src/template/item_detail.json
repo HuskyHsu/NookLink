@@ -32,12 +32,12 @@
                         "type": "box",
                         "layout": "vertical",
                         "flex": 3,
-                        "margin": "xxl",
+                        "margin": "lg",
                         "contents": [
                             {
                                 "type": "text",
                                 "text": "[[name_c]]",
-                                "size": "xxl",
+                                "size": "lg",
                                 "wrap": true
                             },
                             {

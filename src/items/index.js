@@ -57,7 +57,7 @@ async function page(context, type, target) {
 }
 
 async function filter(context) {
-    const [type, name] = context.event.text.split('-');
+    const [type, name] = [context.event.text.split(/[-\s]/).splice(0, 1)[0], context.event.text.split(/[-\s]/).splice(1).join(' ')];
     if (name === 'Nook商店') {
         return await context.sendText('符合物品數量龐大，不開放查詢清單 (シ_ _)シ');
     }
@@ -74,7 +74,7 @@ async function image(context, name, filename) {
             type: 'image',
             originalContentUrl: `https://acnhcdn.com/latest/FtrIcon/${filename}.png`,
             previewImageUrl: `https://acnhcdn.com/latest/FtrIcon/${filename}.png`
-        },
+        }
     ]);
 }
 
