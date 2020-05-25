@@ -12,21 +12,21 @@ async function SayHi(context) {
 async function command(context) {
 
 	const commandItem = `【家具與DIY類】
-查詢-[物品名稱]\n➡ 查詢物品資訊\n
-tag-[tag名稱]\n➡ 查詢含該tag之家具清單\n
-主題-[主題名稱]\n➡ 查詢含該主題之家具清單\n
-取得方式-[取得方式]\n➡ 查詢該取得方式之清單(only 家具,diy)\n
+查詢 [物品名稱]\n➡ 查詢物品資訊\n
+tag [tag名稱]\n➡ 查詢含該tag之家具清單\n
+主題 [主題名稱]\n➡ 查詢含該主題之家具清單\n
+取得方式 [取得方式]\n➡ 查詢該取得方式之清單(only 家具,diy)\n
 DIY-[DIY關鍵字]\n➡ 查詢DIY物品、來源、活動`
 
 	const commandFish = `【魚圖鑑類】
 魚\n➡ 當月彙整魚圖鑑\n
-魚-[數字]月\n➡ 指定月份彙整魚圖鑑\n
-魚-[名稱(中、英、日、編號)]\n➡ 該魚詳細資料`
+魚 [數字]月\n➡ 指定月份彙整魚圖鑑\n
+魚 [名稱(中、英、日、編號)]\n➡ 該魚詳細資料`
 
 	const commandInsect = `【蟲圖鑑類】
 蟲\n➡ 當月彙整蟲圖鑑\n
-蟲-[數字]月\n➡ 指定月份彙整蟲圖鑑\n
-蟲-[名稱(中、英、日、編號)]\n➡ 該蟲詳細資料`
+蟲 [數字]月\n➡ 指定月份彙整蟲圖鑑\n
+蟲 [名稱(中、英、日、編號)]\n➡ 該蟲詳細資料`
 
     await context.send([{
 			type: 'text',
