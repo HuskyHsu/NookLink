@@ -80,8 +80,12 @@ const infoArt = (item) => {
     itemDetailTemplate.body.contents[0].contents[1].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/${item.filename}Fake.png`;
     
     itemDetailTemplate.body.contents[0].contents[0].contents[1].action.data = `type=fig&name=${item.name_c}(真品)&fileName=${item.filename}`;
-    itemDetailTemplate.body.contents[0].contents[1].contents[1].action.data = `type=fig&name=${item.name_c}(贗品)&fileName=${item.filename}Fake`;
-
+    if (item.haveFake) {
+        itemDetailTemplate.body.contents[0].contents[1].contents[1].action.data = `type=fig&name=${item.name_c}(贗品)&fileName=${item.filename}Fake`;
+    } else {
+        itemDetailTemplate.body.contents[0].contents[1].contents[1].action.data = '-';
+    }
+    
     itemDetailTemplate.body.contents[2].contents[0].contents[1].text = item.artist;
     itemDetailTemplate.body.contents[4].contents[0].contents[1].text = item.museumDescription;
     
