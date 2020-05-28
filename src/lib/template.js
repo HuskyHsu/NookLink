@@ -54,7 +54,7 @@ const info = (item) => {
             size: "md",
             align: "center",
             wrap: true,
-            action: { 'type': 'message', 'label': 'Yes', 'text': `DIY-${text}` }
+            action: { 'type': 'message', 'label': 'Yes', 'text': `DIY ${text}` }
         }
     })
     itemDetailTemplate.body.contents[0].contents[1].contents[1].contents = obtainedFromSpan;
