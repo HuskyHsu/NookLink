@@ -10,7 +10,7 @@ const queryTypeMap = {
     'tag': ['tag'],
     '主題': ['themes'],
     '取得方式': ['obtainedFrom'],
-    '查詢': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes'],
+    '查詢': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes', 'realArtworkTitle', 'realArtworkTitle_tw'],
     'diy': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes']
 }
 
