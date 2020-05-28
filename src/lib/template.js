@@ -85,7 +85,7 @@ const list = (itemList, width, height) => {
                     action: {
                         type: 'message',
                         label: 'Yes',
-                        text: `${typeNameMap[item.category]}-${item.name_c}`
+                        text: `${typeNameMap[item.category]} ${item.name_c}`
                     }
                 },
                 {
@@ -98,7 +98,7 @@ const list = (itemList, width, height) => {
                     action: {
                         type: 'message',
                         label: 'Yes',
-                        text: `${typeNameMap[item.category]}-${item.name_c}`
+                        text: `${typeNameMap[item.category]} ${item.name_c}`
                     },
                     contents: [
                         {
@@ -160,7 +160,7 @@ const simpleList = (itemList) => {
             action: {
                 type: 'message',
                 label: 'Yes',
-                text: `${typeNameMap[item.category]}-${item.name_c}`
+                text: `${typeNameMap[item.category]} ${item.name_c}`
             }
         })
     });
