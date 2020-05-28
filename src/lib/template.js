@@ -10,6 +10,7 @@ const typeNameMap = {
     '家具': '查詢',
     '小物件': '查詢',
     '壁掛物': '查詢',
+    '藝術': '查詢',
     '工具': 'DIY',
     '柵欄': 'DIY',
     '其他': 'DIY',
@@ -26,7 +27,7 @@ const typeNameMap = {
     '鞋類': 'DIY'
 }
 
-const info = (item) => {
+const infoDiy = (item) => {
     let itemDetailTemplate = require('../template/item_detail.json');
     itemDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
     itemDetailTemplate.styles.body.backgroundColor = style.color.base.white;
@@ -64,6 +65,26 @@ const info = (item) => {
         itemDetailTemplate.body.contents[2].contents[0].contents[1].text += `\n(${item.sourceNotes})`
     }
 
+    return itemDetailTemplate
+}
+
+const infoArt = (item) => {
+    let itemDetailTemplate = require('../template/art_detail.json');
+    itemDetailTemplate.header.contents[0].contents[0].url = item.realArtImage;
+    itemDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${item.realArtworkTitle_tw}&fileName=${item.realArtImage}`;
+    itemDetailTemplate.header.contents[0].contents[1].contents[0].text = item.name_c;
+    itemDetailTemplate.header.contents[0].contents[1].contents[1].text = item.realArtworkTitle;
+    itemDetailTemplate.header.contents[0].contents[1].contents[2].text = item.realArtworkTitle_tw;
+
+    itemDetailTemplate.body.contents[0].contents[0].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/${item.filename}.png`;
+    itemDetailTemplate.body.contents[0].contents[1].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/${item.filename}Fake.png`;
+    
+    itemDetailTemplate.body.contents[0].contents[0].contents[1].action.data = `type=fig&name=${item.name_c}(真品)&fileName=${item.filename}`;
+    itemDetailTemplate.body.contents[0].contents[1].contents[1].action.data = `type=fig&name=${item.name_c}(贗品)&fileName=${item.filename}Fake`;
+
+    itemDetailTemplate.body.contents[2].contents[0].contents[1].text = item.artist;
+    itemDetailTemplate.body.contents[4].contents[0].contents[1].text = item.museumDescription;
+    
     return itemDetailTemplate
 }
 
@@ -174,6 +195,7 @@ const simpleList = (itemList) => {
     return itemListTemplate
 }
 
-module.exports.info = info;
+module.exports.infoDiy = infoDiy;
+module.exports.infoArt = infoArt;
 module.exports.list = list;
 module.exports.simpleList = simpleList;

@@ -1,5 +1,6 @@
 const furnitures = require('../data/furniture.json');
 const recipes = require('../data/recipes.json');
+const art = require('../data/art.json');
 
 const furniture = require('../items/furniture');
 const query = require('../lib/query');
@@ -18,7 +19,7 @@ async function page(context, type, target) {
     let = attrs = queryTypeMap[type];
     let itemList = [];
 
-    let itemType = [furnitures, recipes];
+    let itemType = [furnitures, recipes, art];
     itemType.forEach((type) => {
         itemList = [...itemList, ...query.filter(type, attrs, target)]
     })
@@ -40,10 +41,12 @@ async function page(context, type, target) {
     }
 
 	if (itemList.length === 1) {
-        if (['家具', '小物件', '壁掛物'].indexOf(itemList[0].category) > -1) {
+        if (itemList[0].type === 'furniture') {
             await context.sendFlex(`${itemList[0].name_c} 詳細資料`, furniture.info(itemList[0]));
-        } else {
-            await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.info(itemList[0]));
+        } else if (itemList[0].type === 'DIY') {
+            await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.infoDiy(itemList[0]));
+        } else if (itemList[0].type === 'art') {
+            await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.infoArt(itemList[0]));
         }
 	} else if (itemList.length <= 3*3*3) {
 		await context.sendFlex('物品清單', template.list(itemList, 3, 3));
@@ -66,14 +69,19 @@ async function filter(context) {
 }
 
 async function image(context, name, filename) {
+    let fileUrl = `https://acnhcdn.com/latest/FtrIcon/${filename}.png`;
+    if (filename.startsWith('https')) {
+        fileUrl = filename
+    }
+    
     await context.send([{
             type: 'text',
             text: name,
         },
         {
             type: 'image',
-            originalContentUrl: `https://acnhcdn.com/latest/FtrIcon/${filename}.png`,
-            previewImageUrl: `https://acnhcdn.com/latest/FtrIcon/${filename}.png`
+            originalContentUrl:fileUrl,
+            previewImageUrl: fileUrl
         }
     ]);
 }
