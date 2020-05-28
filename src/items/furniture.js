@@ -86,7 +86,7 @@ const info = (furniture) => {
 
     furnitureDetailTemplate.body.contents[2].contents[0].contents[1].text = furniture.category;
     furnitureDetailTemplate.body.contents[2].contents[1].contents[1].text = furniture.tag;
-    let tagAction = { 'type': 'message', 'label': 'Yes', 'text': `tag-${furniture.tag}` }
+    let tagAction = { 'type': 'message', 'label': 'Yes', 'text': `tag ${furniture.tag}` }
     furnitureDetailTemplate.body.contents[2].contents[1].contents[1].action = tagAction
     furnitureDetailTemplate.body.contents[2].contents[1].contents[1].color = style.color.base.blue;
 
@@ -98,7 +98,7 @@ const info = (furniture) => {
             size: "md",
             align: "center",
             wrap: true,
-            action: { 'type': 'message', 'label': 'Yes', 'text': `主題-${theme}` }
+            action: { 'type': 'message', 'label': 'Yes', 'text': `主題 ${theme}` }
         }
     })
     furnitureDetailTemplate.body.contents[2].contents[2].contents[1].contents = themesSpan;
@@ -120,7 +120,7 @@ const info = (furniture) => {
             size: "md",
             align: "center",
             wrap: true,
-            action: { 'type': 'message', 'label': 'Yes', 'text': `${furniture.obtainedFrom == 'DIY' ? 'DIY-' : '取得方式-'}${text}` }
+            action: { 'type': 'message', 'label': 'Yes', 'text': `${furniture.obtainedFrom == 'DIY' ? 'DIY ' : '取得方式 '}${text}` }
         }
     })
     furnitureDetailTemplate.body.contents[4].contents[1].contents[1].contents = obtainedFromSpan;
