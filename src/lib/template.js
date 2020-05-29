@@ -70,8 +70,8 @@ const infoDiy = (item) => {
 
 const infoArt = (item) => {
     let itemDetailTemplate = require('../template/art_detail.json');
-    itemDetailTemplate.header.contents[0].contents[0].url = item.realArtImage;
-    itemDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${item.realArtworkTitle_tw}&fileName=${item.realArtImage}`;
+    itemDetailTemplate.header.contents[0].contents[0].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/art/${item.filename}.jpg`;
+    itemDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${item.realArtworkTitle_tw}&fileName=https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/art/${item.filename}.jpg`;
     itemDetailTemplate.header.contents[0].contents[1].contents[0].text = item.name_c;
     itemDetailTemplate.header.contents[0].contents[1].contents[1].text = item.realArtworkTitle;
     itemDetailTemplate.header.contents[0].contents[1].contents[2].text = item.realArtworkTitle_tw;
