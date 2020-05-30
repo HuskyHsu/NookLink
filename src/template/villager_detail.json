@@ -208,7 +208,7 @@
                                 "type": "text",
                                 "text": "布置壁紙",
                                 "align": "center",
-                                "size": "lg",
+                                "size": "sm",
                                 "wrap": true
                             },
                             {
@@ -226,7 +226,7 @@
                                 "type": "text",
                                 "text": "布置地板",
                                 "align": "center",
-                                "size": "lg",
+                                "size": "sm",
                                 "wrap": true
                             },
                             {
