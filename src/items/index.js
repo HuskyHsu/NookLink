@@ -1,6 +1,7 @@
 const furnitures = require('../data/furniture.json');
 const recipes = require('../data/recipes.json');
-const art = require('../data/art.json');
+const arts = require('../data/art.json');
+const villagers = require('../data/villagers.json');
 
 const furniture = require('../items/furniture');
 const query = require('../lib/query');
@@ -19,7 +20,7 @@ async function page(context, type, target) {
     let = attrs = queryTypeMap[type];
     let itemList = [];
 
-    let itemType = [furnitures, recipes, art];
+    let itemType = [furnitures, recipes, arts, villagers];
     itemType.forEach((type) => {
         itemList = [...itemList, ...query.filter(type, attrs, target)]
     })
@@ -47,6 +48,8 @@ async function page(context, type, target) {
             await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.infoDiy(itemList[0]));
         } else if (itemList[0].type === 'art') {
             await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.infoArt(itemList[0]));
+        } else if (itemList[0].type === 'villagers') {
+            await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.infoVillager(itemList[0]));
         }
 	} else if (itemList.length <= 3*3*3) {
 		await context.sendFlex('物品清單', template.list(itemList, 3, 3));

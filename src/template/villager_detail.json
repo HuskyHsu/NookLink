@@ -1,0 +1,272 @@
+{
+    "type": "bubble",
+    "styles": {
+        "header": {
+            "backgroundColor": "#F2F5EA"
+        },
+        "body": {
+            "backgroundColor": "#FFFFFF"
+        }
+    },
+    "header": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "image",
+                        "url": "https://acnhcdn.com/latest/FtrIcon/FtrBarbell_Remake_0_0.png",
+                        "size": "md",
+                        "flex": 2,
+                        "action": {
+                            "type": "postback",
+                            "label": "fig",
+                            "data": "type=fig&name=${item.name_c}&fileName=${filename_temp}"
+                        }
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 3,
+                        "margin": "lg",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "[[name_c]]",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[name_j]]",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[name_e]]",
+                                "wrap": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "種族",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[species]]",
+                                "align": "center",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "個性",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[personality]]",
+                                "align": "center",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "喜好",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[hobby]]",
+                                "align": "center",
+                                "wrap": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "separator"
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "生日",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[birthday]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "口頭禪",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[catchphrase]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "喜好音樂",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[favoriteSong]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "separator"
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "布置壁紙",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "image",
+                                "url": "https://acnhcdn.com/latest/FtrIcon/FtrArtHunterSnow.png",
+                                "size": "md"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "布置地板",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "image",
+                                "url": "https://acnhcdn.com/latest/FtrIcon/FtrArtHunterSnow.png",
+                                "size": "md"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "separator"
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "布置家具",
+                                "align": "center",
+                                "size": "lg",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[furnitureList]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

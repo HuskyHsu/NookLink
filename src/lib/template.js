@@ -92,6 +92,38 @@ const infoArt = (item) => {
     return itemDetailTemplate
 }
 
+const infoVillager = (item) => {
+    let itemDetailTemplate = require('../template/villager_detail.json');
+    itemDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
+    itemDetailTemplate.styles.body.backgroundColor = style.color.base.white;
+
+    itemDetailTemplate.header.contents[0].contents[0].url = `https://acnhcdn.com/latest/NpcIcon/${item.filename}.png`;
+    itemDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${item.name_c}&fileName=https://acnhcdn.com/latest/NpcIcon/${item.filename}.png`;
+    
+    itemDetailTemplate.header.contents[0].contents[1].contents[0].text = `${item.name_c}(${item.gender})`;
+    itemDetailTemplate.header.contents[0].contents[1].contents[1].text = item.name_j;
+    itemDetailTemplate.header.contents[0].contents[1].contents[2].text = item.name_e;
+
+    itemDetailTemplate.body.contents[0].contents[0].contents[1].text = item.species;
+    itemDetailTemplate.body.contents[0].contents[1].contents[1].text = item.personality;
+    itemDetailTemplate.body.contents[0].contents[2].contents[1].text = item.hobby;
+
+    itemDetailTemplate.body.contents[2].contents[0].contents[1].text = item.birthday;
+    itemDetailTemplate.body.contents[2].contents[1].contents[1].text = item.catchphrase;
+    itemDetailTemplate.body.contents[2].contents[2].contents[1].text = item.favoriteSong;
+
+    itemDetailTemplate.body.contents[4].contents[0].contents[0].text = `壁紙-${item.wallpaper.name}`;
+    itemDetailTemplate.body.contents[4].contents[0].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/${item.wallpaper.filename}.png`;
+
+    itemDetailTemplate.body.contents[4].contents[1].contents[0].text = `地板-${item.flooring.name}`;
+    itemDetailTemplate.body.contents[4].contents[1].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/${item.flooring.filename}.png`;
+
+    // itemDetailTemplate.body.contents[6].contents[0].contents[0].color = style.color.base.gray;
+    itemDetailTemplate.body.contents[6].contents[0].contents[1].text = item.furnitureList.map((furniture) => furniture.name).join('、');
+
+    return itemDetailTemplate
+}
+
 const list = (itemList, width, height) => {
     let carousel = {
         type: 'carousel',
@@ -201,5 +233,6 @@ const simpleList = (itemList) => {
 
 module.exports.infoDiy = infoDiy;
 module.exports.infoArt = infoArt;
+module.exports.infoVillager = infoVillager;
 module.exports.list = list;
 module.exports.simpleList = simpleList;
