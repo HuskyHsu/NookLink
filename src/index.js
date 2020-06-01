@@ -46,7 +46,7 @@ async function problemReport(context) {
 }
 
 async function Unknown(context) {
-	await context.sendText((new Date()).toLocaleString());
+	await context.sendText(context.event.text);
 }
 
 async function HandlePostback(context) {
@@ -74,7 +74,7 @@ module.exports = async function App() {
 	text('指令集', command),
 	text('意見回報', problemReport),
 
-	text('現在時刻', Unknown),
+	// text('現在時刻', Unknown),
 
 	line.postback(HandlePostback)
   ]);

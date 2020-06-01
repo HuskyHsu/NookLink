@@ -2,6 +2,7 @@ const style = require('../lib/style');
 
 function currentList(month, type, list) {
     const nextMonth = month < 12 ? month + 1 : 1;
+    const preMonth = month > 1 ? month - 1 : 12;
     const typeName = type === 'fish' ? '魚' : '蟲';
 
     let carousel = {
@@ -10,7 +11,7 @@ function currentList(month, type, list) {
     }
 
     for (let i = 0; i < 4; i++) {
-        let listTemplate = require('../template/list.json');
+        let listTemplate = require('../template/museum_list.json');
         listTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
         listTemplate.styles.body.backgroundColor = style.color.backgroundColor.body;
         listTemplate.body.contents = [];
@@ -29,13 +30,17 @@ function currentList(month, type, list) {
                         'label': 'Yes',
                         'text': `${typeName} ${item.name_c}`
                     };
+
+                const Nhaunt = ((item.N_month[month - 1] && !item.N_month[nextMonth - 1]) ? '！' : '') + ((item.N_month[month - 1] && !item.N_month[preMonth - 1]) ? '★' : '');
+                const Shaunt = ((item.S_month[month - 1] && !item.S_month[nextMonth - 1]) ? '！' : '') + ((item.S_month[month - 1] && !item.S_month[preMonth - 1]) ? '★' : '');
+
                 listTemplate.body.contents[j].contents.push({
                     'type': 'text',
                     'text': `${item.name_c}`,
                     'align': 'center',
                     'contents': [{
                             'type': 'span',
-                            'text': '北' + ((item.N_month[month - 1] && !item.N_month[nextMonth - 1]) ? '❗︎' : ''),
+                            'text': `北${Nhaunt}`,
                             'size': 'sm',
                             'color': style.color.select[item.N_month[month - 1]],
                             'weight': 'bold'
@@ -45,7 +50,7 @@ function currentList(month, type, list) {
                         },
                         {
                             'type': 'span',
-                            'text': '南' + ((item.S_month[month - 1] && !item.S_month[nextMonth - 1]) ? '❗︎' : ''),
+                            'text': `南${Shaunt}`,
                             'size': 'sm',
                             'color': style.color.select[item.S_month[month - 1]],
                             'weight': 'bold'
@@ -67,9 +72,10 @@ function currentList(month, type, list) {
             }
         }
 
-        listTemplate.footer.contents[0].text = `標註 \"❗︎\" 者為下月(${nextMonth}月)無法取得`;
-        listTemplate.footer.contents[1].contents[1].action.label = `下月(${nextMonth}月)清單`;
-        listTemplate.footer.contents[1].contents[1].action.text = `${typeName} ${nextMonth}月`;
+        listTemplate.footer.contents[0].text = `標註！者為下月(${nextMonth}月)無法取得`;
+        listTemplate.footer.contents[1].text = `標註★者為本月(${month}月)新出沒`;
+        listTemplate.footer.contents[2].contents[1].action.label = `下月(${nextMonth}月)清單`;
+        listTemplate.footer.contents[2].contents[1].action.text = `${typeName} ${nextMonth}月`;
         carousel.contents.push(JSON.parse(JSON.stringify(listTemplate)))
     }
 

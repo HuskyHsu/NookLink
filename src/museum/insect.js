@@ -7,7 +7,7 @@ const getAllNames = () => {
 }
 
 const createInfo = (insect) => {
-    const insectDetailTemplate = require('../template/insect_detail.json');
+    const insectDetailTemplate = require('../template/museum_insect.json');
     insectDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
     insectDetailTemplate.header.contents[0].contents[0].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/insect/${insect.index}.png`;
     insectDetailTemplate.header.contents[0].contents[1].contents[0].text = insect.name_c;
@@ -15,15 +15,15 @@ const createInfo = (insect) => {
     insectDetailTemplate.header.contents[0].contents[1].contents[2].text = insect.name_e;
 
     insectDetailTemplate.body.contents[0].contents[0].contents[1].text = insect.price.toString();
-    insectDetailTemplate.body.contents[0].contents[1].contents[1].text = insect.place + (insect.remark ? `(${insect.remark})` : '');
-    insectDetailTemplate.body.contents[0].contents[2].contents[1].text = insect.time + (insect.weather !== '無影響' ? `(${insect.weather})` : '');
+    insectDetailTemplate.body.contents[0].contents[1].contents[1].text = insect.place + (insect.remark ? `\n(${insect.remark})` : '');
+    insectDetailTemplate.body.contents[0].contents[2].contents[1].text = insect.time + (insect.weather !== '無影響' ? `\n(${insect.weather})` : '');
 
     for (let i = 0; i < 6; i++) {
-        insectDetailTemplate.body.contents[4].contents[i].color = style.color.select[insect.N_month[i]];
-        insectDetailTemplate.body.contents[8].contents[i].color = style.color.select[insect.S_month[i]];
+        insectDetailTemplate.body.contents[3].contents[i].color = style.color.select[insect.N_month[i]];
+        insectDetailTemplate.body.contents[7].contents[i].color = style.color.select[insect.S_month[i]];
 
-        insectDetailTemplate.body.contents[5].contents[i].color = style.color.select[ insect.N_month[i + 6]];
-        insectDetailTemplate.body.contents[9].contents[i].color = style.color.select[insect.S_month[i + 6]];
+        insectDetailTemplate.body.contents[4].contents[i].color = style.color.select[ insect.N_month[i + 6]];
+        insectDetailTemplate.body.contents[8].contents[i].color = style.color.select[insect.S_month[i + 6]];
     }
 
     return insectDetailTemplate

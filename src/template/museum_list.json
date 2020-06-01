@@ -30,7 +30,11 @@
         "contents": [
             {
                 "type": "text",
-                "text": "標註 \"❗︎\" 者為下月([[nextMonth]])無法取得"
+                "text": "標註！者為下月([[nextMonth]])無法取得"
+            },
+            {
+                "type": "text",
+                "text": "標註★者為本月([[month]])新出沒"
             },
             {
                 "type": "box",
