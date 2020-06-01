@@ -28,13 +28,6 @@ const variations = (variation, filename, type, customize, title, name) => {
             layout: "vertical",
             contents: [
                 {
-                    type: "text",
-                    text: items[0],
-                    align: "center",
-                    wrap: true,
-                    size: "lg"
-                },
-                {
                     type: "image",
                     url: `https://acnhcdn.com/latest/FtrIcon/${filename_temp}.png`,
                     size: "md",
@@ -43,10 +36,19 @@ const variations = (variation, filename, type, customize, title, name) => {
                         label: 'fig',
                         data: `type=fig&name=${name}-${type}：${items[0]}&fileName=${filename_temp}`
                     }
+                },
+                {
+                    type: "text",
+                    text: items[0],
+                    align: "center",
+                    wrap: true,
+                    size: "md"
                 }
             ]
         }
     })
+
+    const Hcount = bodyBoxs.length > 6 ? 3 : 2;
 
     let bodyBoxs_2 = [];
     while (bodyBoxs.length) {
@@ -55,7 +57,18 @@ const variations = (variation, filename, type, customize, title, name) => {
             layout: "horizontal",
             contents: []
         }
-        boxs.contents = bodyBoxs.splice(0, 2);
+        boxs.contents = bodyBoxs.splice(0, Hcount);
+        if (boxs.contents.length < Hcount) {
+            const needCount = Hcount - boxs.contents.length;
+            for (let i = 0; i < needCount; i++) {
+                boxs.contents.push(
+                    {
+                        type: "text",
+                        text: ' ',
+                    }
+                )
+            }
+        }
         bodyBoxs_2.push(boxs);
         if (bodyBoxs.length > 0) {
             bodyBoxs_2.push(separator);
@@ -69,7 +82,7 @@ const variations = (variation, filename, type, customize, title, name) => {
 }
 
 const info = (furniture) => {
-    let furnitureDetailTemplate = require('../template/furniture_detail.json');
+    let furnitureDetailTemplate = require('../template/item_furniture.json');
     furnitureDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
     furnitureDetailTemplate.styles.body.backgroundColor = style.color.base.white;
 
@@ -79,16 +92,16 @@ const info = (furniture) => {
     furnitureDetailTemplate.header.contents[0].contents[1].contents[0].text = furniture.name_c;
     furnitureDetailTemplate.header.contents[0].contents[1].contents[1].text = furniture.name_j;
     furnitureDetailTemplate.header.contents[0].contents[1].contents[2].text = furniture.name_e;
+    furnitureDetailTemplate.header.contents[0].contents[1].contents[3].text = `${furniture.category} / ${furniture.size}`;
 
     furnitureDetailTemplate.body.contents[0].contents[0].contents[1].text = furniture.buy === null ? '非賣品' : furniture.buy.toString();
     furnitureDetailTemplate.body.contents[0].contents[1].contents[1].text = furniture.sell.toString();
-    furnitureDetailTemplate.body.contents[0].contents[2].contents[1].text = furniture.size;
+    furnitureDetailTemplate.body.contents[0].contents[2].contents[1].text = furniture.interact ? '可' : '不能'
 
-    furnitureDetailTemplate.body.contents[2].contents[0].contents[1].text = furniture.category;
-    furnitureDetailTemplate.body.contents[2].contents[1].contents[1].text = furniture.tag;
+    furnitureDetailTemplate.body.contents[0].contents[3].contents[1].text = furniture.tag;
     let tagAction = { 'type': 'message', 'label': 'Yes', 'text': `tag ${furniture.tag}` }
-    furnitureDetailTemplate.body.contents[2].contents[1].contents[1].action = tagAction
-    furnitureDetailTemplate.body.contents[2].contents[1].contents[1].color = style.color.base.blue;
+    furnitureDetailTemplate.body.contents[0].contents[3].contents[1].action = tagAction
+    furnitureDetailTemplate.body.contents[0].contents[3].contents[1].color = style.color.base.blue;
 
     let themesSpan =  furniture.themes.map((theme) => {
         return {
@@ -101,9 +114,7 @@ const info = (furniture) => {
             action: { 'type': 'message', 'label': 'Yes', 'text': `主題 ${theme}` }
         }
     })
-    furnitureDetailTemplate.body.contents[2].contents[2].contents[1].contents = themesSpan;
-
-    furnitureDetailTemplate.body.contents[4].contents[0].contents[1].text = furniture.interact ? '可' : '不能';
+    furnitureDetailTemplate.body.contents[2].contents[0].contents[1].contents = themesSpan;
 
     let obtainedFrom = furniture.obtainedFrom == 'DIY' ? furniture.diyInfoObtainedFrom : [furniture.obtainedFrom];
     let obtainedFromSpan =  obtainedFrom.map((obtained) => {
@@ -123,25 +134,25 @@ const info = (furniture) => {
             action: { 'type': 'message', 'label': 'Yes', 'text': `${furniture.obtainedFrom == 'DIY' ? 'DIY ' : '取得方式 '}${text}` }
         }
     })
-    furnitureDetailTemplate.body.contents[4].contents[1].contents[1].contents = obtainedFromSpan;
+    furnitureDetailTemplate.body.contents[2].contents[1].contents[1].contents = obtainedFromSpan;
 
     if (furniture.bodyCustomize) {
-        furnitureDetailTemplate.body.contents[8].contents[0].contents[0].text = `款式系列(可改造：${furniture.bodyTitle})`;
+        furnitureDetailTemplate.body.contents[6].contents[0].contents[0].text = `款式系列(可改造：${furniture.bodyTitle})`;
     } else {
-        furnitureDetailTemplate.body.contents[8].contents[0].contents[0].text = `款式系列`;
+        furnitureDetailTemplate.body.contents[6].contents[0].contents[0].text = `款式系列`;
     }
 
     if (furniture.patternCustomize) {
-        furnitureDetailTemplate.body.contents[10].contents[0].contents[0].text = `樣式系列(可改造：${furniture.patternTitle})`;
+        furnitureDetailTemplate.body.contents[8].contents[0].contents[0].text = `樣式系列(可改造：${furniture.patternTitle})`;
     } else {
-        furnitureDetailTemplate.body.contents[10].contents[0].contents[0].text = `樣式系列`;
+        furnitureDetailTemplate.body.contents[8].contents[0].contents[0].text = `樣式系列`;
     }
 
     bodys = Object.keys(furniture.variations.bodys).join('、')
-    furnitureDetailTemplate.body.contents[8].contents[0].contents[1].text = bodys ? bodys : '無';
+    furnitureDetailTemplate.body.contents[6].contents[0].contents[1].text = bodys ? bodys : '無';
     pattrens = Object.keys(furniture.variations.pattrens).join('、')
 
-    furnitureDetailTemplate.body.contents[10].contents[0].contents[1].text = pattrens ? pattrens : '無';
+    furnitureDetailTemplate.body.contents[8].contents[0].contents[1].text = pattrens ? pattrens : '無';
 
     let carousel = {
         'type': 'carousel',
@@ -158,12 +169,12 @@ const info = (furniture) => {
     }
     
     if (furniture.obtainedFrom === 'DIY') {
-        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].text =  furniture.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ')
+        furnitureDetailTemplate.body.contents[4].contents[0].contents[1].text =  furniture.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ')
         if (furniture.diyInfoSourceNotes) {
-            furnitureDetailTemplate.body.contents[6].contents[0].contents[1].text += `\n(${furniture.diyInfoSourceNotes})`
+            furnitureDetailTemplate.body.contents[4].contents[0].contents[1].text += `\n(${furniture.diyInfoSourceNotes})`
         }
     } else {
-        furnitureDetailTemplate.body.contents[6].contents[0].contents[1].text = '--'
+        furnitureDetailTemplate.body.contents[4].contents[0].contents[1].text = '--'
     }
 
     return carousel

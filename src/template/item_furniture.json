@@ -49,6 +49,11 @@
                                 "type": "text",
                                 "text": "[[name_e]]",
                                 "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "分類",
+                                "wrap": true
                             }
                         ]
                     }
@@ -73,7 +78,7 @@
                                 "type": "text",
                                 "text": "買價",
                                 "align": "center",
-                                "size": "lg",
+                                "size": "sm",
                                 "wrap": true
                             },
                             {
@@ -92,7 +97,7 @@
                                 "type": "text",
                                 "text": "賣價",
                                 "align": "center",
-                                "size": "lg",
+                                "size": "sm",
                                 "wrap": true
                             },
                             {
@@ -109,104 +114,9 @@
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "大小",
-                                "align": "center",
-                                "size": "lg",
-                                "wrap": true
-                            },
-                            {
-                                "type": "text",
-                                "text": "[[大小]]",
-                                "align": "center",
-                                "wrap": true
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "separator"
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "分類",
-                                "align": "center",
-                                "size": "lg",
-                                "wrap": true
-                            },
-                            {
-                                "type": "text",
-                                "text": "[[分類]]",
-                                "align": "center",
-                                "size": "md",
-                                "wrap": true
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "Tag",
-                                "align": "center",
-                                "size": "lg",
-                                "wrap": true
-                            },
-                            {
-                                "type": "text",
-                                "text": "[[Tag]]",
-                                "align": "center",
-                                "size": "md",
-                                "wrap": true
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "主題",
-                                "align": "center",
-                                "size": "lg",
-                                "wrap": true
-                            },
-                            {
-                                "type": "box",
-                                "layout": "horizontal",
-                                "contents": []
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "separator"
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
                                 "text": "互動",
                                 "align": "center",
-                                "size": "lg",
+                                "size": "sm",
                                 "wrap": true
                             },
                             {
@@ -223,9 +133,56 @@
                         "contents": [
                             {
                                 "type": "text",
+                                "text": "Tag",
+                                "align": "center",
+                                "size": "sm",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[Tag]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "separator"
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "主題",
+                                "align": "center",
+                                "size": "sm",
+                                "wrap": true
+                            },
+                            {
+                                "type": "box",
+                                "layout": "horizontal",
+                                "contents": []
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
                                 "text": "取得方式",
                                 "align": "center",
-                                "size": "lg",
+                                "size": "sm",
                                 "wrap": true
                             },
                             {
@@ -252,7 +209,7 @@
                                 "type": "text",
                                 "text": "DIY資訊",
                                 "align": "center",
-                                "size": "lg",
+                                "size": "sm",
                                 "wrap": true
                             },
                             {
@@ -281,14 +238,14 @@
                                 "type": "text",
                                 "text": "款式系列",
                                 "align": "center",
-                                "size": "lg",
+                                "size": "sm",
                                 "wrap": true
                             },
                             {
                                 "type": "text",
                                 "text": "[[款式系列]]",
                                 "align": "center",
-                                "size": "sm",
+                                "size": "md",
                                 "wrap": true
                             }
                         ]
@@ -310,14 +267,14 @@
                                 "type": "text",
                                 "text": "樣式系列",
                                 "align": "center",
-                                "size": "lg",
+                                "size": "sm",
                                 "wrap": true
                             },
                             {
                                 "type": "text",
                                 "text": "[[樣式系列]]",
                                 "align": "center",
-                                "size": "sm",
+                                "size": "md",
                                 "wrap": true
                             }
                         ]
