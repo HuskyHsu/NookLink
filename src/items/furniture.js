@@ -22,7 +22,7 @@ const variations = (variation, filename, type, customize, title, name) => {
         contents: []
     }
     let bodyBoxs = Object.entries(variation).map((items) => {
-        let filename_temp = `${filename.replace('0_0', '')}${type !== '款式' ? '0_' : ''}${items[1]}${type !== '樣式' ? '_0' : ''}`;
+        let filename_temp = `${filename.replace('0_0', '').replace('1_0', '')}${type !== '款式' ? '0_' : ''}${items[1]}${type !== '樣式' ? '_0' : ''}`;
         return {
             type: "box",
             layout: "vertical",
