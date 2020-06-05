@@ -35,19 +35,21 @@ function info(type) {
 
 async function page(context, type, target) {
 
-    let = attrs = queryTypeMap[type];
+    let attrs = queryTypeMap[type];
     let itemList = [];
 
     let itemType = [furnitures, recipes, arts, villagers];
-    itemType.forEach((type) => {
-        itemList = [...itemList, ...query.filter(type, attrs, target)]
+    itemType.forEach((set) => {
+        itemList = [...itemList, ...query.filter(set, attrs, target)]
     })
 
     itemList = itemList.filter((thing, index, self) => {
         return index === self.findIndex((t) => (
-        t.name_c === thing.name_c
+            t.name_c === thing.name_c
         ))
     })
+
+    console.log(itemList.length)
 
     if (type === 'diy') {
         itemList = itemList.filter((item) => {
