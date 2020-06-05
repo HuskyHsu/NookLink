@@ -49,6 +49,11 @@
                                 "type": "text",
                                 "text": "[[name_e]]",
                                 "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[species]]/[[birthday]]",
+                                "wrap": true
                             }
                         ]
                     }
@@ -71,82 +76,15 @@
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "種族",
-                                "align": "center",
-                                "size": "lg",
-                                "wrap": true
-                            },
-                            {
-                                "type": "text",
-                                "text": "[[species]]",
-                                "align": "center",
-                                "wrap": true
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "個性",
-                                "align": "center",
-                                "size": "lg",
-                                "wrap": true
-                            },
-                            {
-                                "type": "text",
-                                "text": "[[personality]]",
-                                "align": "center",
-                                "wrap": true
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
                                 "text": "喜好",
                                 "align": "center",
-                                "size": "lg",
+                                "size": "sm",
                                 "wrap": true
                             },
                             {
                                 "type": "text",
                                 "text": "[[hobby]]",
                                 "align": "center",
-                                "wrap": true
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "separator"
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "生日",
-                                "align": "center",
-                                "size": "lg",
-                                "wrap": true
-                            },
-                            {
-                                "type": "text",
-                                "text": "[[birthday]]",
-                                "align": "center",
-                                "size": "md",
                                 "wrap": true
                             }
                         ]
@@ -159,7 +97,7 @@
                                 "type": "text",
                                 "text": "口頭禪",
                                 "align": "center",
-                                "size": "lg",
+                                "size": "sm",
                                 "wrap": true
                             },
                             {
@@ -179,7 +117,7 @@
                                 "type": "text",
                                 "text": "喜好音樂",
                                 "align": "center",
-                                "size": "lg",
+                                "size": "sm",
                                 "wrap": true
                             },
                             {
