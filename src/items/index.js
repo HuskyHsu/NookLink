@@ -3,36 +3,56 @@ const recipes = require('../data/recipes.json');
 const arts = require('../data/art.json');
 const villagers = require('../data/villagers.json');
 
-const furniture = require('../items/furniture');
 const query = require('../lib/query');
 const template = require('../lib/template');
+
+const dataMap = {
+    'furnitures': furnitures,
+    'recipes': recipes,
+    'arts': arts,
+    'villagers': villagers
+}
 
 const queryTypeMap = {
     'tag': ['tag'],
     '主題': ['themes'],
     '取得方式': ['obtainedFrom'],
     '查詢': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes', 'realArtworkTitle', 'realArtworkTitle_tw'],
-    'diy': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes']
+    'diy': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes'],
+    '種族': ['species'],
+    '個性': ['personality']
+}
+
+const getAllNames = (type) => {
+    return query.getAllNames(dataMap[type])
+}
+
+function info(type) {
+    return async function(context) {
+        const itemName = context.event.text.split(/[-\s]/).splice(1).join(' ');
+        const item = query.findOne(dataMap[type], itemName);
+        await context.sendFlex(`${itemName} 詳細資料`, template.info[type](item));
+    }
 }
 
 async function page(context, type, target) {
 
-    let = attrs = queryTypeMap[type];
+    let attrs = queryTypeMap[type];
     let itemList = [];
 
     let itemType = [furnitures, recipes, arts, villagers];
-    itemType.forEach((type) => {
-        itemList = [...itemList, ...query.filter(type, attrs, target)]
+    itemType.forEach((set) => {
+        itemList = [...itemList, ...query.filter(set, attrs, target)]
     })
 
     itemList = itemList.filter((thing, index, self) => {
         return index === self.findIndex((t) => (
-        t.name_c === thing.name_c
+            t.name_c === thing.name_c
         ))
     })
 
     if (type === 'diy') {
-        itemList = itemList.filter((item, index) => {
+        itemList = itemList.filter((item) => {
             return item.DIY || Array.isArray(item.materials)
         })
     }
@@ -42,18 +62,10 @@ async function page(context, type, target) {
     }
 
 	if (itemList.length === 1) {
-        if (itemList[0].type === 'furniture') {
-            await context.sendFlex(`${itemList[0].name_c} 詳細資料`, furniture.info(itemList[0]));
-        } else if (itemList[0].type === 'DIY') {
-            await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.infoDiy(itemList[0]));
-        } else if (itemList[0].type === 'art') {
-            await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.infoArt(itemList[0]));
-        } else if (itemList[0].type === 'villagers') {
-            await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.infoVillager(itemList[0]));
-        }
-	} else if (itemList.length <= 3*3*3) {
-		await context.sendFlex('物品清單', template.list(itemList, 3, 3));
-	} else if (itemList.length <= 3*3*6) {
+        await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.info[itemList[0].type](itemList[0]));
+	} else if (itemList.length <= 4*4*4) {
+		await context.sendFlex('物品清單', template.list(itemList, 4, 4));
+	} else if (itemList.length <= 4*4*8) {
         await context.sendFlex('物品清單', template.simpleList(itemList));
 	} else {
         let r = itemList.map((item) => `${item.name_c}${item.obtainedFrom === 'DIY' ? '(DIY)' : ''}`).join('\n');
@@ -89,5 +101,7 @@ async function image(context, name, filename) {
     ]);
 }
 
+module.exports.info = info;
 module.exports.filter = filter;
 module.exports.image = image;
+module.exports.getAllNames = getAllNames;
