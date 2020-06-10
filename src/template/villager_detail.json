@@ -40,6 +40,7 @@
                                     {
                                         "type": "text",
                                         "text": "[[name_c]]",
+                                        "size": "lg",
                                         "wrap": true
                                     },
                                     {
