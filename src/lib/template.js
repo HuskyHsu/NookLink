@@ -104,27 +104,29 @@ const infoVillager = (item) => {
     itemDetailTemplate.header.contents[0].contents[0].url = `https://acnhcdn.com/latest/NpcIcon/${item.filename}.png`;
     itemDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${item.name_c}&fileName=https://acnhcdn.com/latest/NpcIcon/${item.filename}.png`;
     
-    itemDetailTemplate.header.contents[0].contents[1].contents[0].contents[0].text = `${item.name_c}`;
-    itemDetailTemplate.header.contents[0].contents[1].contents[0].contents[1].text = `(${item.birthday.replace('/', '月')}日)`;
-    itemDetailTemplate.header.contents[0].contents[1].contents[1].text = `${item.name_j} / ${item.name_e}`;
-    itemDetailTemplate.header.contents[0].contents[1].contents[2].text = `種族 - ${item.species} (${item.gender})`;
-    itemDetailTemplate.header.contents[0].contents[1].contents[3].text = `個性 - ${item.personality}`;
-
-    let personalityAction = { 'type': 'message', 'text': `個性 ${item.personality}` }
-    itemDetailTemplate.header.contents[0].contents[1].contents[3].action = personalityAction
-    itemDetailTemplate.header.contents[0].contents[1].contents[3].color = style.color.base.blue;
-
-    let speciesAction = { 'type': 'message', 'text': `種族 ${item.species}` }
-    itemDetailTemplate.header.contents[0].contents[1].contents[2].action = speciesAction
-    itemDetailTemplate.header.contents[0].contents[1].contents[2].color = style.color.base.blue;
+    itemDetailTemplate.header.contents[0].contents[1].contents[0].text = `${item.name_c}`;
+    itemDetailTemplate.header.contents[0].contents[1].contents[1].text = `${item.name_j}`;
+    itemDetailTemplate.header.contents[0].contents[1].contents[2].text = `${item.name_e}`;
 
     itemDetailTemplate.body.contents[0].contents[0].contents[1].text = item.hobby;
-
     itemDetailTemplate.body.contents[0].contents[1].contents[1].text = item.catchphrase;
     itemDetailTemplate.body.contents[0].contents[2].contents[1].text = item.favoriteSong;
 
-    itemDetailTemplate.body.contents[2].contents[0].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/BromideNpcNml${item.filename.slice(0,1).toUpperCase()}${item.filename.slice(1)}_Remake_0_0.png`;
-    itemDetailTemplate.body.contents[2].contents[1].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/PosterNpcNml${item.filename.slice(0,1).toUpperCase()}${item.filename.slice(1)}.png`;
+    itemDetailTemplate.body.contents[2].contents[0].contents[1].text = `${item.birthday.replace('/', '月')}日`;
+    itemDetailTemplate.body.contents[2].contents[1].contents[1].text = item.species;
+    itemDetailTemplate.body.contents[2].contents[2].contents[1].text = item.personality;
+
+    let speciesAction = { 'type': 'message', 'text': `種族 ${item.species}` }
+    itemDetailTemplate.body.contents[2].contents[1].contents[1].action = speciesAction
+    itemDetailTemplate.body.contents[2].contents[1].contents[1].color = style.color.base.blue;
+
+    let personalityAction = { 'type': 'message', 'text': `個性 ${item.personality}` }
+    itemDetailTemplate.body.contents[2].contents[2].contents[1].action = personalityAction
+    itemDetailTemplate.body.contents[2].contents[2].contents[1].color = style.color.base.blue;
+
+    itemDetailTemplate.body.contents[4].contents[1].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/BromideNpcNml${item.filename.slice(0,1).toUpperCase()}${item.filename.slice(1)}_Remake_0_0.png`;
+    itemDetailTemplate.body.contents[4].contents[2].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/PosterNpcNml${item.filename.slice(0,1).toUpperCase()}${item.filename.slice(1)}.png`;
+    itemDetailTemplate.body.contents[4].contents[0].contents[1].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${item.name_e}.png`;
 
     carouselTemplate.contents[1].styles.body.backgroundColor = style.color.backgroundColor.header;
 
@@ -138,6 +140,7 @@ const infoVillager = (item) => {
     decorateTemplate.body.contents[0].contents[1].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/${item.flooring.filename}.png`;
 
     decorateTemplate.body.contents[2].contents[0].contents[1].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${item.name_e}_interior.png`;
+    decorateTemplate.body.contents[2].contents[0].contents[1].action.data = `type=fig&name=${item.name_c}的室內佈置&fileName=https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${item.name_e}_interior.png`;
     
     carouselTemplate.contents[1].body.contents[3].contents[1].text = item.furnitureList.map((furniture) => furniture.name).join('、');
 
