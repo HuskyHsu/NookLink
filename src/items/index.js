@@ -20,7 +20,8 @@ const queryTypeMap = {
     '查詢': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes', 'realArtworkTitle', 'realArtworkTitle_tw'],
     'diy': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes'],
     '種族': ['species'],
-    '個性': ['personality']
+    '個性': ['personality'],
+    '材料': ['diyInfoMaterials', 'materials']
 }
 
 const getAllNames = (type) => {
@@ -51,6 +52,8 @@ async function page(context, type, target) {
         ))
     })
 
+    console.log(itemList.length)
+
     if (type === 'diy') {
         itemList = itemList.filter((item) => {
             return item.DIY || Array.isArray(item.materials)
@@ -65,7 +68,7 @@ async function page(context, type, target) {
         await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.info[itemList[0].type](itemList[0]));
 	} else if (itemList.length <= 4*4*4) {
 		await context.sendFlex('符合清單', template.list(itemList, 4, 4));
-	} else if (itemList.length <= 4*4*8) {
+	} else if (itemList.length <= 4*4*6) {
         await context.sendFlex('符合清單', template.simpleList(itemList));
 	} else {
         let r = itemList.map((item) => `${item.name_c}${item.obtainedFrom === 'DIY' ? '(DIY)' : ''}`).join('\n');
