@@ -64,9 +64,9 @@ async function page(context, type, target) {
 	if (itemList.length === 1) {
         await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.info[itemList[0].type](itemList[0]));
 	} else if (itemList.length <= 4*4*4) {
-		await context.sendFlex('物品清單', template.list(itemList, 4, 4));
+		await context.sendFlex('符合清單', template.list(itemList, 4, 4));
 	} else if (itemList.length <= 4*4*8) {
-        await context.sendFlex('物品清單', template.simpleList(itemList));
+        await context.sendFlex('符合清單', template.simpleList(itemList));
 	} else {
         let r = itemList.map((item) => `${item.name_c}${item.obtainedFrom === 'DIY' ? '(DIY)' : ''}`).join('\n');
         await context.sendText(`共計${itemList.length}筆資料\n\n${r}`);

@@ -280,41 +280,39 @@
                 "contents": [
                     {
                         "type": "text",
-                        "text": "居家布置",
+                        "text": "居",
                         "size": "3xl",
                         "align": "center"
                     },
                     {
                         "type": "text",
-                        "text": "防雷",
+                        "text": "家",
                         "size": "3xl",
                         "align": "center"
                     },
                     {
                         "type": "text",
-                        "text": " ",
+                        "text": "布",
                         "size": "3xl",
                         "align": "center"
                     },
                     {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "家具清單",
-                                "align": "center",
-                                "size": "lg",
-                                "wrap": true
-                            },
-                            {
-                                "type": "text",
-                                "text": "[[furnitureList]]",
-                                "align": "center",
-                                "size": "md",
-                                "wrap": true
-                            }
-                        ]
+                        "type": "text",
+                        "text": "置",
+                        "size": "3xl",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "防",
+                        "size": "3xl",
+                        "align": "center"
+                    },
+                    {
+                        "type": "text",
+                        "text": "雷",
+                        "size": "3xl",
+                        "align": "center"
                     }
                 ]
             }
@@ -329,18 +327,17 @@
                     "backgroundColor": "#FFFFFF"
                 }
             },
-            "header": {
-                "type": "box",
-                "layout": "vertical",
-                "spacing": "md",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": "居家布置",
-                        "size": "lg",
-                        "wrap": true
-                    }
-                ]
+            "hero": {
+                "type": "image",
+                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+                "size": "full",
+                "aspectRatio": "20:13",
+                "aspectMode": "cover",
+                "action": {
+                    "type": "postback",
+                    "label": "fig",
+                    "data": "type=fig&name=${item.name_c}&fileName=${filename_temp}"
+                }
             },
             "body": {
                 "type": "box",
@@ -365,7 +362,14 @@
                                     {
                                         "type": "image",
                                         "url": "https://acnhcdn.com/latest/FtrIcon/FtrArtHunterSnow.png",
-                                        "size": "md"
+                                        "size": "sm"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "布置壁紙",
+                                        "align": "center",
+                                        "size": "xs",
+                                        "wrap": true
                                     }
                                 ]
                             },
@@ -383,7 +387,14 @@
                                     {
                                         "type": "image",
                                         "url": "https://acnhcdn.com/latest/FtrIcon/FtrArtHunterSnow.png",
-                                        "size": "md"
+                                        "size": "sm"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "布置壁紙",
+                                        "align": "center",
+                                        "size": "xs",
+                                        "wrap": true
                                     }
                                 ]
                             }
@@ -402,20 +413,15 @@
                                 "contents": [
                                     {
                                         "type": "text",
-                                        "text": "室內擺設",
+                                        "text": "家具清單",
                                         "align": "center",
-                                        "size": "sm",
+                                        "size": "lg",
                                         "wrap": true
                                     },
                                     {
-                                        "type": "image",
-                                        "url": "https://acnhcdn.com/latest/FtrIcon/FtrArtHunterSnow.png",
-                                        "size": "full",
-                                        "action": {
-                                            "type": "postback",
-                                            "label": "fig",
-                                            "data": "type=fig&name=${item.name_c}&fileName=${filename_temp}"
-                                        }
+                                        "type": "box",
+                                        "layout": "horizontal",
+                                        "contents": []
                                     }
                                 ]
                             }

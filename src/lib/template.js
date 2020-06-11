@@ -133,16 +133,41 @@ const infoVillager = (item) => {
     let decorateTemplate = carouselTemplate.contents[2];
     decorateTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
     decorateTemplate.styles.body.backgroundColor = style.color.base.white;
-    decorateTemplate.body.contents[0].contents[0].contents[0].text = `壁紙-${item.wallpaper.name}`;
+
+    decorateTemplate.hero.url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${item.name_e}_interior.png`;
+    decorateTemplate.hero.action.data = `type=fig&name=${item.name_c}的室內佈置&fileName=https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${item.name_e}_interior.png`;
+    
+    decorateTemplate.body.contents[0].contents[0].contents[2].text = `${item.wallpaper.name}`;
     decorateTemplate.body.contents[0].contents[0].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/${item.wallpaper.filename}.png`;
 
-    decorateTemplate.body.contents[0].contents[1].contents[0].text = `地板-${item.flooring.name}`;
+    decorateTemplate.body.contents[0].contents[1].contents[2].text = `${item.flooring.name}`;
     decorateTemplate.body.contents[0].contents[1].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/${item.flooring.filename}.png`;
 
-    decorateTemplate.body.contents[2].contents[0].contents[1].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${item.name_e}_interior.png`;
-    decorateTemplate.body.contents[2].contents[0].contents[1].action.data = `type=fig&name=${item.name_c}的室內佈置&fileName=https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${item.name_e}_interior.png`;
-    
-    carouselTemplate.contents[1].body.contents[3].contents[1].text = item.furnitureList.map((furniture) => furniture.name).join('、');
+    const cols = [{
+        "type": "box",
+        "layout": "vertical",
+        "contents": []
+    }, {
+        "type": "box",
+        "layout": "vertical",
+        "contents": []
+    }]
+
+     item.furnitureList.forEach((furniture, index) => {
+        cols[index % cols.length].contents.push(
+            {
+                type: "text",
+                text: furniture.name,
+                color: style.color.base.blue,
+                size: "sm",
+                align: "center",
+                wrap: true,
+                action: { 'type': 'message', 'text': `查詢 ${furniture.name}` }
+            }
+        )
+    })
+
+    decorateTemplate.body.contents[2].contents[0].contents[1].contents = cols;
 
     return carouselTemplate
 }
