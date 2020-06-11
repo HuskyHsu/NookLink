@@ -124,6 +124,17 @@ const infoVillager = (item) => {
     itemDetailTemplate.body.contents[2].contents[2].contents[1].action = personalityAction
     itemDetailTemplate.body.contents[2].contents[2].contents[1].color = style.color.base.blue;
 
+    itemDetailTemplate.body.contents[6].contents[0].contents[1].text = `點我看清單`;
+    itemDetailTemplate.body.contents[6].contents[1].contents[1].text = `點我看清單`;
+
+    let personalityDiyAction = { 'type': 'message', 'text': `DIY ${item.personality}` }
+    itemDetailTemplate.body.contents[6].contents[0].contents[1].action = personalityDiyAction;
+    itemDetailTemplate.body.contents[6].contents[0].contents[1].color = style.color.base.blue;
+    
+    let personalityReactionAction = { 'type': 'message', 'text': `表情 ${item.personality}` }
+    itemDetailTemplate.body.contents[6].contents[1].contents[1].action = personalityReactionAction;
+    itemDetailTemplate.body.contents[6].contents[1].contents[1].color = style.color.base.blue;
+
     itemDetailTemplate.body.contents[4].contents[1].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/BromideNpcNml${item.filename.slice(0,1).toUpperCase()}${item.filename.slice(1)}_Remake_0_0.png`;
     itemDetailTemplate.body.contents[4].contents[2].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/PosterNpcNml${item.filename.slice(0,1).toUpperCase()}${item.filename.slice(1)}.png`;
     itemDetailTemplate.body.contents[4].contents[0].contents[1].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${item.name_e}.png`;
@@ -179,13 +190,20 @@ const list = (itemList, width, height) => {
     };
 
     let itemBoxs = itemList.map((item) => {
-        return {
+        let imgPath = 'FtrIcon';
+        if (item.type === 'villagers') {
+            imgPath = 'NpcIcon'
+        } else if (item.type === 'reactions') {
+            imgPath = 'ManpuIcon'
+        }
+
+        let unit = {
             type: "box",
             layout: "vertical",
             contents: [
                 {
                     type: "image",
-                    url: `https://acnhcdn.com/latest/${item.type !== 'villagers' ? 'FtrIcon' : 'NpcIcon'}/${item.filename}.png`,
+                    url: `https://acnhcdn.com/latest/${imgPath}/${item.filename}.png`,
                     size: "md",
                     action: {
                         type: 'message',
@@ -203,10 +221,16 @@ const list = (itemList, width, height) => {
                         type: 'message',
                         text: `查詢 ${item.name_c}`
                     }
-                },
-                
+                }
             ]
         }
+
+        if (item.type === 'reactions') {
+            delete unit.contents[0].action;
+            delete unit.contents[1].action;
+        }
+
+        return unit
     })
 
     let itemBoxs_h_v = [];
@@ -253,7 +277,6 @@ const list = (itemList, width, height) => {
     carousel.contents.push(JSON.parse(JSON.stringify(itemListTemplate)))
     console.log('carousel')
     console.log(carousel)
-    // page.contents = bodyBoxs_2;
     return carousel
 }
 

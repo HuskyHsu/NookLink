@@ -2,6 +2,7 @@ const furnitures = require('../data/furniture.json');
 const recipes = require('../data/recipes.json');
 const arts = require('../data/art.json');
 const villagers = require('../data/villagers.json');
+const reactions = require('../data/reactions.json');
 
 const query = require('../lib/query');
 const template = require('../lib/template');
@@ -21,7 +22,8 @@ const queryTypeMap = {
     'diy': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes'],
     '種族': ['species'],
     '個性': ['personality'],
-    '材料': ['diyInfoMaterials', 'materials']
+    '材料': ['diyInfoMaterials', 'materials'],
+    '表情': ['obtainedFrom']
 }
 
 const getAllNames = (type) => {
@@ -41,7 +43,7 @@ async function page(context, type, target) {
     let attrs = queryTypeMap[type];
     let itemList = [];
 
-    let itemType = [furnitures, recipes, arts, villagers];
+    let itemType = [furnitures, recipes, arts, villagers, reactions];
     itemType.forEach((set) => {
         itemList = [...itemList, ...query.filter(set, attrs, target)]
     })
@@ -52,13 +54,16 @@ async function page(context, type, target) {
         ))
     })
 
-    console.log(itemList.length)
-
     if (type === 'diy') {
         itemList = itemList.filter((item) => {
             return item.DIY || Array.isArray(item.materials)
         })
+    } else if (type === '表情') {
+        itemList = itemList.filter((item) => {
+            return item.type === 'reactions'
+        })
     }
+    console.log(itemList.length)
 	
 	if (itemList.length == 0) {
         return null

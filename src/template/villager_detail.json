@@ -259,6 +259,55 @@
                                 ]
                             }
                         ]
+                    },
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "可學DIY",
+                                        "align": "center",
+                                        "size": "sm",
+                                        "wrap": true
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "[[diy]]",
+                                        "align": "center",
+                                        "size": "md",
+                                        "wrap": true
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "可學表情",
+                                        "align": "center",
+                                        "size": "sm",
+                                        "wrap": true
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "[[reactions]]",
+                                        "align": "center",
+                                        "size": "md",
+                                        "wrap": true
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
