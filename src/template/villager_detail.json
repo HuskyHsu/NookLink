@@ -330,37 +330,37 @@
                     {
                         "type": "text",
                         "text": "居",
-                        "size": "3xl",
+                        "size": "4xl",
                         "align": "center"
                     },
                     {
                         "type": "text",
                         "text": "家",
-                        "size": "3xl",
+                        "size": "4xl",
                         "align": "center"
                     },
                     {
                         "type": "text",
                         "text": "布",
-                        "size": "3xl",
+                        "size": "4xl",
                         "align": "center"
                     },
                     {
                         "type": "text",
                         "text": "置",
-                        "size": "3xl",
+                        "size": "4xl",
                         "align": "center"
                     },
                     {
                         "type": "text",
                         "text": "防",
-                        "size": "3xl",
+                        "size": "4xl",
                         "align": "center"
                     },
                     {
                         "type": "text",
                         "text": "雷",
-                        "size": "3xl",
+                        "size": "4xl",
                         "align": "center"
                     }
                 ]
