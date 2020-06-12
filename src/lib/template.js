@@ -41,7 +41,7 @@ const infoDiy = (item) => {
     itemDetailTemplate.header.contents[0].contents[1].contents[1].text = item.name_j;
     itemDetailTemplate.header.contents[0].contents[1].contents[2].text = item.name_e;
 
-    itemDetailTemplate.body.contents[0].contents[0].contents[1].text = item.sell.toString();
+    itemDetailTemplate.body.contents[0].contents[0].contents[1].text = item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
     let obtainedFromSpan =  item.obtainedFrom.map((obtained) => {
         let text = '';
