@@ -94,8 +94,8 @@ const info = (furniture) => {
     furnitureDetailTemplate.header.contents[0].contents[1].contents[2].text = furniture.name_e;
     furnitureDetailTemplate.header.contents[0].contents[1].contents[3].text = `${furniture.category} / ${furniture.size}`;
 
-    furnitureDetailTemplate.body.contents[0].contents[0].contents[1].text = furniture.buy === null ? '非賣品' : furniture.buy.toString();
-    furnitureDetailTemplate.body.contents[0].contents[1].contents[1].text = furniture.sell.toString();
+    furnitureDetailTemplate.body.contents[0].contents[0].contents[1].text = furniture.buy === null ? '非賣品' : furniture.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    furnitureDetailTemplate.body.contents[0].contents[1].contents[1].text = furniture.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     furnitureDetailTemplate.body.contents[0].contents[2].contents[1].text = furniture.interact ? '可' : '不能'
 
     furnitureDetailTemplate.body.contents[0].contents[3].contents[1].text = furniture.tag;

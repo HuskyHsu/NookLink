@@ -14,7 +14,7 @@ const createInfo = (insect) => {
     insectDetailTemplate.header.contents[0].contents[1].contents[1].text = insect.name_j;
     insectDetailTemplate.header.contents[0].contents[1].contents[2].text = insect.name_e;
 
-    insectDetailTemplate.body.contents[0].contents[0].contents[1].text = insect.price.toString();
+    insectDetailTemplate.body.contents[0].contents[0].contents[1].text = insect.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     insectDetailTemplate.body.contents[0].contents[1].contents[1].text = insect.place + (insect.remark ? `\n(${insect.remark})` : '');
     insectDetailTemplate.body.contents[0].contents[2].contents[1].text = insect.time + (insect.weather !== '無影響' ? `\n(${insect.weather})` : '');
 

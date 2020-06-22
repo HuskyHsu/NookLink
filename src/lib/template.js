@@ -41,7 +41,7 @@ const infoDiy = (item) => {
     itemDetailTemplate.header.contents[0].contents[1].contents[1].text = item.name_j;
     itemDetailTemplate.header.contents[0].contents[1].contents[2].text = item.name_e;
 
-    itemDetailTemplate.body.contents[0].contents[0].contents[1].text = item.sell.toString();
+    itemDetailTemplate.body.contents[0].contents[0].contents[1].text = item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
     let obtainedFromSpan =  item.obtainedFrom.map((obtained) => {
         let text = '';
@@ -137,7 +137,7 @@ const infoVillager = (item) => {
 
     itemDetailTemplate.body.contents[4].contents[1].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/BromideNpcNml${item.filename.slice(0,1).toUpperCase()}${item.filename.slice(1)}_Remake_0_0.png`;
     itemDetailTemplate.body.contents[4].contents[2].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/PosterNpcNml${item.filename.slice(0,1).toUpperCase()}${item.filename.slice(1)}.png`;
-    itemDetailTemplate.body.contents[4].contents[0].contents[1].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${item.name_e}.png`;
+    itemDetailTemplate.body.contents[4].contents[0].contents[1].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${encodeURI(item.name_e)}.png`;
 
     carouselTemplate.contents[1].styles.body.backgroundColor = style.color.backgroundColor.header;
 
@@ -145,8 +145,8 @@ const infoVillager = (item) => {
     decorateTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
     decorateTemplate.styles.body.backgroundColor = style.color.base.white;
 
-    decorateTemplate.hero.url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${item.name_e}_interior.png`;
-    decorateTemplate.hero.action.data = `type=fig&name=${item.name_c}的室內佈置&fileName=https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${item.name_e}_interior.png`;
+    decorateTemplate.hero.url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${encodeURI(item.name_e)}_interior.png`;
+    decorateTemplate.hero.action.data = `type=fig&name=${item.name_c}的室內佈置&fileName=https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/villager/${encodeURI(item.name_e)}_interior.png`;
     
     decorateTemplate.body.contents[0].contents[0].contents[2].text = `${item.wallpaper.name}`;
     decorateTemplate.body.contents[0].contents[0].contents[1].url = `https://acnhcdn.com/latest/FtrIcon/${item.wallpaper.filename}.png`;

@@ -14,7 +14,7 @@ const createInfo = (fish) => {
     fishDetailTemplate.header.contents[0].contents[1].contents[1].text = fish.name_j;
     fishDetailTemplate.header.contents[0].contents[1].contents[2].text = fish.name_e;
 
-    fishDetailTemplate.body.contents[0].contents[0].contents[1].text = fish.price.toString();
+    fishDetailTemplate.body.contents[0].contents[0].contents[1].text = fish.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     fishDetailTemplate.body.contents[0].contents[1].contents[1].text = fish.place;
     fishDetailTemplate.body.contents[0].contents[2].contents[1].text = fish.time + (fish.remark ? `(${fish.remark})` : '');
     // fishDetailTemplate.body.contents[1].contents[3].contents[1].text = fish.shadow_size;
