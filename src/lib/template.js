@@ -104,7 +104,7 @@ const infoVillager = (item) => {
     itemDetailTemplate.header.contents[0].contents[0].url = `https://acnhcdn.com/latest/NpcIcon/${item.filename}.png`;
     itemDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${item.name_c}&fileName=https://acnhcdn.com/latest/NpcIcon/${item.filename}.png`;
     
-    itemDetailTemplate.header.contents[0].contents[1].contents[0].text = `${item.name_c}`;
+    itemDetailTemplate.header.contents[0].contents[1].contents[0].text = `${item.name_c}(${item.gender})`;
     itemDetailTemplate.header.contents[0].contents[1].contents[1].text = `${item.name_j}`;
     itemDetailTemplate.header.contents[0].contents[1].contents[2].text = `${item.name_e}`;
 
