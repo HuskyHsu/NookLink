@@ -1,3 +1,5 @@
+let _ = require('lodash');
+
 let itemListTemplate = require('../template/item_list.json');
 let style = require('../lib/style');
 let { info } = require('../items/furniture');
@@ -7,30 +9,8 @@ const separator = {
     margin: "md"
 }
 
-const typeNameMap = {
-    '家具': '查詢',
-    '小物件': '查詢',
-    '壁掛物': '查詢',
-    '藝術': '查詢',
-    '工具': 'DIY',
-    '柵欄': 'DIY',
-    '其他': 'DIY',
-    '頭戴物': 'DIY',
-    '飾品': 'DIY',
-    '壁紙': 'DIY',
-    '地板': 'DIY',
-    '雨傘': 'DIY',
-    '地毯': 'DIY',
-    '洋裝': 'DIY',
-    '下身': 'DIY',
-    '上身': 'DIY',
-    '包包': 'DIY',
-    '鞋子': 'DIY',
-    '套裝': 'DIY'
-}
-
 const infoDiy = (item) => {
-    let itemDetailTemplate = require('../template/item_detail.json');
+    let itemDetailTemplate = require('../template/item_recipe.json');
     itemDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
     itemDetailTemplate.styles.body.backgroundColor = style.color.base.white;
 
@@ -71,7 +51,7 @@ const infoDiy = (item) => {
 }
 
 const infoArt = (item) => {
-    let itemDetailTemplate = require('../template/art_detail.json');
+    let itemDetailTemplate = require('../template/item_art.json');
     itemDetailTemplate.header.contents[0].contents[0].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/art/${item.filename}.jpg`;
     itemDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${item.realArtworkTitle_tw}&fileName=https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/art/${item.filename}.jpg`;
     itemDetailTemplate.header.contents[0].contents[1].contents[0].text = item.name_c;
@@ -183,6 +163,69 @@ const infoVillager = (item) => {
     return carouselTemplate
 }
 
+const infoClothing = (item) => {
+    let itemDetailTemplate = JSON.stringify(require('../template/item_clothing.json'));
+    let compiled = _.template(itemDetailTemplate);
+    let carousel = compiled({
+        filenameUrl: `https://acnhcdn.com/latest/ClosetIcon/${item.filename}.png`,
+        imagePostback: `type=fig&name=${item.name_c}&fileName=https://acnhcdn.com/latest/ClosetIcon/${item.filename}.png`,
+        name_c: item.name_c,
+        name_j: item.name_j || '-',
+        name_e: item.name_e || '-',
+        category: item.category,
+        buy: item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '非賣品',
+        sell: item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+        obtainedFrom: item.obtainedFrom,
+        seasonalAvailability: item.seasonalAvailability,
+        styles: item.styles,
+        themes: item.themes.join('、'),
+        villagerEquippable: item.villagerEquippable ? '會穿' : '不穿',
+        blue: style.color.base.blue
+    });
+
+    carousel = JSON.parse(carousel);
+
+    if (item.variations > 0) {
+        const width = 3;
+        let itemBoxs = Array.from(Array(item.variations - 1).keys()).map((i, index) => {
+            return {
+                type: "image",
+                url: `https://acnhcdn.com/latest/ClosetIcon/${item.filename.slice(0, -1)}${ index + 1 }.png`,
+                size: "md"
+            }
+        });
+
+        let itemBoxs_h_v = [];
+        while (itemBoxs.length) {
+            let itemBoxs_h = {
+                type: "box",
+                layout: "horizontal"
+            }
+            itemBoxs_h.contents = itemBoxs.splice(0, width);
+    
+            if (itemBoxs_h.contents.length < width) {
+                const needCount = width - itemBoxs_h.contents.length;
+                for (let i = 0; i < needCount; i++) {
+                    itemBoxs_h.contents.push(
+                        {
+                            type: "text",
+                            text: ' ',
+                        }
+                    )
+                }
+            }
+    
+            itemBoxs_h_v.push(itemBoxs_h);
+        }
+        itemListTemplate.body.contents = itemBoxs_h_v;
+        itemListTemplate = JSON.parse(JSON.stringify(itemListTemplate));
+        itemListTemplate.header.contents[0].text = '其他樣式';
+        carousel.contents.push(itemListTemplate);
+    }
+    
+    return carousel
+}
+
 const list = (itemList, width, height) => {
     let carousel = {
         type: 'carousel',
@@ -195,6 +238,8 @@ const list = (itemList, width, height) => {
             imgPath = 'NpcIcon'
         } else if (item.type === 'reactions') {
             imgPath = 'ManpuIcon'
+        } else if (item.type === 'clothes') {
+            imgPath = 'ClosetIcon'
         }
 
         let unit = {
@@ -274,9 +319,7 @@ const list = (itemList, width, height) => {
         contents: itemBoxs_h_v
     }
     itemListTemplate.body.contents = [page];
-    carousel.contents.push(JSON.parse(JSON.stringify(itemListTemplate)))
-    console.log('carousel')
-    console.log(carousel)
+    carousel.contents.push(JSON.parse(JSON.stringify(itemListTemplate)));
     return carousel
 }
 
@@ -309,11 +352,9 @@ module.exports.info = {
     'furnitures': info,
     'recipes': infoDiy,
     'arts': infoArt,
-    'villagers': infoVillager
+    'villagers': infoVillager,
+    'clothes': infoClothing,
 };
 
-// module.exports.infoDiy = infoDiy;
-// module.exports.infoArt = infoArt;
-// module.exports.infoVillager = infoVillager;
 module.exports.list = list;
 module.exports.simpleList = simpleList;

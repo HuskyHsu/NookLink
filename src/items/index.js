@@ -3,6 +3,7 @@ const recipes = require('../data/recipes.json');
 const arts = require('../data/art.json');
 const villagers = require('../data/villagers.json');
 const reactions = require('../data/reactions.json');
+const clothes = require('../data/clothes.json');
 
 const query = require('../lib/query');
 const template = require('../lib/template');
@@ -11,7 +12,8 @@ const dataMap = {
     'furnitures': furnitures,
     'recipes': recipes,
     'arts': arts,
-    'villagers': villagers
+    'villagers': villagers,
+    'clothes': clothes
 }
 
 const queryTypeMap = {
@@ -32,7 +34,7 @@ const getAllNames = (type) => {
 
 function info(type) {
     return async function(context) {
-        const itemName = context.event.text.split(/[-\s]/).splice(1).join(' ');
+        const itemName = context.event.text.split(/[\s]/).splice(1).join(' ');
         const item = query.findOne(dataMap[type], itemName);
         await context.sendFlex(`${itemName} 詳細資料`, template.info[type](item));
     }
@@ -43,7 +45,7 @@ async function page(context, type, target) {
     let attrs = queryTypeMap[type];
     let itemList = [];
 
-    let itemType = [furnitures, recipes, arts, villagers, reactions];
+    let itemType = [furnitures, recipes, clothes, arts, villagers, reactions];
     itemType.forEach((set) => {
         itemList = [...itemList, ...query.filter(set, attrs, target)]
     })
@@ -84,7 +86,7 @@ async function page(context, type, target) {
 
 async function filter(context) {
     const [type, name] = [context.event.text.split(/[-\s]/).splice(0, 1)[0], context.event.text.split(/[-\s]/).splice(1).join(' ')];
-    if (name === 'Nook商店') {
+    if (name === 'Nook商店' || name === '裁縫店') {
         return await context.sendText('符合物品數量龐大，不開放查詢清單 (シ_ _)シ');
     }
 
