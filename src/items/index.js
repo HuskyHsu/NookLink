@@ -80,7 +80,7 @@ async function page(context, type, target) {
         await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.info[itemList[0].type](itemList[0]));
 	} else if (itemList.length <= 4*4*4) {
 		await context.sendFlex('符合清單', template.list(itemList, 4, 4));
-	} else if (itemList.length <= 4*4*6) {
+	} else if (itemList.length <= 4*4*5) {
         await context.sendFlex('符合清單', template.simpleList(itemList));
 	} else {
         let r = itemList.map((item) => `${item.name_c}${item.obtainedFrom === 'DIY' ? '(DIY)' : ''}`).join('\n');

@@ -385,17 +385,20 @@ const list = (itemList, width, height) => {
 const simpleList = (itemList) => {
     let itemBoxs = [];
     itemList.forEach((item) => {
-        itemBoxs.push({
+        box = {
             type: "text",
             text: `→ ${item.name_c}${item.DIY ? '(DIY)' : ''}${item.type === 'villagers' ? '(' + item.species + ')' : ''}`,
-            gravity: "center",
             margin: 'xl',
-            color: `${item.DIY ? style.color.base.red : style.color.base.black}`,
             action: {
                 type: 'message',
                 text: `查詢 ${item.name_c}`
             }
-        })
+        }
+
+        if (item.DIY) {
+            box.color = style.color.base.red
+        }
+        itemBoxs.push(box)
     });
     itemListTemplate.body.contents = [
         {
