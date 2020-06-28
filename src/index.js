@@ -2,6 +2,7 @@ const { router, text, line } = require('bottender/router');
 const fish = require('./museum/fish');
 const insect = require('./museum/insect');
 const items = require('./items/index');
+const { commands } = require('./lib/template');
 const querystring = require('querystring');
 
 async function SayHi(context) {
@@ -10,30 +11,7 @@ async function SayHi(context) {
 
 async function command(context) {
 
-	const commandItem = `【家具、DIY、藝術品、居民類】
-查詢 [物品名稱]\n➡ 查詢物品、居民、藝術品資訊\n
-tag [tag名稱]\n➡ 查詢含該tag之家具清單\n
-主題 [主題名稱]\n➡ 查詢含該主題之家具清單\n
-取得方式 [取得方式]\n➡ 查詢該取得方式之清單\n
-DIY [DIY關鍵字]\n➡ 查詢DIY物品、來源、活動\n
-材料 [材料關鍵字]\n➡ 查詢該材料可製作DIY清單\n
-種族 [種族類別]\n➡ 查詢該種族之居民清單\n
-個性 [個性類別]\n➡ 查詢該個性之居民清單\n
-表情 [個性類別]\n➡ 查詢該個性可學表情之清單`
-
-	const commandFish = `【魚/蟲圖鑑類】
-魚/蟲\n➡ 當月彙整魚/蟲圖鑑\n
-魚/蟲 [數字]月\n➡ 指定月份彙整魚/蟲圖鑑\n
-魚/蟲 [名稱(中、英、日、編號)]\n➡ 該魚/蟲詳細資料`
-
-    await context.send([{
-			type: 'text',
-			text: commandItem,
-		}, {
-			type: 'text',
-			text: commandFish,
-		}
-	]);
+	await context.sendFlex('指令集', commands());
 }
 
 async function problemReport(context) {

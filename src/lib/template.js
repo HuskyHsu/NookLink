@@ -285,6 +285,123 @@ const infoEquippables = (item) => {
     return bubble
 }
 
+const commands = () => {
+    let commandTemplate = JSON.parse(JSON.stringify(require('../template/command.json')));
+	[
+		{
+			header: '查詢 [物品名稱]',
+			body: '查詢物品、服飾、壁紙、地板、地毯、居民、藝術品資訊',
+			action: '查詢 鑄鐵木',
+			contents: 0
+		}, {
+			header: 'tag [tag名稱]',
+			body: '查詢含該tag之家具清單',
+			action: 'tag 海濱',
+			contents: 0
+		}, {
+			header: '主題 [主題名稱]',
+			body: '查詢含該主題之家具清單',
+			action: '主題 海洋',
+			contents: 0
+		}, {
+			header: '取得方式 [取得方式]',
+			body: '查詢該取得方式之清單',
+			action: '取得方式 呂遊',
+			contents: 0
+		}, {
+			header: '主題 [主題名稱]',
+			body: '查詢含該主題之家具清單',
+			action: '主題 海洋',
+			contents: 0
+		}, {
+			header: 'DIY [DIY關鍵字]',
+			body: '查詢DIY物品、來源、活動',
+			action: 'DIY 成熟型村民',
+			contents: 0
+		}, {
+			header: '材料 [材料關鍵字]',
+			body: '查詢該材料可製作DIY清單',
+			action: '材料 大星星碎片',
+			contents: 0
+		}, {
+			header: '種族 [種族類別]',
+			body: '查詢該種族之居民清單',
+			action: '種族 貓',
+			contents: 1
+		}, {
+			header: '個性 [個性類別]',
+			body: '查詢該個性之居民清單',
+			action: '個性 大姐姐',
+			contents: 1
+		}, {
+			header: '表情 [個性類別]',
+			body: '查詢該個性可學表情之清單',
+			action: '表情 大姐姐',
+			contents: 1
+		}, {
+			header: '魚',
+			body: '當月彙整魚圖鑑',
+			action: '魚',
+			contents: 2
+		}, {
+			header: '魚 [數字]月',
+			body: '指定月份彙整魚圖鑑',
+			action: '魚 1月',
+			contents: 2
+		}, {
+			header: '魚 [名稱(中、英、日、編號)]',
+			body: '該魚詳細資料',
+			action: '魚 雙髻鯊',
+			contents: 2
+		}, {
+			header: '蟲',
+			body: '當月彙整蟲圖鑑',
+			action: '蟲',
+			contents: 2
+		}, {
+			header: '蟲 [數字]月',
+			body: '指定月份彙整蟲圖鑑',
+			action: '蟲 1月',
+			contents: 2
+		}, {
+			header: '蟲 [名稱(中、英、日、編號)]',
+			body: '該蟲詳細資料',
+			action: '蟲 螢火蟲',
+			contents: 2
+		}
+	].forEach((command) => {
+		let body = {
+			"type": "box",
+			"layout": "vertical",
+			"contents": [
+				{
+					"type": "text",
+					"text": command.header,
+					"size": "md",
+					"weight": "bold",
+					"color": style.color.base.blue,
+					"action": {
+						"type": "message",
+						"text": command.action
+					}
+				}, {
+					"type": "text",
+					"text": command.body,
+					"size": "sm",
+					"wrap": true,
+					"action": {
+						"type": "message",
+						"text": command.action
+					}
+				}
+			]
+		}
+		commandTemplate.contents[command.contents].body.contents.push(body);
+	})
+
+	return commandTemplate;
+}
+
 const list = (itemList, width, height) => {
     let carousel = {
         type: 'carousel',
@@ -419,6 +536,6 @@ module.exports.info = {
     'homeStyle': infoHomeStyle,
     'equippables': infoEquippables
 };
-
+module.exports.commands = commands;
 module.exports.list = list;
 module.exports.simpleList = simpleList;

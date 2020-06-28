@@ -1,0 +1,92 @@
+{
+    "type": "carousel",
+    "contents": [
+        {
+            "type": "bubble",
+            "styles": {
+                "header": {
+                    "backgroundColor": "#F2F5EA"
+                },
+                "body": {
+                    "backgroundColor": "#FFFFFF"
+                }
+            },
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "指令集(物品)",
+                        "size": "lg"
+                    }
+                ]
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "md",
+                "contents": [
+                ]
+            }
+        },
+        {
+            "type": "bubble",
+            "styles": {
+                "header": {
+                    "backgroundColor": "#F2F5EA"
+                },
+                "body": {
+                    "backgroundColor": "#FFFFFF"
+                }
+            },
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "指令集(居民)",
+                        "size": "lg"
+                    }
+                ]
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "md",
+                "contents": [
+                ]
+            }
+        },
+        {
+            "type": "bubble",
+            "styles": {
+                "header": {
+                    "backgroundColor": "#F2F5EA"
+                },
+                "body": {
+                    "backgroundColor": "#FFFFFF"
+                }
+            },
+            "header": {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "指令集(魚/蟲)",
+                        "size": "lg"
+                    }
+                ]
+            },
+            "body": {
+                "type": "box",
+                "layout": "vertical",
+                "spacing": "md",
+                "contents": [
+                ]
+            }
+        }
+    ]
+}
