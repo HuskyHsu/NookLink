@@ -167,6 +167,8 @@ const infoClothing = (item) => {
     let itemDetailTemplate = JSON.stringify(require('../template/item_clothing.json'));
     let compiled = _.template(itemDetailTemplate);
     let carousel = compiled({
+        backgroundColorHeader: style.color.backgroundColor.header,
+        backgroundColorBody: style.color.base.white,
         filenameUrl: `https://acnhcdn.com/latest/ClosetIcon/${item.filename}.png`,
         imagePostback: `type=fig&name=${item.name_c}&fileName=https://acnhcdn.com/latest/ClosetIcon/${item.filename}.png`,
         name_c: item.name_c,
@@ -224,6 +226,42 @@ const infoClothing = (item) => {
     }
     
     return carousel
+}
+
+const infoHomeStyle = (item) => {
+    let itemDetailTemplate = JSON.stringify(require('../template/item_homeStyle.json'));
+    let compiled = _.template(itemDetailTemplate);
+    let bubble = compiled({
+        backgroundColorHeader: style.color.backgroundColor.header,
+        backgroundColorBody: style.color.base.white,
+        filenameUrl: `https://acnhcdn.com/latest/FtrIcon/${item.filename}.png`,
+        imagePostback: `type=fig&name=${item.name_c}&fileName=${item.filename}`,
+        name_c: item.name_c,
+        name_j: item.name_j || '-',
+        name_e: item.name_e || '-',
+        category: item.category,
+        buy: item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '非賣品',
+        sell: item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+        obtainedFrom: item.obtainedFrom,
+        seasonalAvailability: item.seasonalAvailability,
+        tag: item.tag,
+        blue: style.color.base.blue
+    });
+
+    bubble = JSON.parse(bubble);
+    bubble.body.contents[4].contents[0].contents[1].contents = item.themes.map((theme) => {
+        return {
+            type: "text",
+            text: theme,
+            color: style.color.base.blue,
+            size: "md",
+            align: "center",
+            wrap: true,
+            action: { 'type': 'message', 'text': `主題 ${theme}` }
+        }
+    })
+
+    return bubble
 }
 
 const list = (itemList, width, height) => {
@@ -354,6 +392,7 @@ module.exports.info = {
     'arts': infoArt,
     'villagers': infoVillager,
     'clothes': infoClothing,
+    'homeStyle': infoHomeStyle
 };
 
 module.exports.list = list;

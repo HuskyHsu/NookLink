@@ -5,10 +5,10 @@
             "type": "bubble",
             "styles": {
                 "header": {
-                    "backgroundColor": "#F2F5EA"
+                    "backgroundColor": "${backgroundColorHeader}"
                 },
                 "body": {
-                    "backgroundColor": "#FFFFFF"
+                    "backgroundColor": "${backgroundColorBody}"
                 }
             },
             "header": {
