@@ -1,7 +1,6 @@
 const { router, text, line } = require('bottender/router');
 const fish = require('./museum/fish');
 const insect = require('./museum/insect');
-const furniture = require('./items/furniture');
 const items = require('./items/index');
 const querystring = require('querystring');
 
@@ -70,6 +69,7 @@ module.exports = async function App() {
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('villagers')})$`, 'i'), items.info('villagers')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('clothes')})$`, 'i'), items.info('clothes')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('homeStyle')})$`, 'i'), items.info('homeStyle')),
+	text(new RegExp(`^查詢[-\\s](${items.getAllNames('equippables')})$`, 'i'), items.info('equippables')),
 
 	text(new RegExp(`^(查詢|tag|主題|取得方式|材料|DIY|種族|個性|表情)[-\\s].*$`, 'i'), items.filter),
 
