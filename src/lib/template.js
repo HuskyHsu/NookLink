@@ -219,8 +219,8 @@ const infoClothing = (item) => {
     
             itemBoxs_h_v.push(itemBoxs_h);
         }
+        let itemListTemplate = JSON.parse(JSON.stringify(itemListTemplate));
         itemListTemplate.body.contents = itemBoxs_h_v;
-        itemListTemplate = JSON.parse(JSON.stringify(itemListTemplate));
         itemListTemplate.header.contents[0].text = '其他樣式';
         carousel.contents.push(itemListTemplate);
     }
