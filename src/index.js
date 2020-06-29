@@ -10,7 +10,6 @@ async function SayHi(context) {
 }
 
 async function command(context) {
-
 	await context.sendFlex('指令集', commands());
 }
 
