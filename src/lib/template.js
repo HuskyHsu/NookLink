@@ -219,10 +219,10 @@ const infoClothing = (item) => {
     
             itemBoxs_h_v.push(itemBoxs_h);
         }
-        let itemListTemplate = JSON.parse(JSON.stringify(itemListTemplate));
-        itemListTemplate.body.contents = itemBoxs_h_v;
-        itemListTemplate.header.contents[0].text = '其他樣式';
-        carousel.contents.push(itemListTemplate);
+        let matchTemplate = JSON.parse(JSON.stringify(itemListTemplate));
+        matchTemplate.body.contents = itemBoxs_h_v;
+        matchTemplate.header.contents[0].text = '其他樣式';
+        carousel.contents.push(matchTemplate);
     }
     
     return carousel
