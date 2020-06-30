@@ -104,7 +104,7 @@ async function image(context, name, filename) {
     if (filename.startsWith('https')) {
         fileUrl = filename
     }
-    ga.gaEventLabel(context.session.user.id, 'image', name, null);
+    ga.gaEventLabel(context.session.user.id, 'image', '-', name);
     await context.send([{
             type: 'text',
             text: name,
