@@ -7,9 +7,9 @@ const clothes = require('../data/clothes.json');
 const homeStyle = require('../data/homeStyle.json');
 const equippables = require('../data/equippables.json');
 
-
 const query = require('../lib/query');
 const template = require('../lib/template');
+const ga = require('../lib/ga');
 
 const dataMap = {
     'furnitures': furnitures,
@@ -41,6 +41,7 @@ function info(type) {
     return async function(context) {
         const itemName = context.event.text.split(/[\s]/).splice(1).join(' ');
         const item = query.findOne(dataMap[type], itemName);
+        ga.gaEventLabel(context.session.user.id, 'info', type, itemName);
         await context.sendFlex(`${itemName} 詳細資料`, template.info[type](item));
     }
 }
@@ -70,12 +71,12 @@ async function page(context, type, target) {
             return item.type === 'reactions'
         })
     }
-    console.log(itemList.length)
 	
 	if (itemList.length == 0) {
         return null
     }
 
+    ga.gaEventLabel(context.session.user.id, 'query', type, target);
 	if (itemList.length === 1) {
         await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.info[itemList[0].type](itemList[0]));
 	} else if (itemList.length <= 4*4*4) {
@@ -103,7 +104,7 @@ async function image(context, name, filename) {
     if (filename.startsWith('https')) {
         fileUrl = filename
     }
-    
+    ga.gaEventLabel(context.session.user.id, 'image', name, null);
     await context.send([{
             type: 'text',
             text: name,

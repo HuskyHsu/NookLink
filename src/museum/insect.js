@@ -1,6 +1,7 @@
 const insects = require('../data/insect.json');
 const util = require('./util');
 const style = require('../lib/style');
+const ga = require('../lib/ga');
 
 const getAllNames = () => {
     return insects.map((insect) => `${insect.index}|${insect.name_c}|${insect.name_j}|${insect.name_e}`).join('|')
@@ -35,6 +36,7 @@ async function currentInsect(context) {
         month = context.event.text.split(/[-\s]/)[1].replace('月', '') - 0;
     }
 
+    ga.gaEventLabel(context.session.user.id, 'insect', 'list', month);
     await context.sendFlex('蟲類清單一覽', util.currentList(month, 'insect', insects));
 }
 
@@ -42,6 +44,7 @@ async function detail(context) {
     const insectName = context.event.text.split(/[-\s]/)[1];
     const insect = insects.find(insect => [insect.index, insect.name_c, insect.name_j, insect.name_e, insect.name_e.toLowerCase()].indexOf(insectName) > -1);
 
+    ga.gaEventLabel(context.session.user.id, 'insect', 'detail', insect.name_c);
     await context.sendFlex(`${insectName} 詳細資料`, createInfo(insect));
 }
 

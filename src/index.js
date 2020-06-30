@@ -3,6 +3,7 @@ const fish = require('./museum/fish');
 const insect = require('./museum/insect');
 const items = require('./items/index');
 const { commands } = require('./lib/template');
+const ga = require('./lib/ga');
 const querystring = require('querystring');
 
 async function SayHi(context) {
@@ -10,15 +11,18 @@ async function SayHi(context) {
 }
 
 async function command(context) {
+	ga.gaEventLabel(context.session.user.id, 'command', '-', null);
 	await context.sendFlex('指令集', commands());
 }
 
 async function problemReport(context) {
+	ga.gaEventLabel(context.session.user.id, 'problemReport', '-', null);
 	await context.sendText('https://forms.gle/FuVb42d1XVeLJMHbA');
 }
 
 async function Unknown(context) {
-	await context.sendText(context.event.text);
+	ga.gaEventLabel(context.session.user.id, 'test', 'action', 'label');
+	await context.sendText(context.session.user.id);
 }
 
 async function HandlePostback(context) {
@@ -53,7 +57,7 @@ module.exports = async function App() {
 	text('指令集', command),
 	text('意見回報', problemReport),
 
-	// text('現在時刻', Unknown),
+	text('test', Unknown),
 
 	line.postback(HandlePostback)
   ]);

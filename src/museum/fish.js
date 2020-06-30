@@ -1,6 +1,7 @@
 const fishs = require('../data/fish.json');
 const util = require('./util');
 const style = require('../lib/style');
+const ga = require('../lib/ga');
 
 const getAllNames = () => {
     return fishs.map((fish) => `${fish.index}|${fish.name_c}|${fish.name_j}|${fish.name_e}`).join('|')
@@ -61,12 +62,15 @@ async function currentFish(context) {
         month = context.event.text.split(/[-\s]/)[1].replace('月', '') - 0;
     }
 
+    ga.gaEventLabel(context.session.user.id, 'fish', 'list', month);
     await context.sendFlex('魚類清單一覽', util.currentList(month, 'fish', fishs));
 }
 
 async function detail(context) {
     const fishName = context.event.text.split(/[-\s]/)[1];
     const fish = fishs.find(fish => [fish.index, fish.name_c, fish.name_j, fish.name_e, fish.name_e.toLowerCase()].indexOf(fishName) > -1);
+    
+    ga.gaEventLabel(context.session.user.id, 'fish', 'detail', fish.name_c);
     await context.sendFlex(`${fishName} 詳細資料`, createInfo(fish));
 }
 
