@@ -1,0 +1,489 @@
+{
+    "type": "bubble",
+    "styles": {
+        "header": {
+            "backgroundColor": "#FFFFFF"
+        },
+        "body": {
+            "backgroundColor": "#FFFFFF"
+        }
+    },
+    "header": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "image",
+                        "url": "https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/fish/1.png",
+                        "size": "md",
+                        "flex": 2
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "flex": 3,
+                        "margin": "lg",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "[[name_c]]",
+                                "size": "lg"
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[name_j]]"
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[name_e]]"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "售價",
+                                "align": "center",
+                                "size": "sm",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[price]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "棲地",
+                                "align": "center",
+                                "size": "sm",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[place]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "出沒時刻",
+                                "align": "center",
+                                "size": "sm",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[time]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "separator"
+            },
+            {
+                "type": "text",
+                "text": "北半球"
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "1月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "2月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "3月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "4月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "5月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "6月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    }
+                ]
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "7月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "8月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "9月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "10月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "11月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "12月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "text": " "
+            },
+            {
+                "type": "text",
+                "text": "南半球"
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "1月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "2月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "3月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "4月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "5月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "6月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    }
+                ]
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "7月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "8月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "9月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#ff0000"
+                    },
+                    {
+                        "type": "text",
+                        "text": "10月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "11月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    },
+                    {
+                        "type": "text",
+                        "text": "12月",
+                        "size": "md",
+                        "align": "center",
+                        "color": "#cccccc"
+                    }
+                ]
+            }
+        ]
+    },
+    "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "text",
+                "text": "魚影為："
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": "https://img.altema.jp/atsumori/gyoei/icon/2.jpg",
+                                "size": "md"
+                            },
+                            {
+                                "type": "text",
+                                "text": "極小",
+                                "align": "center"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": "https://img.altema.jp/atsumori/gyoei/icon/3.jpg",
+                                "size": "md"
+                            },
+                            {
+                                "type": "text",
+                                "text": "小",
+                                "align": "center"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": "https://img.altema.jp/atsumori/gyoei/icon/4.jpg",
+                                "size": "md"
+                            },
+                            {
+                                "type": "text",
+                                "text": "中",
+                                "align": "center"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": "https://img.altema.jp/atsumori/gyoei/icon/1.jpg",
+                                "size": "md"
+                            },
+                            {
+                                "type": "text",
+                                "text": "背鰭",
+                                "align": "center"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": "https://img.altema.jp/atsumori/gyoei/icon/6.jpg",
+                                "size": "md"
+                            },
+                            {
+                                "type": "text",
+                                "text": "大",
+                                "align": "center"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": "https://img.altema.jp/atsumori/gyoei/icon/7.jpg",
+                                "size": "md"
+                            },
+                            {
+                                "type": "text",
+                                "text": "特大",
+                                "align": "center"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": "https://img.altema.jp/atsumori/gyoei/icon/8.jpg",
+                                "size": "md"
+                            },
+                            {
+                                "type": "text",
+                                "text": "超特大",
+                                "align": "center"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "image",
+                                "url": "https://img.altema.jp/atsumori/gyoei/icon/9.jpg",
+                                "size": "md"
+                            },
+                            {
+                                "type": "text",
+                                "text": "細長",
+                                "align": "center"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "button",
+                "style": "link",
+                "action": {
+                    "type": "message",
+                    "label": "回清單",
+                    "text": "魚"
+                }
+            }
+        ]
+    }
+}

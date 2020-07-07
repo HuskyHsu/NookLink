@@ -1,6 +1,7 @@
 const { router, text, line } = require('bottender/router');
 const fish = require('./museum/fish');
 const insect = require('./museum/insect');
+const seaCreatures = require('./museum/seaCreatures');
 const items = require('./items/index');
 const { commands } = require('./lib/template');
 const ga = require('./lib/ga');
@@ -43,6 +44,8 @@ module.exports = async function App() {
 	text('蟲', insect.currentInsect),
 	text(/^蟲[-\s](\d{1,2})月$/i, insect.currentInsect),
 	text(new RegExp(`^蟲[-\\s](${insect.getAllNames()})$`, 'i'), insect.detail),
+
+	text('海底生物', seaCreatures.currentSeaCreatures),
 
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('furnitures')})$`, 'i'), items.info('furnitures')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('recipes')})$`, 'i'), items.info('recipes')),
