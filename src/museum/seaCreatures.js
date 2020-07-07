@@ -62,7 +62,7 @@ async function currentSeaCreatures(context) {
         month = context.event.text.split(/[-\s]/)[1].replace('月', '') - 0;
     }
 
-    // ga.gaEventLabel(context.session.user.id, 'fish', 'list', month);
+    ga.gaEventLabel(context.session.user.id, 'seaCreatures', 'list', month);
     await context.sendFlex('海底生物類清單一覽', util.currentListNew(month, 'seaCreatures', seaCreatures));
 }
 

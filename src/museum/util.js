@@ -76,6 +76,7 @@ function currentList(month, type, list) {
         listTemplate.footer.contents[1].text = `標註★者為本月(${month}月)新出沒`;
         listTemplate.footer.contents[2].contents[1].action.label = `下月(${nextMonth}月)清單`;
         listTemplate.footer.contents[2].contents[1].action.text = `${typeName} ${nextMonth}月`;
+        listTemplate.footer.contents[2].contents[0].action.text = typeName;
         carousel.contents.push(JSON.parse(JSON.stringify(listTemplate)))
     }
 
@@ -169,6 +170,7 @@ function currentListNew(month, type, list) {
         listTemplate.footer.contents[1].text = `標註★者為本月(${month}月)新出沒`;
         listTemplate.footer.contents[2].contents[1].action.label = `下月(${nextMonth}月)清單`;
         listTemplate.footer.contents[2].contents[1].action.text = `${typeName} ${nextMonth}月`;
+        listTemplate.footer.contents[2].contents[0].action.text = typeName;
         carousel.contents.push(JSON.parse(JSON.stringify(listTemplate)))
     }
 
