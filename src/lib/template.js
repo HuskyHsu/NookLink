@@ -189,10 +189,10 @@ const infoClothing = (item) => {
 
     if (item.variations > 0) {
         const width = 3;
-        let itemBoxs = Array.from(Array(item.variations - 1).keys()).map((i, index) => {
+        let itemBoxs = Array.from(Array(item.variations).keys()).map((i, index) => {
             return {
                 type: "image",
-                url: `https://acnhcdn.com/latest/ClosetIcon/${item.filename.slice(0, -1)}${ index + 1 }.png`,
+                url: `https://acnhcdn.com/latest/ClosetIcon/${item.filename.slice(0, -1)}${ index }.png`,
                 size: "md"
             }
         });
@@ -221,7 +221,7 @@ const infoClothing = (item) => {
         }
         let matchTemplate = JSON.parse(JSON.stringify(itemListTemplate));
         matchTemplate.body.contents = itemBoxs_h_v;
-        matchTemplate.header.contents[0].text = '其他樣式';
+        matchTemplate.header.contents[0].text = '全部樣式';
         carousel.contents.push(matchTemplate);
     }
     
