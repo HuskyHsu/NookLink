@@ -47,6 +47,7 @@ module.exports = async function App() {
 
 	text('海底生物', seaCreatures.currentSeaCreatures),
 	text(/^海底生物[-\s](\d{1,2})月$/i, seaCreatures.currentSeaCreatures),
+	text(new RegExp(`^海底生物[-\\s](${seaCreatures.getAllNames()})$`, 'i'), seaCreatures.detail),
 
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('furnitures')})$`, 'i'), items.info('furnitures')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('recipes')})$`, 'i'), items.info('recipes')),

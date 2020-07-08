@@ -124,18 +124,21 @@ function currentListNew(month, type, list) {
                     'color': style.color.select[false],
                     'size': 'xs',
                     'margin': 'xs',
+                    'action': action
                 })
 
                 listTemplate.body.contents[j].contents.push({
                     'type': 'image',
                     'url': `https://acnhcdn.com/latest/MenuIcon/${item.filename}.png`,
-                    'size': 'md'
+                    'size': 'md',
+                    'action': action
                 })
 
                 listTemplate.body.contents[j].contents.push({
                     'type': 'text',
                     'text': `${item.name_c}`,
                     'align': 'center',
+                    'action': action,
                     'contents': [{
                             'type': 'span',
                             'text': `北${Nhaunt}`,
