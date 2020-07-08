@@ -368,6 +368,21 @@ const commands = () => {
 			body: '該蟲詳細資料',
 			action: '蟲 螢火蟲',
 			contents: 2
+		}, {
+			header: '海底生物',
+			body: '當月彙整海底生物圖鑑',
+			action: '海底生物',
+			contents: 2
+		}, {
+			header: '海底生物 [數字]月',
+			body: '指定月份彙整海底生物圖鑑',
+			action: '海底生物 1月',
+			contents: 2
+		}, {
+			header: '海底生物 [名稱(中、英、日、編號)]',
+			body: '該海底生物詳細資料',
+			action: '海底生物 高腳蟹',
+			contents: 2
 		}
 	].forEach((command) => {
 		let body = {
