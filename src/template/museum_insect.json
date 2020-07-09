@@ -82,7 +82,7 @@
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "棲地",
+                                "text": "出沒天氣",
                                 "align": "center",
                                 "size": "sm",
                                 "wrap": true
@@ -119,11 +119,63 @@
                 ]
             },
             {
-                "type": "separator"
+                "type": "separator",
+                "margin": "xs"
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "解鎖數量/出現率",
+                                "align": "center",
+                                "size": "sm",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[price]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "出沒地點",
+                                "align": "center",
+                                "size": "sm",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[price]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "separator",
+                "margin": "xs"
             },
             {
                 "type": "text",
-                "text": "北半球"
+                "text": "北半球",
+                "margin": "xs"
             },
             {
                 "type": "box",

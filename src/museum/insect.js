@@ -1,4 +1,4 @@
-const insects = require('../data/insect.json');
+const insects = require('../data/insects.json');
 const util = require('./util');
 const style = require('../lib/style');
 const ga = require('../lib/ga');
@@ -7,27 +7,29 @@ const getAllNames = () => {
     return insects.map((insect) => `${insect.index}|${insect.name_c}|${insect.name_j}|${insect.name_e}`).join('|')
 }
 
-const createInfo = (insect) => {
-    const insectDetailTemplate = require('../template/museum_insect.json');
-    insectDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
-    insectDetailTemplate.header.contents[0].contents[0].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/insect/${insect.index}.png`;
-    insectDetailTemplate.header.contents[0].contents[1].contents[0].text = insect.name_c;
-    insectDetailTemplate.header.contents[0].contents[1].contents[1].text = insect.name_j;
-    insectDetailTemplate.header.contents[0].contents[1].contents[2].text = insect.name_e;
+const createInfo = (item) => {
+    const template = require('../template/museum_insect.json');
+    template.styles.header.backgroundColor = style.color.backgroundColor.header;
+    template.header.contents[0].contents[0].url = `https://acnhcdn.com/latest/MenuIcon/${item.filename}.png`;
+    template.header.contents[0].contents[1].contents[0].text = item.name_c;
+    template.header.contents[0].contents[1].contents[1].text = item.name_j;
+    template.header.contents[0].contents[1].contents[2].text = item.name_e;
 
-    insectDetailTemplate.body.contents[0].contents[0].contents[1].text = insect.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    insectDetailTemplate.body.contents[0].contents[1].contents[1].text = insect.place + (insect.remark ? `\n(${insect.remark})` : '');
-    insectDetailTemplate.body.contents[0].contents[2].contents[1].text = insect.time + (insect.weather !== '無影響' ? `\n(${insect.weather})` : '');
+    template.body.contents[0].contents[0].contents[1].text = item.Sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    template.body.contents[0].contents[1].contents[1].text = item.Weather;
+    template.body.contents[0].contents[2].contents[1].text = item.N_month.find((m) => m != null);
+    template.body.contents[2].contents[0].contents[1].text = `${item['Total Catches to Unlock']}/${item['Spawn Rates'].toString()}%`;
+    template.body.contents[2].contents[1].contents[1].text = item['Where/How'].replace('(', '\n(');
 
     for (let i = 0; i < 6; i++) {
-        insectDetailTemplate.body.contents[3].contents[i].color = style.color.select[insect.N_month[i]];
-        insectDetailTemplate.body.contents[7].contents[i].color = style.color.select[insect.S_month[i]];
+        template.body.contents[5].contents[i].color = style.color.select[item.N_month[i] != null];
+        template.body.contents[9].contents[i].color = style.color.select[item.S_month[i] != null];
 
-        insectDetailTemplate.body.contents[4].contents[i].color = style.color.select[ insect.N_month[i + 6]];
-        insectDetailTemplate.body.contents[8].contents[i].color = style.color.select[insect.S_month[i + 6]];
+        template.body.contents[6].contents[i].color = style.color.select[ item.N_month[i + 6] != null];
+        template.body.contents[10].contents[i].color = style.color.select[item.S_month[i + 6] != null];
     }
 
-    return insectDetailTemplate
+    return template
 }
 
 async function currentInsect(context) {
@@ -37,7 +39,7 @@ async function currentInsect(context) {
     }
 
     ga.gaEventLabel(context.session.user.id, 'insect', 'list', month);
-    await context.sendFlex('蟲類清單一覽', util.currentList(month, 'insect', insects));
+    await context.sendFlex('蟲類清單一覽', util.currentListNew(month, 'insects', insects, {showName: true}));
 }
 
 async function detail(context) {

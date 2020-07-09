@@ -1,5 +1,11 @@
 const style = require('../lib/style');
 
+typeNameMap = {
+    seaCreatures: '海底生物',
+    insects: '蟲',
+    fish: '魚'
+}
+
 function currentList(month, type, list) {
     const nextMonth = month < 12 ? month + 1 : 1;
     const preMonth = month > 1 ? month - 1 : 12;
@@ -83,10 +89,10 @@ function currentList(month, type, list) {
     return carousel
 }
 
-function currentListNew(month, type, list) {
+function currentListNew(month, type, list, option = {showName: false}) {
     const nextMonth = month < 12 ? month + 1 : 1;
     const preMonth = month > 1 ? month - 1 : 12;
-    const typeName = '海底生物';
+    const typeName = typeNameMap[type];
     const totalCount = type === 'seaCreatures' ? 40 : 80; 
 
     let carousel = {
@@ -117,15 +123,16 @@ function currentListNew(month, type, list) {
                 const Nhaunt = ((item.N_month[month - 1] != null && item.N_month[nextMonth - 1] == null) ? '！' : '') + ((item.N_month[month - 1] != null && item.N_month[preMonth - 1] == null) ? '★' : '');
                 const Shaunt = ((item.S_month[month - 1] != null && item.S_month[nextMonth - 1] == null) ? '！' : '') + ((item.S_month[month - 1] != null && item.S_month[preMonth - 1] == null) ? '★' : '');
 
-                listTemplate.body.contents[j].contents.push({
-                    'type': 'text',
-                    'text': `${item.name_c}`,
-                    'align': 'center',
-                    'color': style.color.select[false],
-                    'size': 'xs',
-                    'margin': 'xs',
-                    'action': action
-                })
+                if (option.showName) {
+                    listTemplate.body.contents[j].contents.push({
+                        'type': 'text',
+                        'text': `${item.name_c}`,
+                        'align': 'center',
+                        'color': style.color.select[false],
+                        'size': 'xs',
+                        'margin': 'xs'
+                    })
+                }
 
                 listTemplate.body.contents[j].contents.push({
                     'type': 'image',
@@ -138,7 +145,6 @@ function currentListNew(month, type, list) {
                     'type': 'text',
                     'text': `${item.name_c}`,
                     'align': 'center',
-                    'action': action,
                     'contents': [{
                             'type': 'span',
                             'text': `北${Nhaunt}`,
