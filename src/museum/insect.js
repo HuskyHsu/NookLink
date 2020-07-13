@@ -39,7 +39,7 @@ async function currentInsect(context) {
     }
 
     ga.gaEventLabel(context.session.user.id, 'insect', 'list', month);
-    await context.sendFlex('蟲類清單一覽', util.currentListNew(month, 'insects', insects, {showName: true}));
+    await context.sendFlex('蟲類清單一覽', util.currentList(month, 'insects', insects, {showName: true}));
 }
 
 async function detail(context) {

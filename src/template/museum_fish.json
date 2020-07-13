@@ -82,7 +82,7 @@
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "棲地",
+                                "text": "出沒地點",
                                 "align": "center",
                                 "size": "sm",
                                 "wrap": true
@@ -119,11 +119,83 @@
                 ]
             },
             {
-                "type": "separator"
+                "type": "separator",
+                "margin": "xs"
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "魚影",
+                                "align": "center",
+                                "size": "sm",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[price]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "解鎖數量",
+                                "align": "center",
+                                "size": "sm",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[price]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "出現率",
+                                "align": "center",
+                                "size": "sm",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "[[price]]",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "separator",
+                "margin": "xs"
             },
             {
                 "type": "text",
-                "text": "北半球"
+                "text": "北半球",
+                "margin": "xs"
             },
             {
                 "type": "box",
@@ -331,150 +403,6 @@
         "type": "box",
         "layout": "vertical",
         "contents": [
-            {
-                "type": "text",
-                "text": "魚影為："
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/2.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "極小",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/3.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "小",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/4.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "中",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/1.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "背鰭",
-                                "align": "center"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                "type": "box",
-                "layout": "horizontal",
-                "contents": [
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/6.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "大",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/7.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "特大",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/8.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "超特大",
-                                "align": "center"
-                            }
-                        ]
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "image",
-                                "url": "https://img.altema.jp/atsumori/gyoei/icon/9.jpg",
-                                "size": "md"
-                            },
-                            {
-                                "type": "text",
-                                "text": "細長",
-                                "align": "center"
-                            }
-                        ]
-                    }
-                ]
-            },
             {
                 "type": "button",
                 "style": "link",

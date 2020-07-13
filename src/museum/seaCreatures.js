@@ -40,7 +40,7 @@ async function currentSeaCreatures(context) {
     }
 
     ga.gaEventLabel(context.session.user.id, 'seaCreatures', 'list', month);
-    await context.sendFlex('海底生物類清單一覽', util.currentListNew(month, 'seaCreatures', seaCreatures, {showName: true}));
+    await context.sendFlex('海底生物類清單一覽', util.currentList(month, 'seaCreatures', seaCreatures, {showName: true}));
 }
 
 async function detail(context) {
