@@ -41,4 +41,4 @@ ID：@433owynu
 
 RichMenu
 ----
-<img src="https://raw.githubusercontent.com/HuskyHsu/NookLink/master/assets/richmenu.png" width="500" />
+<img src="https://raw.githubusercontent.com/HuskyHsu/NookLink/master/assets/richmenu_v1.3.0.png" width="500" />
