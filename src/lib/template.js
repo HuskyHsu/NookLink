@@ -309,11 +309,6 @@ const commands = () => {
 			action: '取得方式 呂遊',
 			contents: 0
 		}, {
-			header: '主題 [主題名稱]',
-			body: '查詢含該主題之家具清單',
-			action: '主題 海洋',
-			contents: 0
-		}, {
 			header: 'DIY [DIY關鍵字]',
 			body: '查詢DIY物品、來源、活動',
 			action: 'DIY 成熟型村民',
