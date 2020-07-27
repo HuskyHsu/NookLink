@@ -10,7 +10,7 @@ const separator = {
 }
 
 const infoDiy = (item) => {
-    let itemDetailTemplate = require('../template/item_recipe.json');
+    let itemDetailTemplate = JSON.parse(JSON.stringify(require('../template/item_recipe.json')));
     itemDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
     itemDetailTemplate.styles.body.backgroundColor = style.color.base.white;
 
@@ -51,7 +51,7 @@ const infoDiy = (item) => {
 }
 
 const infoArt = (item) => {
-    let itemDetailTemplate = require('../template/item_art.json');
+    let itemDetailTemplate = JSON.parse(JSON.stringify(require('../template/item_art.json')));
     itemDetailTemplate.header.contents[0].contents[0].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/art/${item.filename}.jpg`;
     itemDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${item.realArtworkTitle_tw}&fileName=https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/art/${item.filename}.jpg`;
     itemDetailTemplate.header.contents[0].contents[1].contents[0].text = item.name_c;
@@ -75,7 +75,7 @@ const infoArt = (item) => {
 }
 
 const infoVillager = (item) => {
-    let carouselTemplate = require('../template/villager_detail.json');
+    let carouselTemplate = JSON.parse(JSON.stringify(require('../template/villager_detail.json')));
     let itemDetailTemplate = carouselTemplate.contents[0];
 
     itemDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;

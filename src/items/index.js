@@ -33,8 +33,45 @@ const queryTypeMap = {
     '表情': ['obtainedFrom']
 }
 
+function removeMeta(obj) {
+  for(prop in obj) {
+    if (prop === 'action')
+      delete obj[prop];
+    else if (typeof obj[prop] === 'object')
+      removeMeta(obj[prop]);
+  }
+}
+
 const getAllNames = (type) => {
     return query.getAllNames(dataMap[type])
+}
+
+function flex(name) {
+    let flexJson = null;
+    
+    let typeList = [
+        'furnitures',
+        'recipes',
+        'arts',
+        'villagers',
+        'clothes',
+        'homeStyle',
+        'equippables'
+    ];
+    
+    typeList.forEach((type) => {
+        const item = query.findOne(dataMap[type], name);
+        if (typeof item !== 'undefined' && flexJson === null) {
+            flexJson = template.info[type](item)
+        }
+    })
+
+    removeMeta(flexJson)
+    return {
+        "type": "flex",
+        "altText": name,
+        "contents": flexJson
+    }
 }
 
 function info(type) {
@@ -121,3 +158,4 @@ module.exports.info = info;
 module.exports.filter = filter;
 module.exports.image = image;
 module.exports.getAllNames = getAllNames;
+module.exports.flex = flex;

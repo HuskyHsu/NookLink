@@ -58,6 +58,34 @@
                         ]
                     }
                 ]
+            },
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "SHARE",
+                        "color": "#FFFFFF",
+                        "align": "center",
+                        "size": "xxs",
+                        "action": {
+                            "type": "uri",
+                            "label": "action",
+                            "uri": "https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=舒適的名畫",
+                            "altUri": {
+                                "desktop": "https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=舒適的名畫"
+                            }
+                        }
+                    }
+                ],
+                "width": "50px",
+                "position": "absolute",
+                "backgroundColor": "#AE8F0099",
+                "cornerRadius": "10px",
+                "paddingAll": "5px",
+                "offsetTop": "5px",
+                "offsetEnd": "5px"
             }
         ]
     },

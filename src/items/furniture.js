@@ -82,13 +82,14 @@ const variations = (variation, filename, type, customize, title, name) => {
 }
 
 const info = (furniture) => {
-    let furnitureDetailTemplate = require('../template/item_furniture.json');
+    let furnitureDetailTemplate = JSON.parse(JSON.stringify(require('../template/item_furniture.json')));
     furnitureDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
     furnitureDetailTemplate.styles.body.backgroundColor = style.color.base.white;
 
     furnitureDetailTemplate.header.contents[0].contents[0].url = `https://acnhcdn.com/latest/FtrIcon/${furniture.filename}.png`;
     furnitureDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${furniture.name_c}&fileName=${furniture.filename}`;
-    
+    furnitureDetailTemplate.header.contents[1].contents[0].action.uri = `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${furniture.name_c}`;
+
     furnitureDetailTemplate.header.contents[0].contents[1].contents[0].text = furniture.name_c;
     furnitureDetailTemplate.header.contents[0].contents[1].contents[1].text = furniture.name_j;
     furnitureDetailTemplate.header.contents[0].contents[1].contents[2].text = furniture.name_e;
