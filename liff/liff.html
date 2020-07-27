@@ -34,10 +34,10 @@
           fetch(`/flex-message?${urlParams.toString()}`)
             .then(reqResponse => reqResponse.json())
             .then(jsonResponse => {
-              liff.shareTargetPicker([jsonResponse]);
-            })
-            .then(() => {
-              liff.closeWindow();
+              const result = awaitliff.shareTargetPicker([jsonResponse]);
+              if (result) {
+                alert(`[${result.status}] 轉傳成功!`)
+              }
             })
             .catch(err => {
               console.log(`error: ${JSON.stringify(err)}`);
