@@ -34,7 +34,9 @@
           fetch(`/flex-message?${urlParams.toString()}`)
             .then(reqResponse => reqResponse.json())
             .then(jsonResponse => {
-              const result = await liff.shareTargetPicker([jsonResponse]);
+              liff.shareTargetPicker([jsonResponse]);
+            })
+            .then((result) => {
               if (result) {
                 alert(`[${result.status}] 轉傳成功!`)
               }
