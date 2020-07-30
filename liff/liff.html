@@ -34,7 +34,7 @@
           fetch(`/flex-message?${urlParams.toString()}`)
             .then(reqResponse => reqResponse.json())
             .then(jsonResponse => {
-              liff.shareTargetPicker([jsonResponse]);
+              return liff.shareTargetPicker([jsonResponse]);
             })
             .then((result) => {
               if (result) {

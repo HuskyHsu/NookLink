@@ -79,7 +79,44 @@ function info(type) {
         const itemName = context.event.text.split(/[\s]/).splice(1).join(' ');
         const item = query.findOne(dataMap[type], itemName);
         ga.gaEventLabel(context.session.user.id, 'info', type, itemName);
-        await context.sendFlex(`${itemName} 詳細資料`, template.info[type](item));
+
+        const shareButton = {
+            "type": "box",
+            "layout": "horizontal",
+            "contents": [
+                {
+                    "type": "text",
+                    "text": "SHARE",
+                    "color": "#FFFFFF",
+                    "align": "center",
+                    "size": "xxs",
+                    "action": {
+                        "type": "uri",
+                        "label": "action",
+                        "uri": `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${item.name_c}`,
+                        "altUri": {
+                            "desktop": `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${item.name_c}`
+                        }
+                    }
+                }
+            ],
+            "width": "50px",
+            "position": "absolute",
+            "backgroundColor": "#AE8F0099",
+            "cornerRadius": "10px",
+            "paddingAll": "5px",
+            "offsetTop": "5px",
+            "offsetEnd": "5px"
+        }
+
+        flexJson = template.info[type](item)
+        if (flexJson.type === 'bubble') {
+            flexJson.header.contents.push(shareButton);
+        } else if (flexJson.type === 'carousel') {
+            flexJson.contents[0].header.contents.push(shareButton);
+        }
+
+        await context.sendFlex(`${itemName} 詳細資料`, flexJson);
     }
 }
 

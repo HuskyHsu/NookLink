@@ -88,7 +88,7 @@ const info = (furniture) => {
 
     furnitureDetailTemplate.header.contents[0].contents[0].url = `https://acnhcdn.com/latest/FtrIcon/${furniture.filename}.png`;
     furnitureDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${furniture.name_c}&fileName=${furniture.filename}`;
-    furnitureDetailTemplate.header.contents[1].contents[0].action.uri = `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${furniture.name_c}`;
+    // furnitureDetailTemplate.header.contents[1].contents[0].action.uri = `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${furniture.name_c}`;
 
     furnitureDetailTemplate.header.contents[0].contents[1].contents[0].text = furniture.name_c;
     furnitureDetailTemplate.header.contents[0].contents[1].contents[1].text = furniture.name_j;
