@@ -6,7 +6,8 @@
     "lint": "eslint . ",
     "test": "jest",
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "ngrok": "npx ngrok http 5000 -region ap"
   },
   "dependencies": {
     "axios": "^0.19.2",
