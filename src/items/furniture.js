@@ -2,6 +2,12 @@ const furnitures = require('../data/furniture.json');
 const query = require('../lib/query');
 const style = require('../lib/style');
 
+furnitures.forEach((furniture) => {
+    if  (furniture.themes.length === 0) {
+        furniture.themes.push('無')
+    }
+})
+
 const getAllNames = () => {
     return query.getAllNames(furnitures)
 }
@@ -104,7 +110,7 @@ const info = (furniture) => {
     furnitureDetailTemplate.body.contents[0].contents[3].contents[1].action = tagAction
     furnitureDetailTemplate.body.contents[0].contents[3].contents[1].color = style.color.base.blue;
 
-    let themesSpan =  furniture.themes.map((theme) => {
+    let themesSpan = furniture.themes.map((theme) => {
         return {
             type: "text",
             text: theme,
