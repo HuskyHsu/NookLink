@@ -1,4 +1,4 @@
-const furnitures = require('../data/furniture.json');
+const furnitures = require('../data/furnitures.json');
 const query = require('../lib/query');
 const style = require('../lib/style');
 

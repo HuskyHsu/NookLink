@@ -1,4 +1,4 @@
-const furnitures = require('../data/furniture.json');
+const furnitures = require('../data/furnitures.json');
 const recipes = require('../data/recipes.json');
 const arts = require('../data/art.json');
 const villagers = require('../data/villagers.json');
