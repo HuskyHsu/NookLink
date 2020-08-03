@@ -77,6 +77,7 @@ function flex(name) {
 function info(type) {
     return async function(context) {
         const itemName = context.event.text.split(/[\s]/).splice(1).join(' ');
+        console.log(itemName)
         const item = query.findOne(dataMap[type], itemName);
         ga.gaEventLabel(context.session.user.id, 'info', type, itemName);
 
@@ -93,9 +94,9 @@ function info(type) {
                     "action": {
                         "type": "uri",
                         "label": "action",
-                        "uri": `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${item.name_c}`,
+                        "uri": `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${encodeURI(item.name_c)}`,
                         "altUri": {
-                            "desktop": `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${item.name_c}`
+                            "desktop": `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${encodeURI(item.name_c)}`
                         }
                     }
                 }
