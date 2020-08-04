@@ -30,7 +30,8 @@ const queryTypeMap = {
     '種族': ['species'],
     '個性': ['personality'],
     '材料': ['diyInfoMaterials', 'materials'],
-    '表情': ['obtainedFrom']
+    '表情': ['obtainedFrom'],
+    '版本': ['version']
 }
 
 function removeMeta(obj) {

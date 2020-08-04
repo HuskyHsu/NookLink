@@ -57,7 +57,7 @@ module.exports = async function App() {
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('homeStyle')})$`, 'i'), items.info('homeStyle')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('equippables')})$`, 'i'), items.info('equippables')),
 
-	text(new RegExp(`^(查詢|tag|主題|取得方式|材料|DIY|種族|個性|表情)[-\\s].*$`, 'i'), items.filter),
+	text(new RegExp(`^(查詢|tag|主題|取得方式|材料|DIY|種族|個性|表情|版本)[-\\s].*$`, 'i'), items.filter),
 
 	text('指令集', command),
 	text('意見回報', problemReport),
