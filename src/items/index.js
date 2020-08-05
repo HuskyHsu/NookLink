@@ -43,6 +43,43 @@ function removeMeta(obj) {
   }
 }
 
+function addShareButton(name, flexJson) {
+    const shareButton =  {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+            {
+                "type": "text",
+                "text": "SHARE",
+                "color": "#FFFFFF",
+                "align": "center",
+                "size": "xxs",
+                "action": {
+                    "type": "uri",
+                    "label": "action",
+                    "uri": `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${encodeURI(name)}`,
+                    "altUri": {
+                        "desktop": `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${encodeURI(name)}`
+                    }
+                }
+            }
+        ],
+        "width": "50px",
+        "position": "absolute",
+        "backgroundColor": "#AE8F0099",
+        "cornerRadius": "10px",
+        "paddingAll": "5px",
+        "offsetTop": "5px",
+        "offsetEnd": "5px"
+    }
+
+    if (flexJson.type === 'bubble') {
+        flexJson.header.contents.push(shareButton);
+    } else if (flexJson.type === 'carousel') {
+        flexJson.contents[0].header.contents.push(shareButton);
+    }
+}
+
 const getAllNames = (type) => {
     return query.getAllNames(dataMap[type])
 }
@@ -78,46 +115,11 @@ function flex(name) {
 function info(type) {
     return async function(context) {
         const itemName = context.event.text.split(/[\s]/).splice(1).join(' ');
-        console.log(itemName)
         const item = query.findOne(dataMap[type], itemName);
+        const flexJson = template.info[type](item);
+        addShareButton(item.name_c, flexJson);
+
         ga.gaEventLabel(context.session.user.id, 'info', type, itemName);
-
-        const shareButton = {
-            "type": "box",
-            "layout": "horizontal",
-            "contents": [
-                {
-                    "type": "text",
-                    "text": "SHARE",
-                    "color": "#FFFFFF",
-                    "align": "center",
-                    "size": "xxs",
-                    "action": {
-                        "type": "uri",
-                        "label": "action",
-                        "uri": `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${encodeURI(item.name_c)}`,
-                        "altUri": {
-                            "desktop": `https://liff.line.me/1654527933-XoaQMeB5?type=查詢&name=${encodeURI(item.name_c)}`
-                        }
-                    }
-                }
-            ],
-            "width": "50px",
-            "position": "absolute",
-            "backgroundColor": "#AE8F0099",
-            "cornerRadius": "10px",
-            "paddingAll": "5px",
-            "offsetTop": "5px",
-            "offsetEnd": "5px"
-        }
-
-        flexJson = template.info[type](item)
-        if (flexJson.type === 'bubble') {
-            flexJson.header.contents.push(shareButton);
-        } else if (flexJson.type === 'carousel') {
-            flexJson.contents[0].header.contents.push(shareButton);
-        }
-
         await context.sendFlex(`${itemName} 詳細資料`, flexJson);
     }
 }
@@ -154,7 +156,9 @@ async function page(context, type, target) {
 
     ga.gaEventLabel(context.session.user.id, 'query', type, target);
 	if (itemList.length === 1) {
-        await context.sendFlex(`${itemList[0].name_c} 詳細資料`, template.info[itemList[0].type](itemList[0]));
+        const flexJson = template.info[itemList[0].type](itemList[0]);
+        addShareButton(itemList[0].name_c, flexJson);
+        await context.sendFlex(`${itemList[0].name_c} 詳細資料`, flexJson);
 	} else if (itemList.length <= 4*4*4) {
 		await context.sendFlex('符合清單', template.list(itemList, 4, 4));
 	} else if (itemList.length <= 4*4*5) {
