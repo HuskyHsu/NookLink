@@ -285,6 +285,68 @@ const infoEquippables = (item) => {
     return bubble
 }
 
+const infoTools = (item) => {
+    let itemDetailTemplate = JSON.stringify(require('../template/item_tools.json'));
+    let compiled = _.template(itemDetailTemplate);
+    let carousel = compiled({
+        backgroundColorHeader: style.color.backgroundColor.header,
+        backgroundColorBody: style.color.base.white,
+        filenameUrl: `https://acnhcdn.com/latest/FtrIcon/${item.filename}.png`,
+        imagePostback: `type=fig&name=${item.name_c}&fileName=https://acnhcdn.com/latest/FtrIcon/${item.filename}.png`,
+        name_c: item.name_c,
+        name_j: item.name_j || '-',
+        name_e: item.name_e || '-',
+        buy: item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '非賣品',
+        sell: item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
+        uses: item.uses === null ? '無限制' : item.uses.toString(),
+        obtainedFrom: item.obtainedFrom.join(', '),
+        sourceNotes: item.sourceNotes === null ? ' ' : item.sourceNotes,
+        blue: style.color.base.blue
+    });
+
+    carousel = JSON.parse(carousel);
+
+    if (Object.keys(item.variations.bodys).length > 0) {
+        const width = 3;
+        let itemBoxs = Array.from(Object.keys(item.variations.bodys)).map((i, index) => {
+            return {
+                type: "image",
+                url: `https://acnhcdn.com/latest/FtrIcon/${item.filename.slice(0, -3)}${ index }_0.png`,
+                size: "md"
+            }
+        });
+
+        let itemBoxs_h_v = [];
+        while (itemBoxs.length) {
+            let itemBoxs_h = {
+                type: "box",
+                layout: "horizontal"
+            }
+            itemBoxs_h.contents = itemBoxs.splice(0, width);
+    
+            if (itemBoxs_h.contents.length < width) {
+                const needCount = width - itemBoxs_h.contents.length;
+                for (let i = 0; i < needCount; i++) {
+                    itemBoxs_h.contents.push(
+                        {
+                            type: "text",
+                            text: ' ',
+                        }
+                    )
+                }
+            }
+    
+            itemBoxs_h_v.push(itemBoxs_h);
+        }
+        let matchTemplate = _.cloneDeep(itemListTemplate);
+        matchTemplate.body.contents = itemBoxs_h_v;
+        matchTemplate.header.contents[0].text = '全部樣式';
+        carousel.contents.push(matchTemplate);
+    }
+    
+    return carousel
+}
+
 const commands = () => {
     let commandTemplate = JSON.parse(JSON.stringify(require('../template/command.json')));
 	[
@@ -544,7 +606,8 @@ module.exports.info = {
     'villagers': infoVillager,
     'clothes': infoClothing,
     'homeStyle': infoHomeStyle,
-    'equippables': infoEquippables
+    'equippables': infoEquippables,
+    'tools': infoTools,
 };
 module.exports.commands = commands;
 module.exports.list = list;

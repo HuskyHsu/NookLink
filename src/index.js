@@ -50,6 +50,7 @@ module.exports = async function App() {
 	text(new RegExp(`^海底生物[-\\s](${seaCreatures.getAllNames()})$`, 'i'), seaCreatures.detail),
 
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('furnitures')})$`, 'i'), items.info('furnitures')),
+	text(new RegExp(`^查詢[-\\s](${items.getAllNames('tools')})$`, 'i'), items.info('tools')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('recipes')})$`, 'i'), items.info('recipes')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('arts')})$`, 'i'), items.info('arts')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('villagers')})$`, 'i'), items.info('villagers')),

@@ -6,6 +6,7 @@ const reactions = require('../data/reactions.json');
 const clothes = require('../data/clothes.json');
 const homeStyle = require('../data/homeStyle.json');
 const equippables = require('../data/equippables.json');
+const tools = require('../data/tools.json');
 
 const query = require('../lib/query');
 const template = require('../lib/template');
@@ -18,7 +19,8 @@ const dataMap = {
     'villagers': villagers,
     'clothes': clothes,
     'homeStyle': homeStyle,
-    'equippables': equippables
+    'equippables': equippables,
+    'tools': tools,
 }
 
 const queryTypeMap = {
@@ -129,7 +131,7 @@ async function page(context, type, target) {
     let attrs = queryTypeMap[type];
     let itemList = [];
 
-    let itemType = [furnitures, recipes, equippables, clothes, homeStyle, arts, villagers, reactions];
+    let itemType = [furnitures, recipes, equippables, clothes, homeStyle, arts, villagers, tools, reactions];
     itemType.forEach((set) => {
         itemList = [...itemList, ...query.filter(set, attrs, target)]
     })
