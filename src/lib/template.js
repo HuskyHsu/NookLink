@@ -10,7 +10,7 @@ const separator = {
 }
 
 const infoDiy = (item) => {
-    let itemDetailTemplate = JSON.parse(JSON.stringify(require('../template/item_recipe.json')));
+    let itemDetailTemplate = _.cloneDeep(require('../template/item_recipe.json'));
     itemDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
     itemDetailTemplate.styles.body.backgroundColor = style.color.base.white;
 
@@ -51,7 +51,7 @@ const infoDiy = (item) => {
 }
 
 const infoArt = (item) => {
-    let itemDetailTemplate = JSON.parse(JSON.stringify(require('../template/item_art.json')));
+    let itemDetailTemplate = _.cloneDeep(require('../template/item_art.json'));
     itemDetailTemplate.header.contents[0].contents[0].url = `https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/art/${item.filename}.jpg`;
     itemDetailTemplate.header.contents[0].contents[0].action.data = `type=fig&name=${item.realArtworkTitle_tw}&fileName=https://raw.githubusercontent.com/HuskyHsu/NookAssets/master/img/art/${item.filename}.jpg`;
     itemDetailTemplate.header.contents[0].contents[1].contents[0].text = item.name_c;
@@ -75,7 +75,7 @@ const infoArt = (item) => {
 }
 
 const infoVillager = (item) => {
-    let carouselTemplate = JSON.parse(JSON.stringify(require('../template/villager_detail.json')));
+    let carouselTemplate = _.cloneDeep(require('../template/villager_detail.json'));
     let itemDetailTemplate = carouselTemplate.contents[0];
 
     itemDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
@@ -219,7 +219,7 @@ const infoClothing = (item) => {
     
             itemBoxs_h_v.push(itemBoxs_h);
         }
-        let matchTemplate = JSON.parse(JSON.stringify(itemListTemplate));
+        let matchTemplate = _.cloneDeep(itemListTemplate);
         matchTemplate.body.contents = itemBoxs_h_v;
         matchTemplate.header.contents[0].text = '全部樣式';
         carousel.contents.push(matchTemplate);
@@ -301,6 +301,7 @@ const infoTools = (item) => {
         uses: item.uses === null ? '無限制' : item.uses.toString(),
         obtainedFrom: item.obtainedFrom.join(', '),
         sourceNotes: item.sourceNotes === null ? ' ' : item.sourceNotes,
+        diyInfo: item.DIY ? (item.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ')) : '--',
         blue: style.color.base.blue
     });
 
