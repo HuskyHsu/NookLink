@@ -1,3 +1,5 @@
+let _ = require('lodash');
+
 const furnitures = require('../data/furnitures.json');
 const query = require('../lib/query');
 const style = require('../lib/style');
@@ -88,7 +90,7 @@ const variations = (variation, filename, type, customize, title, name) => {
 }
 
 const info = (furniture) => {
-    let furnitureDetailTemplate = JSON.parse(JSON.stringify(require('../template/item_furniture.json')));
+    let furnitureDetailTemplate = _.cloneDeep(require('../template/item_furniture.json'));
     furnitureDetailTemplate.styles.header.backgroundColor = style.color.backgroundColor.header;
     furnitureDetailTemplate.styles.body.backgroundColor = style.color.base.white;
 
@@ -168,11 +170,11 @@ const info = (furniture) => {
 
     if (bodys) {
         let furnitureVariationsBodyTemplate = variations(furniture.variations.bodys, furniture.filename, '款式', furniture.bodyCustomize, furniture.bodyTitle, furniture.name_c);
-        carousel.contents.push(JSON.parse(JSON.stringify(furnitureVariationsBodyTemplate)));
+        carousel.contents.push(_.cloneDeep(furnitureVariationsBodyTemplate));
     }
     if (pattrens) {
         let furnitureVariationsPattrensTemplate = variations(furniture.variations.pattrens, furniture.filename, '樣式', furniture.patternCustomize, furniture.patternTitle, furniture.name_c);
-        carousel.contents.push(JSON.parse(JSON.stringify(furnitureVariationsPattrensTemplate)));
+        carousel.contents.push(_.cloneDeep(furnitureVariationsPattrensTemplate));
     }
     
     if (furniture.obtainedFrom === 'DIY') {
