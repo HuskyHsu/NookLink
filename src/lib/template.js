@@ -166,6 +166,14 @@ const infoVillager = (item) => {
 const infoClothing = (item) => {
     let itemDetailTemplate = JSON.stringify(require('../template/item_clothing.json'));
     let compiled = _.template(itemDetailTemplate);
+    let obtainedFrom = item.obtainedFrom;
+    let obtainedFromAction = `取得方式 ${item.obtainedFrom}`
+
+    if (item.obtainedFrom === 'DIY') {
+        obtainedFrom = `DIY ${item.diyInfoObtainedFrom.join(', ')}`
+        obtainedFromAction = `取得方式 ${item.diyInfoObtainedFrom.join(', ')}`
+    }
+
     let carousel = compiled({
         backgroundColorHeader: style.color.backgroundColor.header,
         backgroundColorBody: style.color.base.white,
@@ -177,17 +185,18 @@ const infoClothing = (item) => {
         category: item.category,
         buy: item.buy ? item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '非賣品',
         sell: item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-        obtainedFrom: item.obtainedFrom,
+        obtainedFrom: obtainedFrom,
+        obtainedFromAction: obtainedFromAction,
         seasonalAvailability: item.seasonalAvailability,
         styles: item.styles,
         themes: item.themes.join('、'),
         villagerEquippable: item.villagerEquippable ? '會穿' : '不穿',
-        diyInfo: item.DIY ? (item.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ')) : '--',
+        diyInfo: item.DIY ? (item.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ') + (item.diyInfoSourceNotes !== null ? `\\n(${item.diyInfoSourceNotes.replace(/"/g, "'")})` : '')) : '--',
         blue: style.color.base.blue
     });
 
     carousel = JSON.parse(carousel);
-
+    
     if (item.variations > 1) {
         const width = 3;
         let itemBoxs = Array.from(Array(item.variations).keys()).map((i, index) => {
@@ -276,7 +285,7 @@ const infoEquippables = (item) => {
         name_j: item.name_j || '-',
         name_e: item.name_e || '-',
         category: item.category,
-        buy: item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '非賣品',
+        buy: item.buy ? item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '非賣品',
         sell: item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
         obtainedFrom: item.obtainedFrom,
         blue: style.color.base.blue
@@ -300,9 +309,9 @@ const infoTools = (item) => {
         buy: item.buy ? item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '非賣品',
         sell: item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
         uses: item.uses === null ? '無限制' : item.uses.toString(),
-        obtainedFrom: item.obtainedFrom.join(', '),
+        obtainedFrom: item.obtainedFrom.join(', ') === 'DIY' ? item.diyInfoObtainedFrom.join(', ') : item.obtainedFrom.join(', '),
         sourceNotes: item.sourceNotes === null ? ' ' : item.sourceNotes,
-        diyInfo: item.DIY ? (item.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ')) : '--',
+        diyInfo: item.DIY ? (item.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ') + (item.diyInfoSourceNotes !== null ? `\\n(${item.diyInfoSourceNotes.replace(/"/g, "'")})` : '')) : '--',
         blue: style.color.base.blue
     });
 
