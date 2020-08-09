@@ -175,19 +175,20 @@ const infoClothing = (item) => {
         name_j: item.name_j || '-',
         name_e: item.name_e || '-',
         category: item.category,
-        buy: item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '非賣品',
+        buy: item.buy ? item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '非賣品',
         sell: item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
         obtainedFrom: item.obtainedFrom,
         seasonalAvailability: item.seasonalAvailability,
         styles: item.styles,
         themes: item.themes.join('、'),
         villagerEquippable: item.villagerEquippable ? '會穿' : '不穿',
+        diyInfo: item.DIY ? (item.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ')) : '--',
         blue: style.color.base.blue
     });
 
     carousel = JSON.parse(carousel);
 
-    if (item.variations > 0) {
+    if (item.variations > 1) {
         const width = 3;
         let itemBoxs = Array.from(Array(item.variations).keys()).map((i, index) => {
             return {

@@ -249,6 +249,35 @@
                                 ]
                             }
                         ]
+                    },
+                    {
+                        "type": "separator"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "horizontal",
+                        "contents": [
+                            {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                    {
+                                        "type": "text",
+                                        "text": "DIY資訊",
+                                        "align": "center",
+                                        "size": "sm",
+                                        "wrap": true
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "${diyInfo}",
+                                        "align": "center",
+                                        "size": "sm",
+                                        "wrap": true
+                                    }
+                                ]
+                            }
+                        ]
                     }
                 ]
             }
