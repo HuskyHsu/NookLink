@@ -153,7 +153,7 @@
                                         "wrap": true,
                                         "action": {
                                             "type": "message",
-                                            "text": "取得方式 ${obtainedFrom}"
+                                            "text": "${obtainedFromAction}"
                                         },
                                         "color": "${blue}"
                                     }

@@ -169,9 +169,9 @@ const infoClothing = (item) => {
     let obtainedFrom = item.obtainedFrom;
     let obtainedFromAction = `取得方式 ${item.obtainedFrom}`
 
-    if (item.obtainedFrom === 'DIY') {
-        obtainedFrom = `DIY ${item.diyInfoObtainedFrom.join(', ')}`
-        obtainedFromAction = `取得方式 ${item.diyInfoObtainedFrom.join(', ')}`
+    if (item.DIY) {
+        obtainedFrom = `DIY ${item.diyInfoObtainedFrom.join(', ')}`;
+        obtainedFromAction = obtainedFrom;
     }
 
     let carousel = compiled({
@@ -298,6 +298,15 @@ const infoEquippables = (item) => {
 const infoTools = (item) => {
     let itemDetailTemplate = JSON.stringify(require('../template/item_tools.json'));
     let compiled = _.template(itemDetailTemplate);
+
+    let obtainedFrom = item.obtainedFrom;
+    let obtainedFromAction = `取得方式 ${item.obtainedFrom}`
+
+    if (item.DIY) {
+        obtainedFrom = `DIY ${item.diyInfoObtainedFrom.join(', ')}`
+        obtainedFromAction = obtainedFrom;
+    }
+
     let carousel = compiled({
         backgroundColorHeader: style.color.backgroundColor.header,
         backgroundColorBody: style.color.base.white,
@@ -309,7 +318,8 @@ const infoTools = (item) => {
         buy: item.buy ? item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '非賣品',
         sell: item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
         uses: item.uses === null ? '無限制' : item.uses.toString(),
-        obtainedFrom: item.obtainedFrom.join(', ') === 'DIY' ? item.diyInfoObtainedFrom.join(', ') : item.obtainedFrom.join(', '),
+        obtainedFrom: obtainedFrom,
+        obtainedFromAction: obtainedFromAction,
         sourceNotes: item.sourceNotes === null ? ' ' : item.sourceNotes,
         diyInfo: item.DIY ? (item.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ') + (item.diyInfoSourceNotes !== null ? `\\n(${item.diyInfoSourceNotes.replace(/"/g, "'")})` : '')) : '--',
         blue: style.color.base.blue
