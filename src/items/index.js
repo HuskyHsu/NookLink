@@ -132,7 +132,7 @@ async function page(context, type, target) {
     let attrs = queryTypeMap[type];
     let itemList = [];
 
-    let itemType = [furnitures, recipes, equippables, clothes, homeStyle, arts, villagers, tools, reactions];
+    let itemType = [furnitures, clothes, homeStyle, tools, arts, villagers, equippables, recipes, reactions];
     itemType.forEach((set) => {
         itemList = [...itemList, ...query.filter(set, attrs, target)]
     })
