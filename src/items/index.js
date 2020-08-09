@@ -26,6 +26,7 @@ const dataMap = {
 const queryTypeMap = {
     'tag': ['tag'],
     '主題': ['themes'],
+    '系列': ['series'],
     '取得方式': ['obtainedFrom'],
     '查詢': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes', 'realArtworkTitle', 'realArtworkTitle_tw'],
     'diy': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes'],
@@ -173,9 +174,12 @@ async function page(context, type, target) {
 }
 
 async function filter(context) {
-    const [type, name] = [context.event.text.split(/[-\s]/).splice(0, 1)[0], context.event.text.split(/[-\s]/).splice(1).join(' ')];
-    if (name === 'Nook商店' || name === '裁縫店') {
+    let [type, name] = [context.event.text.split(/[-\s]/).splice(0, 1)[0], context.event.text.split(/[-\s]/).splice(1).join(' ')];
+    if (['Nook商店', '裁縫店', '無'].indexOf(name) > -1) {
         return await context.sendText('符合物品數量龐大，不開放查詢清單 (シ_ _)シ');
+    } else if (type === '上次更新新增') {
+        type = '版本'
+        name = '1.4.0'
     }
 
     page(context, type.toLowerCase(), name.toLowerCase());

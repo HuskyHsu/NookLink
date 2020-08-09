@@ -16,6 +16,11 @@ async function command(context) {
 	await context.sendFlex('指令集', commands());
 }
 
+function update(context) {
+	ga.gaEventLabel(context.session.user.id, 'update', '-', null);
+	items.filter(context);
+}
+
 async function problemReport(context) {
 	ga.gaEventLabel(context.session.user.id, 'problemReport', '-', null);
 	await context.sendText('https://forms.gle/FuVb42d1XVeLJMHbA');
@@ -60,8 +65,9 @@ module.exports = async function App() {
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('recipes')})$`, 'i'), items.info('recipes')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('equippables')})$`, 'i'), items.info('equippables')),
 
-	text(new RegExp(`^(查詢|tag|主題|取得方式|材料|DIY|種族|個性|表情|版本)[-\\s].*$`, 'i'), items.filter),
+	text(new RegExp(`^(查詢|tag|主題|取得方式|材料|DIY|種族|個性|表情|系列|版本)[-\\s].*$`, 'i'), items.filter),
 
+	text('上次更新新增', update),
 	text('指令集', command),
 	text('意見回報', problemReport),
 

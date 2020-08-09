@@ -109,8 +109,13 @@ const info = (furniture) => {
 
     furnitureDetailTemplate.body.contents[0].contents[3].contents[1].text = furniture.tag;
     let tagAction = { 'type': 'message', 'label': 'Yes', 'text': `tag ${furniture.tag}` }
-    furnitureDetailTemplate.body.contents[0].contents[3].contents[1].action = tagAction
+    furnitureDetailTemplate.body.contents[0].contents[3].contents[1].action = tagAction;
     furnitureDetailTemplate.body.contents[0].contents[3].contents[1].color = style.color.base.blue;
+
+    furnitureDetailTemplate.body.contents[2].contents[2].contents[1].text = furniture.series;
+    let seriesAction = { 'type': 'message', 'label': 'Yes', 'text': `系列 ${furniture.series}` }
+    furnitureDetailTemplate.body.contents[2].contents[2].contents[1].action = seriesAction;
+    furnitureDetailTemplate.body.contents[2].contents[2].contents[1].color = style.color.base.blue;
 
     let themesSpan = furniture.themes.map((theme) => {
         return {

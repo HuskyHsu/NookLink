@@ -241,10 +241,10 @@ const infoHomeStyle = (item) => {
         name_j: item.name_j || '-',
         name_e: item.name_e || '-',
         category: item.category,
-        buy: item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') || '非賣品',
+        buy: item.buy ? item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '非賣品',
         sell: item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
         obtainedFrom: item.obtainedFrom,
-        tag: item.tag,
+        series: item.series,
         blue: style.color.base.blue
     });
 

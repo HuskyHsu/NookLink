@@ -191,6 +191,31 @@
                                 "contents": []
                             }
                         ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "系列",
+                                "align": "center",
+                                "size": "sm",
+                                "wrap": true
+                            },
+                            {
+                                "type": "text",
+                                "text": "${series}",
+                                "align": "center",
+                                "size": "md",
+                                "wrap": true,
+                                "action": {
+                                    "type": "message",
+                                    "text": "系列 ${series}"
+                                },
+                                "color": "${blue}"
+                            }
+                        ]
                     }
                 ]
             },

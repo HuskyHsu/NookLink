@@ -162,20 +162,20 @@
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "Tag",
+                                "text": "系列",
                                 "align": "center",
                                 "size": "lg",
                                 "wrap": true
                             },
                             {
                                 "type": "text",
-                                "text": "${tag}",
+                                "text": "${series}",
                                 "align": "center",
                                 "size": "sm",
                                 "wrap": true,
                                 "action": {
                                     "type": "message",
-                                    "text": "tag ${tag}"
+                                    "text": "系列 ${series}"
                                 },
                                 "color": "${blue}"
                             }
