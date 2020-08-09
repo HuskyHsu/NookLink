@@ -5,7 +5,6 @@ const villagers = require('../data/villagers.json');
 const reactions = require('../data/reactions.json');
 const clothes = require('../data/clothes.json');
 const homeStyle = require('../data/homeStyle.json');
-const equippables = require('../data/equippables.json');
 const tools = require('../data/tools.json');
 
 const query = require('../lib/query');
@@ -19,7 +18,6 @@ const dataMap = {
     'villagers': villagers,
     'clothes': clothes,
     'homeStyle': homeStyle,
-    'equippables': equippables,
     'tools': tools,
 }
 
@@ -97,7 +95,6 @@ function flex(name) {
         'villagers',
         'clothes',
         'homeStyle',
-        'equippables'
     ];
     
     typeList.forEach((type) => {
@@ -132,7 +129,7 @@ async function page(context, type, target) {
     let attrs = queryTypeMap[type];
     let itemList = [];
 
-    let itemType = [furnitures, clothes, homeStyle, tools, arts, villagers, equippables, recipes, reactions];
+    let itemType = [furnitures, clothes, homeStyle, tools, arts, villagers, recipes, reactions];
     itemType.forEach((set) => {
         itemList = [...itemList, ...query.filter(set, attrs, target)]
     })

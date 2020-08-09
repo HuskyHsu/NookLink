@@ -284,28 +284,6 @@ const infoHomeStyle = (item) => {
     return bubble
 }
 
-const infoEquippables = (item) => {
-    let itemDetailTemplate = JSON.stringify(require('../template/item_equippables.json'));
-    let compiled = _.template(itemDetailTemplate);
-    let bubble = compiled({
-        backgroundColorHeader: style.color.backgroundColor.header,
-        backgroundColorBody: style.color.base.white,
-        filenameUrl: `https://acnhcdn.com/latest/FtrIcon/${item.filename}.png`,
-        imagePostback: `type=fig&name=${item.name_c}&fileName=${item.filename}`,
-        name_c: item.name_c,
-        name_j: item.name_j || '-',
-        name_e: item.name_e || '-',
-        category: item.category,
-        buy: item.buy ? item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '非賣品',
-        sell: item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-        obtainedFrom: item.obtainedFrom,
-        blue: style.color.base.blue
-    });
-
-    bubble = JSON.parse(bubble);
-    return bubble
-}
-
 const infoTools = (item) => {
     let itemDetailTemplate = JSON.stringify(require('../template/item_tools.json'));
     let compiled = _.template(itemDetailTemplate);
@@ -638,7 +616,6 @@ module.exports.info = {
     'villagers': infoVillager,
     'clothes': infoClothing,
     'homeStyle': infoHomeStyle,
-    'equippables': infoEquippables,
     'tools': infoTools,
 };
 module.exports.commands = commands;

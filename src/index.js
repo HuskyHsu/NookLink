@@ -57,13 +57,12 @@ module.exports = async function App() {
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('furnitures')})$`, 'i'), items.info('furnitures')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('clothes')})$`, 'i'), items.info('clothes')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('tools')})$`, 'i'), items.info('tools')),
-	
+
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('arts')})$`, 'i'), items.info('arts')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('villagers')})$`, 'i'), items.info('villagers')),
 
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('homeStyle')})$`, 'i'), items.info('homeStyle')),
 	text(new RegExp(`^查詢[-\\s](${items.getAllNames('recipes')})$`, 'i'), items.info('recipes')),
-	text(new RegExp(`^查詢[-\\s](${items.getAllNames('equippables')})$`, 'i'), items.info('equippables')),
 
 	text(new RegExp(`^(查詢|tag|主題|取得方式|材料|DIY|種族|個性|表情|系列|版本)[-\\s].*$`, 'i'), items.filter),
 
