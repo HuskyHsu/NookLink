@@ -28,8 +28,8 @@ const queryTypeMap = {
     '主題': ['themes'],
     '系列': ['series'],
     '取得方式': ['obtainedFrom'],
-    '查詢': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes', 'realArtworkTitle', 'realArtworkTitle_tw'],
-    'diy': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'sourceNotes'],
+    '查詢': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'diyInfoObtainedFrom', 'sourceNotes', 'realArtworkTitle', 'realArtworkTitle_tw'],
+    'diy': ['name_c', 'name_e', 'name_j', 'obtainedFrom', 'diyInfoObtainedFrom', 'sourceNotes'],
     '種族': ['species'],
     '個性': ['personality'],
     '材料': ['diyInfoMaterials', 'materials'],
@@ -152,7 +152,7 @@ async function page(context, type, target) {
             return item.type === 'reactions'
         })
     }
-	
+
 	if (itemList.length == 0) {
         return null
     }

@@ -241,6 +241,15 @@ const infoClothing = (item) => {
 const infoHomeStyle = (item) => {
     let itemDetailTemplate = JSON.stringify(require('../template/item_homeStyle.json'));
     let compiled = _.template(itemDetailTemplate);
+
+    let obtainedFrom = item.obtainedFrom;
+    let obtainedFromAction = `取得方式 ${item.obtainedFrom}`
+
+    if (item.DIY) {
+        obtainedFrom = `DIY ${item.diyInfoObtainedFrom.join(', ')}`;
+        obtainedFromAction = obtainedFrom;
+    }
+
     let bubble = compiled({
         backgroundColorHeader: style.color.backgroundColor.header,
         backgroundColorBody: style.color.base.white,
@@ -252,8 +261,10 @@ const infoHomeStyle = (item) => {
         category: item.category,
         buy: item.buy ? item.buy.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '非賣品',
         sell: item.sell.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
-        obtainedFrom: item.obtainedFrom,
+        obtainedFrom: obtainedFrom,
+        obtainedFromAction: obtainedFromAction,
         series: item.series,
+        diyInfo: item.DIY ? (item.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ') + (item.diyInfoSourceNotes !== null ? `\\n(${item.diyInfoSourceNotes.replace(/"/g, "'")})` : '')) : '--',
         blue: style.color.base.blue
     });
 
