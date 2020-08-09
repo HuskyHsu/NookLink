@@ -90,11 +90,12 @@ function flex(name) {
     
     let typeList = [
         'furnitures',
-        'recipes',
         'arts',
         'villagers',
         'clothes',
         'homeStyle',
+        'tools',
+        'recipes',
     ];
     
     typeList.forEach((type) => {
