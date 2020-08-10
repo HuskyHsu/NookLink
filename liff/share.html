@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+  <title>Share Info</title>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
+  <style>
+    html {
+      position: relative;
+      min-height: 100%;
+    }
+    body {
+      background: lightblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-weight: 400;
+      flex-direction: column;
+      position: relative;
+      font-family: Hack, monospace;
+    }
+    body div {
+      margin: 20px;
+    }
+    .btn-1 {
+      display: none;
+      font-family: Hack, monospace;
+      background: #0f0f6d;
+      color: #fff;
+      cursor: pointer;
+      font-size: 2em;
+      padding: 1.5rem;
+      border: 0;
+      transition: all 0.5s;
+      border-radius: 10px;
+      width: 50VW;
+      position: relative;
+    }
+    .btn-1::after {
+      content: "\f054";
+      font-family: "Font Awesome 5 Pro";
+      font-weight: 400;
+      position: absolute;
+      left: 85%;
+      top: 31%;
+      right: 5%;
+      bottom: 0;
+      opacity: 0;
+    }
+    .btn-1:hover {
+      background: #BFC0E2;
+      transition: all 0.5s;
+      border-radius: 10px;
+      box-shadow: 0px 6px 15px #00f 61;
+      padding: 1.5rem 3.5rem 1.5rem 1.5rem;
+    }
+    .btn-1:hover::after {
+      opacity: 1;
+      transition: all 0.5s;
+    }
+    .login-btn {
+      display: none;
+      font-family: Hack, monospace;
+      background: #0f0f6d;
+      color: #fff;
+      cursor: pointer;
+      font-size: 2em;
+      padding: 1.5rem;
+      border: 0;
+      transition: all 0.5s;
+      border-radius: 10px;
+      width: 50VW;
+      position: relative;
+      min-width: 250px;
+    }
+    .login-btn::after {
+      content: "\f2f6";
+      font-family: "Font Awesome 5 Pro";
+      font-weight: 400;
+      position: absolute;
+      left: 80%;
+      top: 54%;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+    }
+    .login-btn:hover {
+      background: #BFC0E2;
+      transition: all 0.5s;
+      border-radius: 10px;
+      box-shadow: 0px 6px 15px #00f 61;
+      padding: 1.5rem 3rem 1.5rem 1.5rem;
+      color: #fff;
+    }
+    .login-btn:hover::after {
+      opacity: 1;
+      transition: all 0.5s;
+      color: #fff;
+    }
+    .logout-btn {
+      display: none;
+      font-family: Hack, monospace;
+      background: #0f0f6d;
+      color: #fff;
+      cursor: pointer;
+      font-size: 2em;
+      padding: 1.5rem;
+      border: 0;
+      transition: all 0.5s;
+      border-radius: 10px;
+      width: 50VW;
+      position: relative;
+      min-width: 250px;
+    }
+    .logout-btn::after {
+      content: "\f2f5";
+      font-family: "Font Awesome 5 Pro";
+      font-weight: 400;
+      position: absolute;
+      left: 80%;
+      top: 54%;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+    }
+    .logout-btn:hover {
+      background: #BFC0E2;
+      transition: all 0.5s;
+      border-radius: 10px;
+      box-shadow: 0px 6px 15px #00f 61;
+      padding: 1.5rem 3rem 1.5rem 1.5rem;
+      color: #fff;
+    }
+    .logout-btn:hover::after {
+      opacity: 1;
+      transition: all 0.5s;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <button class="btn-1" id="btnShare" onclick="sendShare()">share</button>
+  </div>
+
+  <div>
+    <button class="login-btn" id="btnLogin" onclick="liff.login()">Login</button>
+  </div>
+
+  <div>
+    <button class="logout-btn" id="btnLogOut" onclick="logOut()">Logout</button>
+  </div>
+
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.3.0/sdk.js"></script>
+  <script>
+    async function sendShare() {
+      let urlParams = new URLSearchParams(window.location.search);
+      const reqResponse = await fetch(`/flex-message?${urlParams.toString()}`);
+      const flexJson = await reqResponse.json();
+      const result = await liff.shareTargetPicker([flexJson])
+      if (result) {
+        alert(`轉傳成功`)
+      } else {
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+        if (minorVer === undefined) {
+          alert('轉傳取消(外部瀏覽器)')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('轉傳取消')
+        }
+      }
+    }
+
+    function logOut() {
+      liff.logout()
+      window.location.reload()
+    }
+
+    async function main() {
+
+      const reqResponse = await fetch(`/send-id?type=SHARE`);
+      const json = await reqResponse.json();
+
+      await liff.init({
+        liffId: json.id
+      })
+      if (liff.isLoggedIn()) {
+        document.getElementById("btnShare").style.display = "block"
+        if (!liff.isInClient()) {
+          document.getElementById("btnLogOut").style.display = "block"
+        }
+      } else {
+        document.getElementById("btnLogin").style.display = "block"
+      }
+    }
+    main()
+  </script>
+</body>
+
+</html>

@@ -7,7 +7,7 @@
     "test": "jest",
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "ngrok": "npx ngrok http 5000 -region ap"
+    "ngrok": "npx ngrok http 5000 -region au"
   },
   "dependencies": {
     "axios": "^0.19.2",

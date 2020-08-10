@@ -35,8 +35,14 @@ app.prepare().then(() => {
     res.json(items.flex(name))
   });
   
-  server.get('/liff', (req, res) => {
-    const filename = path.join(`${__dirname}/liff/liff.html`);
+  server.get('/send-id', (req, res) => {
+    if (req.query.type === 'SHARE') {
+      res.json({ id: process.env.LINE_LIFF_ID_SHARE });
+    }
+  });
+
+  server.get('/liff/share', (req, res) => {
+    const filename = path.join(`${__dirname}/liff/share.html`);
     res.sendFile(filename);
   });
 
