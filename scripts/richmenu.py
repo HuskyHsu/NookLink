@@ -131,21 +131,45 @@ if __name__ == '__main__':
         ]
     }
 
-    # r = requests.post(createUrl, json=newRichmenu, headers=headers)
-    # result = r.json()
-    # richMenuId = result['richMenuId']
-    # print(result)
+    richmenu_upgrade = {
+        "name": "upgrade",
+        "size": {
+            "width": 2500,
+            "height": 1686
+        },
+        "chatBarText": "點我查看更新",
+        "selected": True,
+        "areas": [
+            {
+                "bounds": {
+                    "x": 0,
+                    "y": 0,
+                    "width": 2500,
+                    "height": 1686
+                },
+                "action": {
+                    "type": "message",
+                    "text": "上次更新新增"
+                }
+            }
+        ]
+    }
+
+    r = requests.post(createUrl, json=richmenu_upgrade, headers=headers)
+    result = r.json()
+    richMenuId = result['richMenuId']
+    print(result)
 
     # richMenuId = ''
-    # # upload image
-    # url = uploadUrl.format(richMenuId)
-    # headers_ = {**headers, **{"Content-Type": "image/png"}}
+    # upload image
+    url = uploadUrl.format(richMenuId)
+    headers_ = {**headers, **{"Content-Type": "image/png"}}
 
-    # r = requests.post(url, data=open('../assets/richmenu_v1.3.0.png','rb'), headers=headers_)
-    # result = r.json()
-    # print(result)
+    r = requests.post(url, data=open('../assets/richmenu_upgrade.png', 'rb'), headers=headers_)
+    result = r.json()
+    print(result)
 
-    # # set default
-    # r = requests.post(defaultUrl.format(richMenuId), headers=headers)
-    # result = r.json()
-    # print(result)
+    # set default
+    r = requests.post(defaultUrl.format(richMenuId), headers=headers)
+    result = r.json()
+    print(result)

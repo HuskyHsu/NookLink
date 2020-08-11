@@ -18,6 +18,7 @@ async function command(context) {
 
 function update(context) {
 	ga.gaEventLabel(context.session.user.id, 'update', '-', null);
+	context.linkRichMenu(process.env.LINE_RICHMENU);
 	items.filter(context);
 }
 
