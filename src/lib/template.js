@@ -406,6 +406,11 @@ const commands = () => {
 			action: '表情 大姐姐',
 			contents: 1
 		}, {
+			header: '系列 [系列類別]',
+			body: '查詢該系列物品之清單',
+			action: '系列 櫻花',
+			contents: 1
+		}, {
 			header: '魚',
 			body: '當月彙整魚圖鑑',
 			action: '魚',
