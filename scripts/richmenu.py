@@ -1,7 +1,7 @@
 import json
 import requests
 
-token = 'A64Zxw0ZH3qyM9aE3PzqqF2ZGLsiozYPXSPe88nmxBxIkbHVxF+gQRWOZXvHCau/a4db7uc0QHekaDVTYfY0irtBqCt4yMT/6ALBl9uEsZMjDqHi34cDmiiX6Xcj5ACZWOx6+nI6zgaLmnh0QV86lAdB04t89/1O/w1cDnyilFU='
+token = ''
 headers = {
     "Authorization": 'Bearer {}'.format(token)
 }
@@ -16,7 +16,7 @@ getDefaultUrl = 'https://api.line.me/v2/bot/user/all/richmenu'
 if __name__ == '__main__':
 
     # delete
-    # requests.delete(delUrl + 'richmenu-7356e08998d7b877621735bb1b87a06c', headers=headers)
+    # requests.delete(delUrl + 'richmenu-03faec6e205acbcddce1136b2441ef52', headers=headers)
 
     # get
     r = requests.get(getUrl, headers=headers)
@@ -25,11 +25,9 @@ if __name__ == '__main__':
     r = requests.get(getDefaultUrl, headers=headers)
     print(r.json())
 
-
-    '''
     # post
     newRichmenu = {
-        "name": "v1.3.0",
+        "name": "v1.5.0",
         "size": {
             "width": 2500,
             "height": 1686
@@ -160,23 +158,22 @@ if __name__ == '__main__':
         ]
     }
 
-    r = requests.post(createUrl, json=richmenu_upgrade, headers=headers)
-    result = r.json()
-    richMenuId = result['richMenuId']
-    print(result)
+    # r = requests.post(createUrl, json=richmenu_upgrade, headers=headers)
+    # result = r.json()
+    # richMenuId = result['richMenuId']
+    # print(result)
 
-    # richMenuId = ''
-    # upload image
-    url = uploadUrl.format(richMenuId)
-    headers_ = {**headers, **{"Content-Type": "image/png"}}
+    # # richMenuId = ''
+    # # upload image
+    # url = uploadUrl.format(richMenuId)
+    # headers_ = {**headers, **{"Content-Type": "image/png"}}
 
-    r = requests.post(url, data=open('../assets/richmenu_upgrade.png', 'rb'), headers=headers_)
-    result = r.json()
-    print(result)
-    '''
+    # r = requests.post(url, data=open('../assets/richmenu_upgrade.png', 'rb'), headers=headers_)
+    # result = r.json()
+    # print(result)
 
     # set default
-    richMenuId = richmenus[0]['richMenuId']
+    richMenuId = richmenus[1]['richMenuId']
     r = requests.post(defaultUrl.format(richMenuId), headers=headers)
     result = r.json()
     print(result)
