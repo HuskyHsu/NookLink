@@ -36,12 +36,12 @@ const queryTypeMap = {
 }
 
 function removeMeta(obj) {
-  for(prop in obj) {
-    if (prop === 'action')
-      delete obj[prop];
-    else if (typeof obj[prop] === 'object')
-      removeMeta(obj[prop]);
-  }
+    for (prop in obj) {
+        if (prop === 'action')
+            delete obj[prop];
+        else if (typeof obj[prop] === 'object')
+            removeMeta(obj[prop]);
+    }
 }
 
 function addShareButton(name, flexJson) {
@@ -87,7 +87,7 @@ const getAllNames = (type) => {
 
 function flex(name) {
     let flexJson = null;
-    
+
     let typeList = [
         'furnitures',
         'arts',
@@ -97,7 +97,7 @@ function flex(name) {
         'tools',
         'recipes',
     ];
-    
+
     typeList.forEach((type) => {
         const item = query.findOne(dataMap[type], name);
         if (typeof item !== 'undefined' && flexJson === null) {
@@ -177,7 +177,7 @@ async function filter(context) {
         return await context.sendText('符合物品數量龐大，不開放查詢清單 (シ_ _)シ');
     } else if (type === '上次更新新增') {
         type = '版本'
-        name = '1.4.0'
+        name = '1.5.0'
     }
 
     page(context, type.toLowerCase(), name.toLowerCase());

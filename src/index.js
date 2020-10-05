@@ -8,7 +8,7 @@ const ga = require('./lib/ga');
 const querystring = require('querystring');
 
 async function SayHi(context) {
-  	await context.sendText('Hi!');
+	await context.sendText('Hi!');
 }
 
 async function command(context) {
@@ -40,39 +40,39 @@ async function HandlePostback(context) {
 }
 
 module.exports = async function App() {
-  return router([
-	text('hi', SayHi),
-	
-	text('魚', fish.currentFish),
-	text(/^魚[-\s](\d{1,2})月$/i, fish.currentFish),
-	text(new RegExp(`^魚[-\\s](${fish.getAllNames()})$`, 'i'), fish.detail),
+	return router([
+		text('hi', SayHi),
 
-	text('蟲', insect.currentInsect),
-	text(/^蟲[-\s](\d{1,2})月$/i, insect.currentInsect),
-	text(new RegExp(`^蟲[-\\s](${insect.getAllNames()})$`, 'i'), insect.detail),
+		text('魚', fish.currentFish),
+		text(/^魚[-\s](\d{1,2})月$/i, fish.currentFish),
+		text(new RegExp(`^魚[-\\s](${fish.getAllNames()})$`, 'i'), fish.detail),
 
-	text('海底生物', seaCreatures.currentSeaCreatures),
-	text(/^海底生物[-\s](\d{1,2})月$/i, seaCreatures.currentSeaCreatures),
-	text(new RegExp(`^海底生物[-\\s](${seaCreatures.getAllNames()})$`, 'i'), seaCreatures.detail),
+		text('蟲', insect.currentInsect),
+		text(/^蟲[-\s](\d{1,2})月$/i, insect.currentInsect),
+		text(new RegExp(`^蟲[-\\s](${insect.getAllNames()})$`, 'i'), insect.detail),
 
-	text(new RegExp(`^查詢[-\\s](${items.getAllNames('furnitures')})$`, 'i'), items.info('furnitures')),
-	text(new RegExp(`^查詢[-\\s](${items.getAllNames('clothes')})$`, 'i'), items.info('clothes')),
-	text(new RegExp(`^查詢[-\\s](${items.getAllNames('tools')})$`, 'i'), items.info('tools')),
+		text('海底生物', seaCreatures.currentSeaCreatures),
+		text(/^海底生物[-\s](\d{1,2})月$/i, seaCreatures.currentSeaCreatures),
+		text(new RegExp(`^海底生物[-\\s](${seaCreatures.getAllNames()})$`, 'i'), seaCreatures.detail),
 
-	text(new RegExp(`^查詢[-\\s](${items.getAllNames('arts')})$`, 'i'), items.info('arts')),
-	text(new RegExp(`^查詢[-\\s](${items.getAllNames('villagers')})$`, 'i'), items.info('villagers')),
+		text(new RegExp(`^查詢[-\\s](${items.getAllNames('furnitures')})$`, 'i'), items.info('furnitures')),
+		text(new RegExp(`^查詢[-\\s](${items.getAllNames('clothes')})$`, 'i'), items.info('clothes')),
+		text(new RegExp(`^查詢[-\\s](${items.getAllNames('tools')})$`, 'i'), items.info('tools')),
 
-	text(new RegExp(`^查詢[-\\s](${items.getAllNames('homeStyle')})$`, 'i'), items.info('homeStyle')),
-	text(new RegExp(`^查詢[-\\s](${items.getAllNames('recipes')})$`, 'i'), items.info('recipes')),
+		text(new RegExp(`^查詢[-\\s](${items.getAllNames('arts')})$`, 'i'), items.info('arts')),
+		text(new RegExp(`^查詢[-\\s](${items.getAllNames('villagers')})$`, 'i'), items.info('villagers')),
 
-	text(new RegExp(`^(查詢|tag|主題|取得方式|材料|DIY|種族|個性|表情|系列|版本)[-\\s].*$`, 'i'), items.filter),
+		text(new RegExp(`^查詢[-\\s](${items.getAllNames('homeStyle')})$`, 'i'), items.info('homeStyle')),
+		text(new RegExp(`^查詢[-\\s](${items.getAllNames('recipes')})$`, 'i'), items.info('recipes')),
 
-	text('上次更新新增', update),
-	text('指令集', command),
-	text('意見回報', problemReport),
+		text(new RegExp(`^(查詢|tag|主題|取得方式|材料|DIY|種族|個性|表情|系列|版本)[-\\s].*$`, 'i'), items.filter),
 
-	text('test', Unknown),
+		text('上次更新新增', update),
+		text('指令集', command),
+		text('意見回報', problemReport),
 
-	line.postback(HandlePostback)
-  ]);
+		text('test', Unknown),
+
+		line.postback(HandlePostback)
+	]);
 }

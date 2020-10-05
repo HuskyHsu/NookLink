@@ -1,7 +1,7 @@
 import json
 import requests
 
-token = ''
+token = 'A64Zxw0ZH3qyM9aE3PzqqF2ZGLsiozYPXSPe88nmxBxIkbHVxF+gQRWOZXvHCau/a4db7uc0QHekaDVTYfY0irtBqCt4yMT/6ALBl9uEsZMjDqHi34cDmiiX6Xcj5ACZWOx6+nI6zgaLmnh0QV86lAdB04t89/1O/w1cDnyilFU='
 headers = {
     "Authorization": 'Bearer {}'.format(token)
 }
@@ -11,9 +11,10 @@ delUrl = 'https://api.line.me/v2/bot/richmenu/'
 createUrl = 'https://api.line.me/v2/bot/richmenu'
 uploadUrl = 'https://api-data.line.me/v2/bot/richmenu/{}/content'
 defaultUrl = 'https://api.line.me/v2/bot/user/all/richmenu/{}'
+getDefaultUrl = 'https://api.line.me/v2/bot/user/all/richmenu'
 
 if __name__ == '__main__':
-    
+
     # delete
     # requests.delete(delUrl + 'richmenu-7356e08998d7b877621735bb1b87a06c', headers=headers)
 
@@ -21,7 +22,11 @@ if __name__ == '__main__':
     r = requests.get(getUrl, headers=headers)
     richmenus = r.json()['richmenus']
     print(richmenus)
+    r = requests.get(getDefaultUrl, headers=headers)
+    print(r.json())
 
+
+    '''
     # post
     newRichmenu = {
         "name": "v1.3.0",
@@ -168,8 +173,10 @@ if __name__ == '__main__':
     r = requests.post(url, data=open('../assets/richmenu_upgrade.png', 'rb'), headers=headers_)
     result = r.json()
     print(result)
+    '''
 
     # set default
+    richMenuId = richmenus[0]['richMenuId']
     r = requests.post(defaultUrl.format(richMenuId), headers=headers)
     result = r.json()
     print(result)
