@@ -181,8 +181,8 @@ const info = (furniture) => {
         let furnitureVariationsPattrensTemplate = variations(furniture.variations.pattrens, furniture.filename, '樣式', furniture.patternCustomize, furniture.patternTitle, furniture.name_c);
         carousel.contents.push(_.cloneDeep(furnitureVariationsPattrensTemplate));
     }
-    
-    if (furniture.obtainedFrom === 'DIY') {
+
+    if (furniture.obtainedFrom.includes("DIY") > -1) {
         furnitureDetailTemplate.body.contents[4].contents[0].contents[1].text =  furniture.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ')
         if (furniture.diyInfoSourceNotes) {
             furnitureDetailTemplate.body.contents[4].contents[0].contents[1].text += `\n(${furniture.diyInfoSourceNotes})`
