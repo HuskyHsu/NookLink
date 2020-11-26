@@ -158,6 +158,7 @@ if __name__ == '__main__':
         ]
     }
 
+
     # r = requests.post(createUrl, json=richmenu_upgrade, headers=headers)
     # result = r.json()
     # richMenuId = result['richMenuId']
