@@ -182,7 +182,7 @@ const info = (furniture) => {
         carousel.contents.push(_.cloneDeep(furnitureVariationsPattrensTemplate));
     }
 
-    if (furniture.obtainedFrom.includes("DIY") > -1) {
+    if (furniture.diyInfoMaterials !== null) {
         furnitureDetailTemplate.body.contents[4].contents[0].contents[1].text =  furniture.diyInfoMaterials.map((item) => `${item.itemName}x${item.count}`).join('; ')
         if (furniture.diyInfoSourceNotes) {
             furnitureDetailTemplate.body.contents[4].contents[0].contents[1].text += `\n(${furniture.diyInfoSourceNotes})`
