@@ -2,7 +2,7 @@ Nook Link Line bot
 ===============================
 ![](https://raw.githubusercontent.com/HuskyHsu/NookLink/master/assets/cover.png)
 
-[意見回報](https://forms.gle/FuVb42d1XVeLJMHbA)
+# 服務終止
 
 LINE 好友
 ----
